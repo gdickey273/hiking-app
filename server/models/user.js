@@ -7,21 +7,21 @@ mongoose.promise = Promise;
 const userSchema = new Schema({
 	firstName: { type: String, unique: false },
 	lastName: { type: String, unique: false },
-  username: { type: String, unique: false, required: false },
-  password: { type: String, unique: false, required: false },
-  books: [
-    {
-      // Store ObjectIds in the array
-      type: Schema.Types.ObjectId,
-      // The ObjectIds will refer to the ids in the Book model
-      ref: "Book"
-    }
-  ]
+	username: { type: String, unique: false, required: false },
+	password: { type: String, unique: false, required: false },
+	books: [
+		{
+			// Store ObjectIds in the array
+			type: Schema.Types.ObjectId,
+			// The ObjectIds will refer to the ids in the Book model
+			ref: 'Book'
+		}
+	]
 });
 
 // Define schema methods
 userSchema.methods = {
-	checkPassword: function(inputPassword) {
+	checkPassword: function (inputPassword) {
 		return bcrypt.compareSync(inputPassword, this.password);
 	},
 	hashPassword: plainTextPassword => {
@@ -30,7 +30,7 @@ userSchema.methods = {
 };
 
 // Define hooks for pre-saving
-userSchema.pre('save', function(next) {
+userSchema.pre('save', function (next) {
 	if (!this.password) {
 		// console.log('No password provided!');
 		next();
@@ -38,7 +38,7 @@ userSchema.pre('save', function(next) {
 		this.password = this.hashPassword(this.password);
 		next();
 	}
-})
+});
 
 // Create reference to User & export
 const User = mongoose.model('User', userSchema);
