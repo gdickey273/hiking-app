@@ -6,9 +6,9 @@ branches:
 services:
   - mongoose
 install: 
-  - npm ci
+  - npm i
 cache:
   directories:
     - node_modules
-    - client/node_modules
+    # - client/node_modules
 
