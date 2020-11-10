@@ -8,14 +8,14 @@
     "start:prod": "node server/server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "install": "cd client && yarn install",
+    "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
   "engines": {
     "node": "12.10.0",
-    "npm": "6.11.3"
-    
+    "npm": "6.11.3",
+    "yarn": "1.19.1"
   },
   "author": "",
   "license": "ISC",
