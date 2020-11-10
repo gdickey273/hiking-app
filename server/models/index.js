@@ -1,4 +1,4 @@
 module.exports = {
-  Trail: require("./trail"),
-  User: require("./user")
+	Trail: require('./trail"'),
+	User: require('./user')
 };
