@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const trailSchema = new Schema({
-	name: { 
-		type: String, 
-		required: true 
+	name: {
+		type: String,
+		required: true
 	},
-	date: { 
-		type: Date, 
+	date: {
+		type: Date,
 		required: true,
-		default: Date.now 
+		default: Date.now
 	},
 	city: {
 		type: String,
@@ -29,28 +29,28 @@ const trailSchema = new Schema({
 	},
 	comments: {
 		type: Array,
-		reruired: true
+		required: true
 	},
 	photos: {
 		type: Array,
-		reruired: false,
+		required: false,
 		default: []
 	},
 	userVerified: {
 		type: Number,
-		reruired: false,
+		required: false,
 		default: 0
 	},
-	length: { 
-		type: Number, 
-		required: true 
+	length: {
+		type: Number,
+		required: true
 	},
-	elevation: { 
-		type: Number, 
-		required: true 
+	elevation: {
+		type: Number,
+		required: true
 	},
-	duration: { 
-		type: Number, 
+	duration: {
+		type: Number,
 		required: false,
 		default: 0
 	},
@@ -65,17 +65,17 @@ const trailSchema = new Schema({
 	currentCondition: {
 		type: String,
 		required: false,
-		default: "None Available"
+		default: 'None Available'
 	},
 	trafficLevels: {
 		type: String,
 		required: false,
-		default: "No information available"
+		default: 'No information available'
 	},
 	waterSources: {
 		type: String,
 		required: false,
-		default: "No information available"
+		default: 'No information available'
 	}
 });
 
