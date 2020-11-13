@@ -1,7 +1,7 @@
 {
-  "name": "reactreadinglist-auth-server",
+  "name": "hiking-app",
   "version": "1.1.0",
-  "description": "Full Stack React App with Authentication",
+  "description": "Search, post and comment on trails in your area.",
   "main": "server/server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
