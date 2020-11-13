@@ -13,8 +13,9 @@ router
 	.put(trailsController.update)
 	.delete(trailsController.remove);
 
+// Matches with "/api/trails/user/:userID"
 router 
-	.route('/:userID')
+	.route('/user/:userID')
 	.get(trailsController.findAllByUser);
-	
+
 module.exports = router;
