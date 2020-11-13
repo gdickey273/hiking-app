@@ -13,4 +13,8 @@ router
 	.put(trailsController.update)
 	.delete(trailsController.remove);
 
+router 
+	.route('/:userID')
+	.get(trailsController.findAllByUser);
+	
 module.exports = router;
