@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css?family=Share+Tech');
+@import url('https://fonts.googleapis.com/css?family=Ramabhadra');
+
+:root{
+  --main-bg-color:#151616;
+  --main-accent-color: #FFFFFF;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+  display:grid;
+  grid-template-areas:
+  "h"
+  "m"
+  "f";
+  grid-template-rows: 100vh auto 100vh;
+}
+
+header{
+  grid-area: h;
+  display: flex;
+  flex-direction: column;
+  background-image: 
+  linear-gradient(
+    rgba(0, 0, 0, 0.45), 
+    rgba(0, 0, 0, 0.45)
+  ),
+  url("./assets/img/examplebanner.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  & .nav{
+    width: 100%;
+    height: 125px;
+    display: block;
+    float: left;
+    background-color: var(--main-bg-color);
+
+    & h1{
+      color: var(--main-accent-color);
+      font-size: 3em;
+      font-family: "Share Tech";
+      margin-left: 15px;
+      margin-top: 55px;
+    }
+  }
+
+  & .account{
+    display: block;
+    position: absolute;
+    right: 8px;
+    top: 80px;
+    & li{
+      display: inline-block;
+      font-family: "Share Tech";
+      font-size: 1.3em;
+      color: var(--main-accent-color);
+      list-style-type: none;
+      margin: 0 1em;
+    }
+  }
+
+  & .social{
+      display: block;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      & i{
+        font-size: 2em;
+        color: var(--main-accent-color);
+        margin: 0 .25em;
+      }
+  }
+
+  & .banner{
+    z-index: 2;
+    margin-top: 5em;
+    margin-left: 20px;
+
+    & h3{
+      color: white;
+      font-size: 2em;
+      font-family: "Ramabhadra";
+      text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    & .trail-search{
+      margin-top: 1em;
+      font-size: 1.3em;
+      width: 300px;
+      border-radius: 10px;
+      padding: 7px;
+      border: none;
+      outline: none;
+      float: left;
+    }
+
+    & .search-button{
+        width: 20px;
+        float: right;
+
+      & .fa-search{
+        color: white;
+        font-size: 2em;
+      }
+
+    }
+  }
+
+  & .info{
+    width: 100%;
+    height: 300px;
+    background-color: var(--main-bg-color);
+    margin-top: auto;
+
+    & p{
+      text-align: center;
+      margin-top: 50px;
+      width: 50%;
+      color: white;
+      font-size: 1.5em;
+      font-family: "Ramabhadra";
+
+    }
+
+    & .a{
+      display: block;
+      float: left;
+    }
+
+    & .b{
+      display: block;
+      float: right;
+    }
+  }
+
+}
+
+main{
+  grid-area: m;
+  background-color: var(--main-bg-color);
+}
+
+footer{
+  grid-area: f;
+  background-color: var(--main-bg-color);
+}
+
+
+// Flickity
+
+.info { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+/* prevent vertical scroll bar glitch */
+html { overflow-y: scroll; }
+
+.carousel {
+  background: #EEE;
+}
+
+.flickity-page-dots{
+  display:none;
+}
+
+.carousel-cell {
+  width: 100%;
+  height: 300px;
+  background: var(--main-bg-color);
+  counter-increment: gallery-cell;
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(gallery-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
