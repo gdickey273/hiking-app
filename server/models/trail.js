@@ -19,9 +19,20 @@ const trailSchema = new Schema({
 		type: String,
 		required: true
 	},
-	mapPoints: {
-		type: Array,
-		required: true
+	origin: {
+		type: String,
+		required: false,
+		default: null
+	},
+	destination: {
+		type: String,
+		required: false,
+		default: null
+	},
+	waypoints: {
+		type: String,
+		required: false,
+		default: null
 	},
 	rating: {
 		type: Number,
