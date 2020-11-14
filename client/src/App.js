@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import LoginForm from './pages/Auth/LoginForm';
-import SignupForm from './pages/Auth/SignupForm';
+// import LoginForm from './pages/Auth/LoginForm';
+// import SignupForm from './pages/Auth/SignupForm';
 import Nav from "./components/Nav";
+import Banner from "./components/Banner";
+import Info from "./components/Info";
+import Main from "./components/Main";
+import Footer from "./components/Footer";
+import LoginModal from "./components/LoginModal";
+
 import Books from './pages/Books';
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import AUTH from './utils/AUTH';
+import '../src/reset.css';
+import '../src/styles.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -69,11 +77,22 @@ function App() {
         </div>
       )}
       { !loggedIn && (
-        <div className="auth-wrapper" style={{paddingTop:40}}>
-          <Route exact path="/" component={() => <LoginForm login={login}/>} />
+        <body>
+
+        <header>
+          <Nav />
+          <LoginModal />
+          <Banner />
+          <Info />
+        </header>
+
+        <Main />
+        <Footer />
+
+          {/* <Route exact path="/" component={() => <LoginForm login={login}/>} />
           <Route exact path="/books" component={() => <LoginForm user={login} />} />
-          <Route exact path="/signup" component={SignupForm} />
-        </div>
+          <Route exact path="/signup" component={SignupForm} /> */}
+        </body>
       )}
     </div>
   );
