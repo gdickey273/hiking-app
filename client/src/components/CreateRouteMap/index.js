@@ -2,33 +2,57 @@ import React, { useState } from "react";
 import { Map, InfoWindow, Marker, Polyline, GoogleApiWrapper } from "google-maps-react";
 
 
-const CreateRouteMap = (props) => {
+function CreateRouteMap(props) {
+  const { currentMarker, newTrailObj, setNewTrailObj } = props;
 
-  const [markerCoords, setMarkerCoords] = useState([]);
+  console.log(currentMarker);
 
-  const handleMapClick = (mapProps, map, event) => {
-    setMarkerCoords([...markerCoords, event.latLng]);
+  function handleMapClick(mapProps, map, event) {
+    if (currentMarker) {
+      switch (currentMarker) {
+        case "Origin":
+          setNewTrailObj({ ...newTrailObj, origin: event.latLng });
+          break;
+        case "Destination":
+          setNewTrailObj({ ...newTrailObj, destination: event.latLng });
+          break;
+        default:
+          setNewTrailObj({ ...newTrailObj, waypoints: [...newTrailObj.waypoints, event.latLng] })
+
+      }
+    }
   }
-  
+
   return (
-    <Map 
+    <Map
       google={props.google}
       zoom={14}
-      style={{width:"50%", height:"50%"}}
+      style={{ width: "50%", height: "50%" }}
       streetViewControl={false}
       fullscreenControl={false}
       onClick={handleMapClick}
-      
-      >
-      {markerCoords.map((coords) => (
-        <Marker 
-        position={coords}
-        draggable={true}
-        title={coords.title}
-        key={coords.title}
-        
+
+    >
+      {newTrailObj.origin &&
+        <Marker
+          position={newTrailObj.origin}
+          title={"Origin"}
+        />
+      }
+      {newTrailObj.waypoints.map((wp, i) => (
+        <Marker
+          position={wp}
+          draggable={true}
+          title={"Waypoint #" + i}
+          key={i}
         />
       ))}
+
+      {newTrailObj.destination && 
+      <Marker 
+        position={newTrailObj.destination}
+        title="Destination"/>
+      }
     </Map>
   );
 }
