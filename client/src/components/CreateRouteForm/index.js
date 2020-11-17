@@ -35,22 +35,22 @@ const CreateRouteForm = (prop) => {
           <input type="text" name="state" onChange={handleInputChange} /><br />
         </div>
         <div>
-          <button name="setOrigin" onClick={event => {event.preventDefault(); setCurrentMarker("Origin")}}>Set Origin</button>
+          <button name="setOrigin" onClick={event => { event.preventDefault(); setCurrentMarker("Origin") }}>Set Origin</button>
           <label for="setOrigin">Origin: {newTrailObj.origin && `Lat: ${newTrailObj.origin.lat()}, Lng: ${newTrailObj.origin.lng()}`}</label><br />
 
           {newTrailObj.waypoints.map((wp, i) => (
             <>
-              <button for={`setWaypoint${i + 1}`} onClick={event => {event.preventDefault(); setCurrentMarker(`Waypoint${i + 1}`)}}>Set Waypoint</button>
+              <button for={`setWaypoint${i + 1}`} onClick={event => { event.preventDefault(); setCurrentMarker(`Waypoint${i + 1}`) }}>Set Waypoint</button>
               <label for="setOrigin">Waypoint #{i + 1}: {`Lat: ${wp.lat()}, Lng: ${wp.lng()}`}</label><br />
             </>
           ))}
 
-          <button onClick={event => {event.preventDefault(); setCurrentMarker(`Waypoint${newTrailObj.waypoints.length + 1}`)}}>Set {newTrailObj.waypoints.length > 0 ? "Another Waypoint?" : "A Waypoint"}</button><br />
+          <button onClick={event => { event.preventDefault(); setCurrentMarker(`Waypoint${newTrailObj.waypoints.length + 1}`) }}>Set {newTrailObj.waypoints.length > 0 ? "Another Waypoint?" : "A Waypoint"}</button><br />
 
           {newTrailObj.trailType === "aToB"
             ?
             <>
-              <button name="setDestination" onClick={event => {event.preventDefault(); setCurrentMarker("Destination")}}>Set Destination</button>
+              <button name="setDestination" onClick={event => { event.preventDefault(); setCurrentMarker("Destination") }}>Set Destination</button>
               <label for="setDestination">Destination: {newTrailObj.destination && `Lat: ${newTrailObj.destination.lat()}, Lng: ${newTrailObj.destination.lng()}`}</label><br />
             </>
             :
@@ -63,7 +63,7 @@ const CreateRouteForm = (prop) => {
         </div>
       </form>
       <h5>{JSON.stringify(newTrailObj)}</h5>
-      <CreateRouteMap newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} currentMarker={currentMarker}/>
+      <CreateRouteMap newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} currentMarker={currentMarker} />
     </div>
 
 
