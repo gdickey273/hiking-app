@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Map, InfoWindow, Marker, Polyline, GoogleApiWrapper } from "google-maps-react";
-import { EnvironmentCredentials } from "aws-sdk";
+
 
 const CreateRouteMap = (props) => {
 
