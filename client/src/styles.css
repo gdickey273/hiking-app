@@ -1,0 +1,196 @@
+@import url("https://fonts.googleapis.com/css?family=Share+Tech");
+@import url("https://fonts.googleapis.com/css?family=Ramabhadra");
+:root {
+  --main-bg-color:#151616;
+  --main-accent-color: #FFFFFF;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "h" "m" "f";
+  -ms-grid-rows: 100vh auto 100vh;
+      grid-template-rows: 100vh auto 100vh;
+}
+
+header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: h;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.45)), to(rgba(0, 0, 0, 0.45))), url("./assets/img/examplebanner.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url("./assets/img/examplebanner.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header .nav {
+  width: 100%;
+  height: 125px;
+  display: block;
+  float: left;
+  background-color: var(--main-bg-color);
+}
+
+header .nav h1 {
+  color: var(--main-accent-color);
+  font-size: 3em;
+  font-family: "Share Tech";
+  margin-left: 15px;
+  margin-top: 55px;
+}
+
+header .account {
+  display: block;
+  position: absolute;
+  right: 8px;
+  top: 80px;
+}
+
+header .account li {
+  display: inline-block;
+  font-family: "Share Tech";
+  font-size: 1.3em;
+  color: var(--main-accent-color);
+  list-style-type: none;
+  margin: 0 1em;
+}
+
+header .social {
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+header .social i {
+  font-size: 2em;
+  color: var(--main-accent-color);
+  margin: 0 .25em;
+}
+
+header .banner {
+  z-index: 2;
+  margin-top: 5em;
+  margin-left: 20px;
+}
+
+header .banner h3 {
+  color: white;
+  font-size: 2em;
+  font-family: "Ramabhadra";
+  text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+header .banner .trail-search {
+  margin-top: 1em;
+  font-size: 1.3em;
+  width: 300px;
+  border-radius: 10px;
+  padding: 7px;
+  border: none;
+  outline: none;
+  float: left;
+}
+
+header .banner .search-button {
+  width: 20px;
+  float: right;
+}
+
+header .banner .search-button .fa-search {
+  color: white;
+  font-size: 2em;
+}
+
+header .info {
+  width: 100%;
+  height: 300px;
+  background-color: var(--main-bg-color);
+  margin-top: auto;
+}
+
+header .info p {
+  text-align: center;
+  margin-top: 50px;
+  width: 50%;
+  color: white;
+  font-size: 1.5em;
+  font-family: "Ramabhadra";
+}
+
+header .info .a {
+  display: block;
+  float: left;
+}
+
+header .info .b {
+  display: block;
+  float: right;
+}
+
+main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: m;
+  background-color: var(--main-bg-color);
+}
+
+footer {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  grid-area: f;
+  background-color: var(--main-bg-color);
+}
+
+.info {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+/* prevent vertical scroll bar glitch */
+html {
+  overflow-y: scroll;
+}
+
+.carousel {
+  background: #EEE;
+}
+
+.flickity-page-dots {
+  display: none;
+}
+
+.carousel-cell {
+  width: 100%;
+  height: 300px;
+  background: var(--main-bg-color);
+  counter-increment: gallery-cell;
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(gallery-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+/*# sourceMappingURL=styles.css.map */
