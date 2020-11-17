@@ -3,7 +3,7 @@ import { Map, InfoWindow, Marker, Polyline, GoogleApiWrapper } from "google-maps
 
 
 function CreateRouteMap(props) {
-  const { currentMarker, newTrailObj, setNewTrailObj } = props;
+  const { currentMarker, setCurrentMarker, newTrailObj, setNewTrailObj } = props;
 
   console.log(currentMarker);
 
@@ -12,14 +12,32 @@ function CreateRouteMap(props) {
       switch (currentMarker) {
         case "Origin":
           setNewTrailObj({ ...newTrailObj, origin: event.latLng });
+          setCurrentMarker("");
           break;
         case "Destination":
           setNewTrailObj({ ...newTrailObj, destination: event.latLng });
+          setCurrentMarker("");
           break;
         default:
-          setNewTrailObj({ ...newTrailObj, waypoints: [...newTrailObj.waypoints, event.latLng] })
+          setNewTrailObj({ ...newTrailObj, waypoints: [...newTrailObj.waypoints, event.latLng] });
+          setCurrentMarker("");
 
       }
+    }
+  }
+
+  const polyCoords = [];
+  if (newTrailObj.origin && newTrailObj.waypoints.length > 0) {
+    polyCoords.push(newTrailObj.origin);
+    polyCoords.push.apply(polyCoords, [...newTrailObj.waypoints]);
+  }
+  if (polyCoords.length > 0) {
+    if (newTrailObj.trailType === "aToB") {
+      if(newTrailObj.destination) {
+        polyCoords.push(newTrailObj.destination);
+      }
+    } else if (newTrailObj.trailType) {
+      polyCoords.push(newTrailObj.origin);
     }
   }
 
@@ -48,10 +66,19 @@ function CreateRouteMap(props) {
         />
       ))}
 
-      {newTrailObj.destination && 
-      <Marker 
-        position={newTrailObj.destination}
-        title="Destination"/>
+      {newTrailObj.destination &&
+        <Marker
+          position={newTrailObj.destination}
+          title="Destination" />
+      }
+
+      {polyCoords.length > 2 &&
+        <Polyline
+          path={polyCoords}
+          strokeColor="#008000"
+          strokeOpacity={0.8}
+          strokeWeight={2}
+        />
       }
     </Map>
   );
