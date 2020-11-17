@@ -49,6 +49,7 @@ function CreateRouteMap(props) {
       streetViewControl={false}
       fullscreenControl={false}
       onClick={handleMapClick}
+      // initialCenter={navigator.geolocation ? navigator.geolocation.getCurrentPosition((data) => ({lat: data.coords.latitude, lng: data.coords.longitude})) : ""}
 
     >
       {newTrailObj.origin &&
