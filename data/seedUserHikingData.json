@@ -1,0 +1,19 @@
+{
+    "UserHikingData": [
+        {
+            "name": "Test Trail 1",
+            "date": "11/17/20",
+            "city": "Raleigh",
+            "state": "NC",
+            "origin": "35.877552, -78.661532",
+            "destination": "35.861145, -78.708803",
+            "rating": "5",
+            "comments": "My trek to Chick-Fil-A",
+            "length": "4.1",
+            "elevation": "0",
+            "duration": "83",
+            "trailType": "Paved",
+            "terrain": "Road"
+        }
+    ]
+}

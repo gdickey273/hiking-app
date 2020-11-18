@@ -1,14 +1,20 @@
-import React from "react";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const trailMap = ({  }) => (
-  <div>
+class trailMap extends React.Component {
+  render() {
+    return (
+      <div>
         <iframe
-            width="800"
-            height="500"
+            width="1200"
+            height="700"
             frameborder="0" style="border:0"
-            src= "getRouted" >
+            src= "https://www.google.com/maps/embed/v1/directions?key=AIzaSyB-wvyWjrqtg7umKsrvrJU19WrcSanUV7c&origin=35.877552,-78.661532&destination=35.861145,-78.708803&mode=walking" >
         </iframe>
-  </div>
-);
+      </div>
+
+    );
+  }
+}
 
 export default trailMap;
