@@ -36,19 +36,15 @@ function CreateRouteMap(props) {
   }
 
   function handleMarkerDrag(x, marker, y) {
-    console.log(newTrailObj)
     const la = marker.position.lat();
     const ln = marker.position.lng();
     const latLng = marker.position;
-    console.log(marker)
-    console.log(marker.title)
-    const i = parseInt(marker.title);
-    const arr = newTrailObj.waypoints.splice(i, 1, {lat: la, lng: ln});
-    console.log(arr);
-    
-    setNewTrailObj({...newTrailObj, waypoints: arr})
-   
   
+    const i = parseInt(marker.title);
+    const arr = newTrailObj.waypoints;
+    arr.splice(i, 1, y.latLng);
+
+    setNewTrailObj({...newTrailObj, waypoints: arr});
   }
   const polyCoords = [];
   if (newTrailObj.origin && newTrailObj.waypoints.length > 0) {
