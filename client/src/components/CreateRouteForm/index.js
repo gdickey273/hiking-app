@@ -16,6 +16,13 @@ const CreateRouteForm = (prop) => {
     const { name, value } = event.target;
     setNewTrailObj({ ...newTrailObj, [name]: value });
   }
+
+  const handleRemoveWaypoint = (event) => {
+    event.preventDefault();
+    let arr = newTrailObj.waypoints;
+    arr.splice(event.target.dataset.index, 1);
+    setNewTrailObj({ ...newTrailObj, waypoints: arr});
+  }
   return (
     <div>
 
@@ -37,11 +44,12 @@ const CreateRouteForm = (prop) => {
         <div>
           <button name="setOrigin" onClick={event => { event.preventDefault(); setCurrentMarker("Origin") }}>Set Origin</button>
           <label for="setOrigin">Origin: {newTrailObj.origin && `Lat: ${newTrailObj.origin.lat()}, Lng: ${newTrailObj.origin.lng()}`}</label><br />
-
+          
           {newTrailObj.waypoints.map((wp, i) => (
             <>
               <button for={`setWaypoint${i + 1}`} onClick={event => { event.preventDefault(); setCurrentMarker(`Waypoint${i + 1}`) }}>Set Waypoint</button>
               <label for="setOrigin">Waypoint #{i + 1}: {`Lat: ${wp.lat()}, Lng: ${wp.lng()}`}</label><br />
+              <button data-index={i} onClick={handleRemoveWaypoint}>x</button><br/>
             </>
           ))}
 
