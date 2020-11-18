@@ -12,15 +12,14 @@ export default {
   getTrailMap: function(trailName) {
     return axios.get(`/api/mapSearch/${trailName}`);
   },
-  getCoordinates: function(city, state, keyword) {
+  getCoordinates: function(city, state) {
     return axios({
       method: "get",
-      url: "",
+      url: "/api/geocode",
       headers: {},
       data: {
         city,
-        state,
-        keyword
+        state
       }
     });
   }
