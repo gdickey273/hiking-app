@@ -73,8 +73,6 @@ const CreateRouteForm = (prop) => {
       <h5>{JSON.stringify(newTrailObj)}</h5>
       <CreateRouteMap newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} currentMarker={currentMarker} setCurrentMarker={setCurrentMarker}/>
     </div>
-
-
   )
 }
 
