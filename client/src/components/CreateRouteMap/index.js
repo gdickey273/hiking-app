@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Map, InfoWindow, Marker, Polyline, GoogleApiWrapper } from "google-maps-react";
 
 
 function CreateRouteMap(props) {
   const { currentMarker, setCurrentMarker, newTrailObj, setNewTrailObj } = props;
+  const [currentLocation, setCurrentLocation] = useState({});
 
-  console.log(currentMarker);
+  useEffect(() => {
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((data) => {
+        const lat = data.coords.latitude;
+        const lng = data.coords.longitude;
+        setCurrentLocation({lat, lng});
+      })
+    }
+  })
 
   function handleMapClick(mapProps, map, event) {
     if (currentMarker) {
@@ -26,6 +35,21 @@ function CreateRouteMap(props) {
     }
   }
 
+  function handleMarkerDrag(x, marker, y) {
+    console.log(newTrailObj)
+    const la = marker.position.lat();
+    const ln = marker.position.lng();
+    const latLng = marker.position;
+    console.log(marker)
+    console.log(marker.title)
+    const i = parseInt(marker.title);
+    const arr = newTrailObj.waypoints.splice(i, 1, {lat: la, lng: ln});
+    console.log(arr);
+    
+    setNewTrailObj({...newTrailObj, waypoints: arr})
+   
+  
+  }
   const polyCoords = [];
   if (newTrailObj.origin && newTrailObj.waypoints.length > 0) {
     polyCoords.push(newTrailObj.origin);
@@ -41,29 +65,32 @@ function CreateRouteMap(props) {
     }
   }
 
+ 
   return (
     <Map
       google={props.google}
-      zoom={14}
+      zoom={10}
       style={{ width: "50%", height: "50%" }}
       streetViewControl={false}
       fullscreenControl={false}
       onClick={handleMapClick}
-      // initialCenter={navigator.geolocation ? navigator.geolocation.getCurrentPosition((data) => ({lat: data.coords.latitude, lng: data.coords.longitude})) : ""}
-
+      center={currentLocation}
     >
       {newTrailObj.origin &&
         <Marker
           position={newTrailObj.origin}
           title={"Origin"}
+          strokeColor="#ffffff"
         />
       }
       {newTrailObj.waypoints.map((wp, i) => (
         <Marker
           position={wp}
           draggable={true}
-          title={"Waypoint #" + i}
+          onDragend={handleMarkerDrag}
+          title={""+i}
           key={i}
+        
         />
       ))}
 
