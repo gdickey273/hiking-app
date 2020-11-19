@@ -1,12 +1,30 @@
 import { use } from "passport";
 import React, { useState } from "react";
 import CreateRouteMap from "../CreateRouteMap";
+import API from "../../utils/extAPI";
 
 const CreateRouteForm = (prop) => {
 
   const [newTrailObj, setNewTrailObj] = useState({ waypoints: [] });
   const [currentMarker, setCurrentMarker] = useState("");
+  const [centerCoords, setCenterCoords] = useState({});
 
+
+  const handleButtonClick = (event) => {
+    event.preventDefault();
+    const { name } = event.target;
+
+    if (name === "locationSubmit") {
+      if(newTrailObj.city && newTrailObj.state){
+        console.log("-------------city, state-------------", newTrailObj.city, newTrailObj.state);
+        API.getCoordinates(newTrailObj.city, newTrailObj.state)
+        .then(res => {
+          console.log(res.data);
+          setCenterCoords(res.data)});
+      }
+      
+    }
+  }
   const handleTypeClick = (event) => {
     setNewTrailObj({ ...newTrailObj, trailType: event.target.value });
     console.log(event.target.value);
@@ -29,10 +47,10 @@ const CreateRouteForm = (prop) => {
       <form>
         <div onClick={handleTypeClick}>
           <input type="radio" name="trailType" value="loop" />
-          <label for="male">Loop</label><br />
-          <input type="radio" id="female" name="trailType" value="outAndBack" />
-          <label for="female">Out 'n Back</label><br />
-          <input type="radio" id="other" name="trailType" value="aToB" />
+          <label for="trailType">Loop</label><br />
+          <input type="radio" name="trailType" value="outAndBack" />
+          <label for="trailType">Out 'n Back</label><br />
+          <input type="radio"  name="trailType" value="aToB" />
           <label for="other">A to B</label>
         </div>
         <div>
@@ -40,6 +58,7 @@ const CreateRouteForm = (prop) => {
           <input type="text" name="city" onChange={handleInputChange} /><br />
           <label for="state">State:</label>
           <input type="text" name="state" onChange={handleInputChange} /><br />
+          <button type="submit" name="locationSubmit" onClick={handleButtonClick} >Submit</button>
         </div>
         <div>
           <button name="setOrigin" onClick={event => { event.preventDefault(); setCurrentMarker("Origin") }}>Set Origin</button>
@@ -71,7 +90,8 @@ const CreateRouteForm = (prop) => {
         </div>
       </form>
       <h5>{JSON.stringify(newTrailObj)}</h5>
-      <CreateRouteMap newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} currentMarker={currentMarker} setCurrentMarker={setCurrentMarker}/>
+      <h5>{JSON.stringify(centerCoords)}</h5>
+      <CreateRouteMap centerCoords={centerCoords} setCenterCoords={setCenterCoords} newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} currentMarker={currentMarker} setCurrentMarker={setCurrentMarker}/>
     </div>
   )
 }
