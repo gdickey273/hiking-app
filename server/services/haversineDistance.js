@@ -8,4 +8,4 @@ const getDistance = function(coordA, coordB) {
 module.exports = getDistance;
 
 // const getDistance = require("./services/haversineDistance");
-// let dist = getDistance({lat:36.0959715, lng:-79.2669619 }, {lat:36.0956918, lng:-79.43779909999999});
+// let dist = getDistance({latitude:36.0959715, longitude:-79.2669619 }, {latitude:36.0956918, longitude:-79.43779909999999});
