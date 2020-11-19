@@ -70,7 +70,7 @@ function CreateRouteMap(props) {
       streetViewControl={false}
       fullscreenControl={false}
       onClick={handleMapClick}
-      center={currentLocation}
+      center={props.centerCoords || currentLocation}
     >
       {newTrailObj.origin &&
         <Marker
