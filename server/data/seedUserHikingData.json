@@ -10,10 +10,7 @@
             "rating": 5,
             "comments": "My trek to Chick-Fil-A",
             "length": 4.1,
-            "elevation": {
-                "ascent": 300,
-                "descent": 100
-            },
+            "elevation": [300, -100],
             "duration": 83,
             "trailType": "Paved",
             "terrain": "Road"

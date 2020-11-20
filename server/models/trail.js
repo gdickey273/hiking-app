@@ -35,7 +35,7 @@ const trailSchema = new Schema({
 		default: null
 	},
 	waypoints: {
-		type: String,
+		type: Array,
 		required: false,
 		default: null
 	},
@@ -62,7 +62,7 @@ const trailSchema = new Schema({
 		required: true
 	},
 	elevation: {
-		type: Object,
+		type: Array,
 		required: true
 	},
 	duration: {
@@ -72,11 +72,13 @@ const trailSchema = new Schema({
 	},
 	trailType: {
 		type: String,
-		required: true
+		required: false,
+		default: "Not available"
 	},
 	terrain: {
 		type: String,
-		required: true
+		required: false,
+		default: "Not available"
 	},
 	currentCondition: {
 		type: String,
