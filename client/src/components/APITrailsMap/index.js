@@ -1,1 +1,1 @@
-export { default } from "./trailMap";
+export { default } from "./apiTrailsMap";
