@@ -23,16 +23,8 @@ for(i = 0; i < APIData.trails.length; i++) {
     comments: [APIData.trails[i].summary],
     photos: [APIData.trails[i].imgMedium],
     length: APIData.trails[i].length,
-    elevation: {
-      ascent: APIData.trails[i].ascent,
-      descent: APIData.trails[i].descent
-    },
-    duration: null,
-    trailType: null,
-    terrain: null,
-    currentCondition: APIData.trails[i].conditionDetails,
-    trafficLevels: null,
-    waterSources: null
+    elevation: [APIData.trails[i].ascent, APIData.trails[i].descent],
+    currentCondition: APIData.trails[i].conditionDetails
   })
 }
 
@@ -51,15 +43,11 @@ for(i = 0; i < userData.UserHikingData.length; i++) {
     destination: userData.UserHikingData[i].destination,
     rating: userData.UserHikingData[i].stars,
     comments: [userData.UserHikingData[i].comments],
-    photos: null,
     length: userData.UserHikingData[i].length,
-    elevation: userData.UserHikingData[i].elevation,
+    elevation: [userData.UserHikingData[i].elevation],
     duration: userData.UserHikingData[i].duration,
     trailType: userData.UserHikingData[i].trailType,
-    terrain: userData.UserHikingData[i].terrain,
-    currentCondition: null,
-    trafficLevels: null,
-    waterSources: null
+    terrain: userData.UserHikingData[i].terrain
   })
 }
 
