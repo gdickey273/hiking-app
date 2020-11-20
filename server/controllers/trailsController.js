@@ -35,24 +35,23 @@ module.exports = {
 		})
 		.catch(err => res.status(422).json(err));
 	},
-	// Should we make origin object in Trail db?
-	findWithinBounds: function(req, res) {
+	findWithinRadius: function(req, res) {
 		const [center, radius] = req.body;
 		const [latMin, latMax] = bounds.getLatBounds(center.lat, radius);
 		const [lngMin, lngMax] = bounds.getLngBounds(center.lng, radius);
 
 		db.Trail
-			.find( { 
+			.find({ 
 				$and: [
-					{originLat: {$exists: true}},
-					{originLat: {$gt: latMin} },
-					{originLat: {$lt: latMax} },
-					{originLng: {$gt: lngMin} },
-					{originLng: {$lt: lngMax} }
+					{originLat: { $exists: true } },
+					{originLat: { $gt: latMin } },
+					{originLat: { $lt: latMax } },
+					{originLng: { $gt: lngMin } },
+					{originLng: { $lt: lngMax } }
 				]
 			})
 			.then( trails => {
-				const withinBounds = trails.filter( t => getDistance(center, t.origin) >= radius)
+				const withinBounds = trails.filter( t => getDistance([center.lat, center.lng], [t.originLat, t.originLng]) >= radius)
 				res.json({trails: withinBounds});
 			})
 			.catch(err => res.json(err));
