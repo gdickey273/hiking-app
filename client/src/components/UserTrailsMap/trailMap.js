@@ -15,14 +15,13 @@ function UserTrailsMap(props) {
     const directionsService = new google.maps.DirectionsService();
 
     // const origin = { lat: 35.886116, lng: -78.960417 };
-    console.log(parseInt(props.origin.split(',')[0]));
-    const originLatitude = parseInt(props.origin.split(',')[0]);
-    const originLongitude = parseInt(props.origin.split(',')[1]);
+    const originLatitude = parseFloat(props.origin.split(',')[0]);
+    const originLongitude = parseFloat(props.origin.split(',')[1]);
     const newOrigin = { lat: originLatitude, lng: originLongitude };
     // const destination = { lat: 35.886116, lng: -78.960417 };
     setOrigin(newOrigin)
-    const destLatitude = parseInt(props.destination.split(',')[0]);
-    const destLongitude = parseInt(props.destination.split(',')[1]);
+    const destLatitude = parseFloat(props.destination.split(',')[0]);
+    const destLongitude = parseFloat(props.destination.split(',')[1]);
     const destination = { lat: destLatitude, lng: destLongitude };
     const waypoints = [];
 
@@ -32,7 +31,7 @@ function UserTrailsMap(props) {
       })
     }
 
-    console.log(`origin: ${origin}, destination: ${destination}, waypoints: ${waypoints}`);
+    console.log(origin);
 
     directionsService.route(
       {
