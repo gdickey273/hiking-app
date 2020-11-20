@@ -19,8 +19,13 @@ const trailSchema = new Schema({
 		type: String,
 		required: true
 	},
-	origin: {
-		type: String,
+	originLat: {
+		type: Number,
+		required: false,
+		default: null
+	},
+	originLng: {
+		type: Number,
 		required: false,
 		default: null
 	},

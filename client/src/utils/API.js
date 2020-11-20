@@ -9,6 +9,9 @@ export default {
   getTrail: function(id) {
     return axios.get("/api/trails/" + id);
   },
+  getTrailsWithinRadius: function(center, radius) {
+    return axios.get(`/api/trails/radius/${center.lat}/${center.lng}/${radius}`);
+  },
   // Deletes the trail with the given id
   deleteTrail: function(id) {
     return axios.delete("/api/trails/" + id);

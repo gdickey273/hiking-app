@@ -1,7 +1,8 @@
 import { use } from "passport";
 import React, { useState } from "react";
 import CreateRouteMap from "../CreateRouteMap";
-import API from "../../utils/extAPI";
+import extAPI from "../../utils/extAPI";
+import API from "../../utils/API";
 
 const CreateRouteForm = (prop) => {
 
@@ -17,12 +18,20 @@ const CreateRouteForm = (prop) => {
     if (name === "locationSubmit") {
       if(newTrailObj.city && newTrailObj.state){
         console.log("-------------city, state-------------", newTrailObj.city, newTrailObj.state);
-        API.getCoordinates(newTrailObj.city, newTrailObj.state)
+        extAPI.getCoordinates(newTrailObj.city, newTrailObj.state)
         .then(res => {
           console.log(res.data);
           setCenterCoords(res.data)});
       }
       
+    }
+
+    if(name === "findWithinRadius") {
+      API.getTrailsWithinRadius({lat:35.7795897,lng:-78.6381787}, 50)
+      .then(res => {
+        console.log(res);
+      })
+     ;
     }
   }
   const handleTypeClick = (event) => {
@@ -73,7 +82,7 @@ const CreateRouteForm = (prop) => {
           ))}
 
           <button onClick={event => { event.preventDefault(); setCurrentMarker(`Waypoint${newTrailObj.waypoints.length + 1}`) }}>Set {newTrailObj.waypoints.length > 0 ? "Another Waypoint?" : "A Waypoint"}</button><br />
-
+          <button name="findWithinRadius" onClick={handleButtonClick}>Find Trails Within Radius</button>
           {newTrailObj.trailType === "aToB"
             ?
             <>

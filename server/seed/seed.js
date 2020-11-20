@@ -2,6 +2,7 @@ let mongoose = require("mongoose");
 let db = require("../models");
 let APIData = require("../data/seedHikingData.json");
 let userData = require("../data/seedUserHikingData.json");
+const { User } = require("../models");
 
 mongoose.connect("mongodb://localhost/hiking-app", {
   useNewUrlParser: true,
@@ -16,7 +17,8 @@ for(i = 0; i < APIData.trails.length; i++) {
     date: APIData.trails[i].conditionDate,
     city: APIData.trails[i].location.split(',')[0],
     state: APIData.trails[i].location.split(',')[1],
-    origin: `${APIData.trails[i].longitude}, ${APIData.trails[i].latitude}`,
+    originLat: APIData.trails[i].latitude,
+    originLng: APIData.trails[i].longitude,
     rating: APIData.trails[i].stars,
     comments: [APIData.trails[i].summary],
     photos: [APIData.trails[i].imgMedium],
@@ -35,12 +37,17 @@ for(i = 0; i < APIData.trails.length; i++) {
 }
 
 for(i = 0; i < userData.UserHikingData.length; i++) {
+
+  const latLngArr = userData.UserHikingData[i].origin.split(",");
+  const lat = parseFloat(latLngArr[0]);
+  const lng = parseFloat(latLngArr[1]);
   trailSeed.push({
     name: userData.UserHikingData[i].name,
     date: userData.UserHikingData[i].conditionDate,
     city: userData.UserHikingData[i].city,
     state: userData.UserHikingData[i].state,
-    origin: userData.UserHikingData[i].origin,
+    originLat: lat,
+    originLng: lng,
     destination: userData.UserHikingData[i].destination,
     rating: userData.UserHikingData[i].stars,
     comments: [userData.UserHikingData[i].comments],
