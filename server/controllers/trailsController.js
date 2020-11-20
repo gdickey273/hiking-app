@@ -30,8 +30,8 @@ module.exports = {
 	findById: function (req, res) {
 		db.Trail
 		.findOne({_id : req.params.id})
-		.then( trail => {
-			res.json(trail);
+		.then(trail => {
+			res.json(trail)
 		})
 		.catch(err => res.status(422).json(err));
 	},
