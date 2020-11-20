@@ -6,6 +6,11 @@ router.route('/')
 	.get(trailsController.findAll)
 	.post(trailsController.create);
 
+// Matches with "/api/trails/radius"
+router
+	.route('/radius/:lat/:lng/:radius')
+	.get(trailsController.findWithinRadius);
+
 // Matches with "/api/trails/:id"
 router
 	.route('/:id')
@@ -18,8 +23,6 @@ router
 	.route('/user/:userID')
 	.get(trailsController.findAllByUser);
 
-router
-	.route('/radius')
-	.get(trailsController.findWithinRadius);
+
 
 module.exports = router;
