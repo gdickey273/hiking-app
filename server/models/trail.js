@@ -62,7 +62,7 @@ const trailSchema = new Schema({
 		required: true
 	},
 	elevation: {
-		type: Number,
+		type: Object,
 		required: true
 	},
 	duration: {
