@@ -4,7 +4,8 @@ import classes from './Forecast.module.css';
 
 const Forecast = () => {
 
-    let [city, setCity] = useState('');
+    let [longitude, setLongitude] = useState('');
+    let [latitude, setLatitude] = useState('');
     let [unit, setUnit] = useState('imperial');
     let [responseObj, setResponseObj] = useState({})
     let [error, setError] = useState(false);
@@ -13,19 +14,15 @@ const Forecast = () => {
     function getForecast(e) {
         e.preventDefault();
      
-        if (city.length === 0) {
-            return setError(true);
-        }
-     
         // Clear state in preparation for new data
         setError(false);
         setResponseObj({});
        
         setLoading(true);
        
-        let uriEncodedCity = encodeURIComponent(city);
+        
      
-     fetch(`https://community-open-weather-map.p.rapidapi.com/weather?units=${unit}&q=${uriEncodedCity}`, {
+     fetch(`https://community-open-weather-map.p.rapidapi.com/forecast?units=${unit}&lat=${latitude}&lon=${longitude}`, {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
@@ -52,14 +49,23 @@ const Forecast = () => {
    return (
     <div>
         <h2>Find Current Weather Conditions</h2>
+        <p>Raleigh Lat: 35.787743 Long: -78.644257</p>
             
         <form onSubmit={getForecast}>
                 <input
                     type="text"
-                    placeholder="Enter City"
+                    placeholder="Enter Longitude"
                     maxLength="50"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
+                    value={longitude}
+                    onChange={(e) => setLongitude(e.target.value)}
+                    className={classes.textInput}
+                    />
+                <input
+                    type="text"
+                    placeholder="Enter Latitude"
+                    maxLength="50"
+                    value={latitude}
+                    onChange={(e) => setLatitude(e.target.value)}
                     className={classes.textInput}
                     />
                 <label>
