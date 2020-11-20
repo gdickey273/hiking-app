@@ -18,4 +18,8 @@ router
 	.route('/user/:userID')
 	.get(trailsController.findAllByUser);
 
+router
+	.route('/radius')
+	.get(trailsController.findWithinRadius);
+
 module.exports = router;
