@@ -5,7 +5,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Card } from "../../components/Card";
 import { Input, TextArea, FormBtn } from "../../components/Form";
-import DeleteBtn from "../../components/DeleteBtn";
+// import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 
 function Trails() {
