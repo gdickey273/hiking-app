@@ -29,16 +29,23 @@ module.exports = {
 	},
 	findById: function (req, res) {
 		db.Trail
-		.findOne({_id : req.params._id})
+		.findOne({_id : req.params.id})
 		.then( trail => {
 			res.json(trail);
 		})
 		.catch(err => res.status(422).json(err));
 	},
-	findWithinRadius: function(req, res) {
-		const [center, radius] = req.body;
-		const [latMin, latMax] = bounds.getLatBounds(center.lat, radius);
-		const [lngMin, lngMax] = bounds.getLngBounds(center.lng, radius);
+	findWithinRadius: function (req, res) {
+		const lat = parseFloat(req.params.lat);
+		const lng = parseFloat(req.params.lng);
+		const radius = parseInt(req.params.radius);
+		
+		
+		console.log(`-------center: ${lat}, ${lng} ----- radius: ${radius}-----------`);
+		const [latMin, latMax] = bounds.getLatBounds(lat, radius);
+		const [lngMin, lngMax] = bounds.getLngBounds(lng, radius);
+
+		console.log(`-------------latMin, latMax, lngMin, lngMax: ${latMin}, ${latMax}, ${lngMin}, ${lngMax},`)
 
 		db.Trail
 			.find({ 
@@ -51,8 +58,16 @@ module.exports = {
 				]
 			})
 			.then( trails => {
-				const withinBounds = trails.filter( t => getDistance([center.lat, center.lng], [t.originLat, t.originLng]) >= radius)
-				res.json({trails: withinBounds});
+				const withinBounds = [];
+				trails.forEach(t => {
+					const distance = getDistance([lat, lng], [t.originLat, t.originLng]);
+					if (distance <= radius){
+						withinBounds.push({trail: t, distanceFromCenter: distance});
+					}
+				});
+				// filter( t => getDistance([center.lat, center.lng], [t.originLat, t.originLng]) <= radius)
+				withinBounds.sort((a, b) => a.distanceFromCenter - b.distanceFromCenter);
+				res.json({data: withinBounds});
 			})
 			.catch(err => res.json(err));
 	},
