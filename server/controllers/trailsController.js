@@ -1,5 +1,7 @@
 const ObjectId = require('mongoose').Types.ObjectId;
 const db = require('../models');
+const bounds = require("../services/milesLatLngConversion");
+const getDistance = require("../services/haversineDistance");
 
 // Defining methods for the booksController
 module.exports = {
@@ -32,6 +34,28 @@ module.exports = {
 			res.json(trail);
 		})
 		.catch(err => res.status(422).json(err));
+	},
+	// Should we make origin object in Trail db?
+	findWithinBounds: function(req, res) {
+		const [center, radius] = req.body;
+		const [latMin, latMax] = bounds.getLatBounds(center.lat, radius);
+		const [lngMin, lngMax] = bounds.getLngBounds(center.lng, radius);
+
+		db.Trail
+			.find( { 
+				$and: [
+					{originLat: {$exists: true}},
+					{originLat: {$gt: latMin} },
+					{originLat: {$lt: latMax} },
+					{originLng: {$gt: lngMin} },
+					{originLng: {$lt: lngMax} }
+				]
+			})
+			.then( trails => {
+				const withinBounds = trails.filter( t => getDistance(center, t.origin) >= radius)
+				res.json({trails: withinBounds});
+			})
+			.catch(err => res.json(err));
 	},
 	create: function (req, res) {
 		console.log('user id!', req.user._id);
