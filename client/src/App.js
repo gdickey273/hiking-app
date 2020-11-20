@@ -8,7 +8,6 @@ import Info from "./components/Info";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import LoginModal from "./components/LoginModal";
-
 import Trails from './pages/Trails';
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
@@ -77,7 +76,7 @@ function App() {
         </div>
       )}
       { !loggedIn && (
-        <body>
+        <div>
 
           <header>
             <Nav />
@@ -92,7 +91,7 @@ function App() {
           {/* <Route exact path="/" component={() => <LoginForm login={login}/>} />
           <Route exact path="/trails" component={() => <LoginForm user={login} />} />
           <Route exact path="/signup" component={SignupForm} /> */}
-        </body>
+        </div>
       )}
     </div>
   );
