@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Card } from "../../components/Card";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, Select, FormBtn } from "../../components/Form";
 // import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 
@@ -38,46 +38,80 @@ function Trails() {
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
-    let value = event.target.value;
-    if(value === "") {
+    const { name, value } = event.target;
+    if (value === "") {
       loadTrails();
     }
     let trailsToFilter = trails;
-    const filteredTrails = trailsToFilter.filter(trail => {return trail.name.toLowerCase().indexOf(value) !== -1});
-    setTrails(filteredTrails)
+    if (name === "name") {
+      const filteredTrails = trailsToFilter.filter(trail => { return trail.name.toLowerCase().indexOf(value.toLowerCase()) !== -1 });
+      setTrails(filteredTrails)
+    }
+    if (name === "city") {
+      const filteredTrails = trailsToFilter.filter(trail => { return trail.city.toLowerCase().indexOf(value.toLowerCase()) !== -1 });
+      setTrails(filteredTrails)
+    }
+
+    if(name === "rating" || name === "length") {
+      setFormObject({ ...formObject,
+        [name]: value
+      })
+    }
   };
 
-  // When the form is submitted, use the API.saveTrail method to save the trail data
-  // Then reload trails from the database
-  // function handleFormSubmit(event) {
-  //   event.preventDefault();
-  //   API.saveTrail({
-  //     // need object data here
-  //   })
-  //     .then(res => {
-  //       formEl.current.reset();
-  //       loadTrails();
-  //     })
-  //     .catch(err => console.log(err));
-  // };
+  function handleFormSubmit(event) {
+    event.preventDefault();
+
+    if (formObject === {}) {
+      loadTrails();
+    }
+
+    let trailsToFilter = trails;
+    if (formObject.rating) {
+      const filteredTrails = trailsToFilter.filter(trail => { return trail.rating > formObject.rating });
+      setTrails(filteredTrails)
+    }
+
+    if (formObject.length) {
+      const filteredTrails = trailsToFilter.filter(trail => { return trail.length < formObject.length });
+      setTrails(filteredTrails)
+    }
+  };
 
   return (
     <Container fluid>
       <Row>
         <Col size="md-6">
-          <Card title="Let's find your next adventure!">
+          <Card name="Let's find your next adventure!">
             <form ref={formEl}>
               <Input
                 onChange={handleInputChange}
-                name="search"
+                name="name"
                 placeholder="Search by trail name"
               />
-              {/* <FormBtn
-                disabled={!(formObject.author && formObject.title)}
+              <Input
+                onChange={handleInputChange}
+                name="city"
+                placeholder="Search by city"
+              />
+              <Select name="rating" onChange={handleInputChange}>
+                <option value="rating">Rating</option>
+                <option value="2">(insert star icon) 2</option>
+                <option value="3"> 3</option>
+                <option value="4"> 4</option>
+              </Select>
+              <Select name="length" onChange={handleInputChange}>
+                <option value="length">Length</option>
+                <option value="3">(insert less than icon) 3</option>
+                <option value="5"> 5</option>
+                <option value="10"> 10</option>
+                <option value="15"> 15</option>
+              </Select>
+              <FormBtn
                 onClick={handleFormSubmit}
               >
                 Search
-                </FormBtn> */}
+                </FormBtn>
             </form>
           </Card>
         </Col>
@@ -89,7 +123,7 @@ function Trails() {
                   <ListItem key={trail._id}>
                     <Link to={"/trails/" + trail._id}>
                       <strong>
-                        {trail.name}
+                        {trail.name}/{trail.city}/{trail.length}mi./{trail.rating}stars
                       </strong>
                     </Link>
                     {/* <DeleteBtn onClick={() => deleteTrail(trail._id)} /> */}
