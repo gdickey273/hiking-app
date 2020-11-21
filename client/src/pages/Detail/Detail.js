@@ -41,17 +41,17 @@ function Detail(props) {
             <Card
               name={trail.name}
             >
-              <img class="card-img-top" src={trail.photos} alt="Card image cap"></img>
-              <h6 class="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6><p class="card-text">Verified: {trail.userVerified}</p>
-              <p class="card-text">Length: {trail.length} miles</p>
-              <p class="card-text">Elevation: +{trail.elevation}</p>
-              <p class="card-text">Estimated duration: {trail.duration}</p>
-              <p class="card-text">Trail Type: {trail.trailType}</p>
-              <p class="card-text">Terrain: {trail.terrain}</p>
-              <p class="card-text">User Comments: {trail.comments}</p>
-              <p class="card-text">Current Conditions (as of {formatDate}): {trail.currentCondition}</p>
-              <p class="card-text">Traffic Levels: {trail.trafficLevels}</p>
-              <p class="card-text">Available Water Sources: {trail.waterSources}</p>
+              <img className="card-img-top" src={trail.photos} alt="Card image cap"></img>
+              <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6><p class="card-text">Verified: {trail.userVerified}</p>
+              <p className="card-text">Length: {trail.length} miles</p>
+              <p className="card-text">Elevation: +{trail.elevation}</p>
+              <p className="card-text">Estimated duration: {trail.duration}</p>
+              <p className="card-text">Trail Type: {trail.trailType}</p>
+              <p className="card-text">Terrain: {trail.terrain}</p>
+              <p className="card-text">User Comments: {trail.comments}</p>
+              <p className="card-text">Current Conditions (as of {formatDate}): {trail.currentCondition}</p>
+              <p className="card-text">Traffic Levels: {trail.trafficLevels}</p>
+              <p className="card-text">Available Water Sources: {trail.waterSources}</p>
             </Card>
           </Col>
         </Row>

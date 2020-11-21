@@ -39,10 +39,9 @@ function Trails() {
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     let value = event.target.value;
-    if(value === " ") {
-      setTrails(trails)
+    if(value === "") {
+      loadTrails();
     }
-    console.log(value);
     let trailsToFilter = trails;
     const filteredTrails = trailsToFilter.filter(trail => {return trail.name.toLowerCase().indexOf(value) !== -1});
     setTrails(filteredTrails)
@@ -71,7 +70,7 @@ function Trails() {
               <Input
                 onChange={handleInputChange}
                 name="search"
-                placeholder="Search by trail name or location"
+                placeholder="Search by trail name"
               />
               {/* <FormBtn
                 disabled={!(formObject.author && formObject.title)}
@@ -83,7 +82,7 @@ function Trails() {
           </Card>
         </Col>
         <Col size="md-6 sm-12">
-          <Card name="Trails">
+          <Card>
             {trails.length ? (
               <List>
                 {trails.map(trail => (
