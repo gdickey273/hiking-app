@@ -1,9 +1,12 @@
 import React from "react";
 import './Main.css';
+import CreateRouteForm from '../CreateRouteForm';
 
 function Main(){
   return (
-    <main></main>
+    <main>
+      <CreateRouteForm />
+    </main>
   )
 };
 

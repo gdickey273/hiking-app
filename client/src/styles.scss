@@ -6,17 +6,14 @@
   --main-accent-color: #FFFFFF;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body{
+.app{
   display:grid;
   grid-template-areas:
   "h"
   "m"
   "f";
-  grid-template-rows: 100vh auto 100vh;
+  grid-template-rows: 60vh 80vh 80vh;
+  min-width: 400px;
 }
 
 header{
@@ -40,6 +37,7 @@ header{
     display: block;
     float: left;
     background-color: var(--main-bg-color);
+    padding-bottom: 1em;
 
     & h1{
       color: var(--main-accent-color);
@@ -57,11 +55,21 @@ header{
     top: 80px;
     & li{
       display: inline-block;
-      font-family: "Share Tech";
-      font-size: 1.3em;
       color: var(--main-accent-color);
       list-style-type: none;
       margin: 0 1em;
+
+      & button{
+        right: 20px;
+        font-family: "Share Tech";
+        font-size: 1.3em;
+        background-color: transparent;
+        color: white;
+        border: none;
+        padding: 1em;
+        text-decoration: none;
+        outline: none;
+      }
     }
   }
 
@@ -143,10 +151,13 @@ header{
 
 main{
   grid-area: m;
+  display: block;
+  position: relative;
   background-color: var(--main-bg-color);
 }
 
 footer{
+  display: block;
   grid-area: f;
   background-color: var(--main-bg-color);
 }
@@ -184,4 +195,173 @@ html { overflow-y: scroll; }
   line-height: 200px;
   font-size: 80px;
   color: white;
+}
+
+
+.modalInner{
+  z-index: 3;
+  display: block;
+  position: fixed;
+  width: 60%;
+  margin: auto;
+  top: 40vh;
+  left: 20vw;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+  & form{
+    display: block;
+    width: 90%;
+    margin: auto;
+    padding: 1em;
+    & label{
+      color: black;
+    }
+    & input{
+      font-size: 1em;
+    }
+    & label, input{
+      display: block;
+      text-align: center;
+      width: 80%;
+      margin: auto;
+    }
+    & .account-input-button{
+      float: right;
+      font-size: 1em;
+      margin: 1em;
+      padding: .75em;
+      background-color: black;
+      color: white;
+      border-radius: 20px;
+
+    }
+  }
+}
+
+.map-bottom{
+  bottom: 0;
+  width: 100%;
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+}
+
+.gmnoprint, .gm-style-cc{
+  display:none;
+}
+
+// .map-form input[type='radio']{
+//   display:none;
+// }
+
+.checkmark label:before {
+  /*styles outer circle*/
+  content: " ";
+  display: inline-block;
+  position: relative;
+  top: 5px;
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid orange;
+  background-color: transparent;
+}
+
+.map-form label{
+  color: white;
+  font-family: "Share Tech";
+}
+
+.trail-maker{
+  z-index: 2;
+  display: block;
+  position: absolute;
+  padding: 1em;
+  border-bottom-left-radius: 20px;
+  right: 0;
+  top: 0;
+  height: 60%;
+  width: 200px;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  & label{
+    color: black;
+  }
+}
+
+.trail-maker-heading{
+  margin-bottom: 1em;
+  & h2{
+    font-family: "Ramabhadra";
+    font-size: 2em;
+  }
+
+  & p{
+    margin-top: .5em;
+  }
+}
+
+.trail-maker-input{
+  display: grid;
+  margin-bottom: 1em;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.map-container{
+  display: block;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+}
+
+.trail-maker-waypoints{
+  display: block;
+  height: 90px;
+  margin: 1em 0;
+  overflow: scroll;
+}
+
+.module-select{
+  display: block;
+  position: relative;
+  margin: 1em;
+  background-color: white;
+  height: 95%;
+
+  & .module-toggle{
+    display: block;
+    position: absolute;
+    top: 200px;
+
+    & .module-toggle-containers{
+      display: block;
+      padding: 1em;
+      border-bottom: 2px solid var(--main-accent-color);
+      background-color: var(--main-bg-color);
+      box-sizing: border-box;
+
+      & .fas{
+        font-size: 2em;
+        color: var(--main-accent-color);
+      }
+    }
+
+    & .toggle-top{
+      border-top-right-radius: 20px;
+      border-right: 3px solid var(--main-bg-color);
+      border-top: 3px solid var(--main-bg-color);
+    }
+
+    & .toggle-bottom{
+      border-bottom-right-radius: 20px;
+      border-right: 3px solid var(--main-bg-color);
+      border-bottom: 3px solid var(--main-bg-color);
+    }
+
+    & .toggle-mid-top, .toggle-mid-bottom{
+      border-right: 3px solid var(--main-bg-color);
+    }
+  }
 }

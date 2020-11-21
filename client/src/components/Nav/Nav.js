@@ -1,4 +1,6 @@
 import React from "react";
+import LoginModal from "../LoginModal"
+import RegisterModal from "../RegisterModal"
 // import { Link } from 'react-router-dom';
 // import { Col } from '../Grid';
 import './Nav.css';
@@ -29,8 +31,8 @@ function Nav(){
 
       <div className="account">
         <ol>
-          <li>sign in</li>
-          <li>register</li>
+          <LoginModal />
+          <RegisterModal />
         </ol>
       </div>
 
