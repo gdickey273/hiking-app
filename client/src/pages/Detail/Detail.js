@@ -42,7 +42,9 @@ function Detail(props) {
               name={trail.name}
             >
               <img className="card-img-top" src={trail.photos} alt="Card image cap"></img>
-              <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6><p class="card-text">Verified: {trail.userVerified}</p>
+              <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6>
+              <p class="card-text">Verified: {trail.userVerified}</p>
+              <p class="card-text">Rating: {trail.rating}</p>
               <p className="card-text">Length: {trail.length} miles</p>
               <p className="card-text">Elevation: +{trail.elevation}</p>
               <p className="card-text">Estimated duration: {trail.duration}</p>
