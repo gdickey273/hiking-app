@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Conditions from '../WeatherConditions/Conditions';
+import Conditions from '../Conditions/Conditions';
 import classes from './Forecast.module.css';
 
 const Forecast = () => {
@@ -7,7 +7,7 @@ const Forecast = () => {
     let [longitude, setLongitude] = useState('');
     let [latitude, setLatitude] = useState('');
     let [unit, setUnit] = useState('imperial');
-    let [responseObj, setResponseObj] = useState({})
+    let [responseObj, setResponseObj] = useState([])
     let [error, setError] = useState(false);
     let [loading, setLoading] = useState(false);
 
@@ -16,8 +16,7 @@ const Forecast = () => {
      
         // Clear state in preparation for new data
         setError(false);
-        setResponseObj({});
-       
+        setResponseObj(null);       
         setLoading(true);
        
         
@@ -30,14 +29,12 @@ const Forecast = () => {
             }
         })
         .then(response => response.json())
-        .then(response => {
-            if (response.cod !== 200) {
-                throw new Error()
-            }
-     
-            setResponseObj(response);
+        .then(data => {            
+            const dailyData = data.list.filter(reading => reading.dt_txt.includes("12:00:00"))            
+            setResponseObj(dailyData);
             setLoading(false);
-        })
+          })
+        
         .catch(err => {
             setError(true);
             setLoading(false);
@@ -93,11 +90,11 @@ const Forecast = () => {
                 <button type="submit" className={classes.Button} >Get Forecast</button>
             </form>
 
-            <Conditions
+            {responseObj && <Conditions
               responseObj={responseObj}
               error={error} //new
               loading={loading} //new
-              />
+              />}
     </div>
    )
 }
