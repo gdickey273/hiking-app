@@ -38,23 +38,28 @@ function Trails() {
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
-    const { name, value } = event.target;
-    setFormObject({ ...formObject, [name]: value })
+    let value = event.target.value;
+    if(value === "") {
+      loadTrails();
+    }
+    let trailsToFilter = trails;
+    const filteredTrails = trailsToFilter.filter(trail => {return trail.name.toLowerCase().indexOf(value) !== -1});
+    setTrails(filteredTrails)
   };
 
   // When the form is submitted, use the API.saveTrail method to save the trail data
   // Then reload trails from the database
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    API.saveTrail({
-      // need object data here
-    })
-      .then(res => {
-        formEl.current.reset();
-        loadTrails();
-      })
-      .catch(err => console.log(err));
-  };
+  // function handleFormSubmit(event) {
+  //   event.preventDefault();
+  //   API.saveTrail({
+  //     // need object data here
+  //   })
+  //     .then(res => {
+  //       formEl.current.reset();
+  //       loadTrails();
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
   return (
     <Container fluid>
@@ -65,19 +70,19 @@ function Trails() {
               <Input
                 onChange={handleInputChange}
                 name="search"
-                placeholder="Search by trail name or location"
+                placeholder="Search by trail name"
               />
-              <FormBtn
+              {/* <FormBtn
                 disabled={!(formObject.author && formObject.title)}
                 onClick={handleFormSubmit}
               >
                 Search
-                </FormBtn>
+                </FormBtn> */}
             </form>
           </Card>
         </Col>
         <Col size="md-6 sm-12">
-          <Card title="Trails">
+          <Card>
             {trails.length ? (
               <List>
                 {trails.map(trail => (

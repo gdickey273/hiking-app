@@ -7,7 +7,6 @@ export default {
   },
   // Gets the trail with the given id
   getTrail: function(id) {
-    
     return axios.get("/api/trails/" + id);
   },
   getTrailsWithinRadius: function(center, radius) {
