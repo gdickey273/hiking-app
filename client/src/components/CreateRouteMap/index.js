@@ -66,11 +66,11 @@ function CreateRouteMap(props) {
     <Map
       google={props.google}
       zoom={10}
-      style={{ width: "50%", height: "50%" }}
+      style={{ width: "100%", height: "100%" }}
       streetViewControl={false}
       fullscreenControl={false}
       onClick={handleMapClick}
-      center={currentLocation}
+      center={props.centerCoords || currentLocation}
     >
       {newTrailObj.origin &&
         <Marker

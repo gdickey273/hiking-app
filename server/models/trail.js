@@ -19,8 +19,13 @@ const trailSchema = new Schema({
 		type: String,
 		required: true
 	},
-	origin: {
-		type: String,
+	originLat: {
+		type: Number,
+		required: false,
+		default: null
+	},
+	originLng: {
+		type: Number,
 		required: false,
 		default: null
 	},
@@ -30,7 +35,7 @@ const trailSchema = new Schema({
 		default: null
 	},
 	waypoints: {
-		type: String,
+		type: Array,
 		required: false,
 		default: null
 	},
@@ -57,7 +62,7 @@ const trailSchema = new Schema({
 		required: true
 	},
 	elevation: {
-		type: Number,
+		type: Array,
 		required: true
 	},
 	duration: {
@@ -67,11 +72,13 @@ const trailSchema = new Schema({
 	},
 	trailType: {
 		type: String,
-		required: true
+		required: false,
+		default: "Not available"
 	},
 	terrain: {
 		type: String,
-		required: true
+		required: false,
+		default: "Not available"
 	},
 	currentCondition: {
 		type: String,

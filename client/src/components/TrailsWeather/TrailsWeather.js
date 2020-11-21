@@ -1,7 +1,15 @@
 import React from "react";
 
-export const Card = () => (
-  <div>
+// export const Card = () => (
+//   <div>
     
-  </div>
-);
+//   </div>
+// );
+function TrailsWeather(){
+  return(
+    <div></div>
+  )
+};
+
+
+export default TrailsWeather;

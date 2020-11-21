@@ -8,11 +8,10 @@ router.get('/:origin/:destination/:waypoints', async (req, res) => {
 
   const key = process.env.REACT_APP_GOOGLE_MAPS_API;
 
-  let url = `https://maps.google.com/maps/embed/v1/directions?origin=${origin}&destination=${destination}&mode=walking&key=${key}`;
+  let url = `https://maps.google.com/maps/embed/v1/directions?origin=${origin}&destination=${destination}&mode=walking&maptype=satellite&key=${key}`;
 
   if(req.params.waypoints) {
     waypoints = req.params.waypoints.split('+');
-    console.log(waypoints);
     url += `&waypoints=`;
     for(i = 0; i < waypoints.length - 1; i++) {
       url += `${waypoints[i]}|`;
