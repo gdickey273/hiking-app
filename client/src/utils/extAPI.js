@@ -9,8 +9,8 @@ export default {
   getRoutedMap: function(origin, destination, waypoints) {
     return axios.get(`/api/directions/${origin}/${waypoints}/${destination}`);
   },
-  getTrailMap: function(trailName) {
-    return axios.get(`/api/mapSearch/${trailName}`);
+  getTrailMap: function(origin) {
+    return axios.get(`/api/mapSearch/${origin}`);
   },
   getCoordinates: function(city, state) {
     return axios.get(`/api/geocode/${city}/${state}`);
