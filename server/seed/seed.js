@@ -35,13 +35,14 @@ for(i = 0; i < userData.UserHikingData.length; i++) {
   const lng = parseFloat(latLngArr[1]);
   trailSeed.push({
     name: userData.UserHikingData[i].name,
-    date: userData.UserHikingData[i].conditionDate,
+    date: userData.UserHikingData[i].date,
     city: userData.UserHikingData[i].city,
     state: userData.UserHikingData[i].state,
     originLat: lat,
     originLng: lng,
     destination: userData.UserHikingData[i].destination,
-    rating: userData.UserHikingData[i].stars,
+    waypoints: userData.UserHikingData[i].waypoints,
+    rating: userData.UserHikingData[i].rating,
     comments: [userData.UserHikingData[i].comments],
     length: userData.UserHikingData[i].length,
     elevation: [userData.UserHikingData[i].elevation],
