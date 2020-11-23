@@ -7,9 +7,11 @@ import UserTrailsMap from "../../components/UserTrailsMap";
 import APITrailsMap from "../../components/APITrailsMap";
 import API from "../../utils/API";
 import { withScriptjs } from "react-google-maps";
+import extAPI from "../../utils/extAPI";
 
 function Detail(props) {
   const [trail, setTrail] = useState({})
+  const [url, setUrl] = useState({})
 
   // When this component mounts, grab the trail with the _id of props.match.params.id
   // e.g. localhost:3000/trails/599dcb67f0f16317844583fc
@@ -21,6 +23,11 @@ function Detail(props) {
         // console.log(res.data)
         setTrail(res.data)
       )
+      .catch(err => console.log(err));
+
+    extAPI.getGoogleKey()
+      .then(res =>
+        setUrl(`https://maps.googleapis.com/maps/api/js?key=${res.data}`))
       .catch(err => console.log(err));
   }, [id]);
 
@@ -62,7 +69,7 @@ function Detail(props) {
       {
         trail.destination ?
           <MapLoader
-            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-wvyWjrqtg7umKsrvrJU19WrcSanUV7c"
+            googleMapURL={url}
             loadingElement={<div style={{ height: `100%` }} />}
             originLat={trail.originLat}
             originLng={trail.originLng}

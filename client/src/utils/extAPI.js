@@ -14,5 +14,8 @@ export default {
   },
   getCoordinates: function(city, state) {
     return axios.get(`/api/geocode/${city}/${state}`);
+  },
+  getGoogleKey: function() {
+    return axios.get(`/api/key/`);
   }
 }; 
