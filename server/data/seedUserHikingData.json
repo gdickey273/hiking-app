@@ -14,6 +14,26 @@
             "duration": 83,
             "trailType": "Paved",
             "terrain": "Road"
+        },
+        {
+            "name": "Parkwood Lake",
+            "date": "11/21/20",
+            "city": "Durham",
+            "state": "NC",
+            "origin": "35.889052, -78.907156",
+            "destination": "35.890338, -78.911641",
+            "waypoints": [
+                "35.890347, -78.907376",
+                "35.891751, -78.908224",
+                "35.890864, -78.909640"
+            ],
+            "rating": 5,
+            "comments": "sidewalk from my house to Parkwood Lake",
+            "length": 0.5,
+            "elevation": [0, 0],
+            "duration": 10,
+            "trailType": "Paved",
+            "terrain": "Sidewalk/Road"
         }
     ]
 }
