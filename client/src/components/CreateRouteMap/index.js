@@ -94,9 +94,14 @@ function CreateRouteMap(props) {
     //If index isn't yet found, try again with less precision
     return findNewMarkerIndex(newMarker, precision*10);
   }
+  
+  //onPolylineClick, create new waypoint on polyline between adjacent markers
   function handlePolylineClick(a, b, c) {
     const position = c.latLng;
     const newIndex = findNewMarkerIndex(position);
+    const arr = newTrailObj.waypoints;
+    arr.splice(newIndex, 0, position);
+    setNewTrailObj({ ...newTrailObj, waypoints: arr});
     console.log("finding new index!------------", newIndex);
 
   }
