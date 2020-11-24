@@ -31,7 +31,7 @@ function CreateRouteMap(props) {
           break;
         default:
           setNewTrailObj({ ...newTrailObj, waypoints: [...newTrailObj.waypoints, event.latLng] });
-          setCurrentMarker("");
+          // setCurrentMarker("");
 
       }
     }
@@ -105,6 +105,28 @@ function CreateRouteMap(props) {
     console.log("finding new index!------------", newIndex);
 
   }
+
+  function getWaypointIconUrl(index) {
+    let iconNumber;
+    if (index < 8) {
+      iconNumber = 48 + index;
+    } else if (index < 16) {
+      iconNumber = 32 + index;
+    } else if (index < 24) {
+      iconNumber = 8 + index;
+    } else if (index < 26) {
+      iconNumber = index - 16;
+    }
+    
+    if (iconNumber) {
+      return `http://maps.google.com/mapfiles/kml/pal5/icon${iconNumber}.png`
+    } 
+
+    if (index < 36) {
+      iconNumber = index - 18;
+      return `http://maps.google.com/mapfiles/kml/pal3/icon${iconNumber}.png`;
+    }
+  }
   const polyCoords = [];
   if (newTrailObj.origin && newTrailObj.waypoints.length > 0) {
     polyCoords.push(newTrailObj.origin);
@@ -139,6 +161,7 @@ function CreateRouteMap(props) {
           onDragend={handleMarkerDrag}
           title={"Origin"}
           strokeColor="#ffffff"
+          icon="http://maps.google.com/mapfiles/kml/pal2/icon4.png"
         />
       }
       {newTrailObj.waypoints.map((wp, i) => (
@@ -148,6 +171,7 @@ function CreateRouteMap(props) {
           onDragend={handleMarkerDrag}
           title={"" + i}
           key={i}
+          icon={getWaypointIconUrl(i)}
 
         />
       ))}
@@ -157,7 +181,8 @@ function CreateRouteMap(props) {
           position={newTrailObj.destination}
           draggable={true}
           onDragend={handleMarkerDrag}
-          title="Destination" />
+          title="Destination"
+          icon="http://maps.google.com/mapfiles/kml/pal4/icon21.png" />
       }
 
       {polyCoords.length > 2 &&
