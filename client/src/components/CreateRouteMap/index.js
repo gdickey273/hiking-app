@@ -57,6 +57,49 @@ function CreateRouteMap(props) {
     }
 
   }
+
+  //Returns an index in waypoint array at which new marker should be inserted
+  function findNewMarkerIndex(newMarker, precision = .0000001) {
+    //returns true if point is between start and end points
+    function isBetween(start, end, point) {
+      const PRECISION = precision;
+      console.log("end.lat", end.lat, "point.lng", point.lng, "start.lat", start.lat);
+      const result = Math.abs((end.lat() - start.lat()) * (point.lng() - start.lng()) - (end.lng() - start.lng()) * (point.lat() - start.lat())) < PRECISION;
+      console.log("result: ", result);
+      return result;
+    }
+
+    const { origin, waypoints, destination, trailType } = newTrailObj;
+
+    if (isBetween(origin, waypoints[0], newMarker)) {
+      return 0;
+    }
+   
+    for (let i = 0; i < waypoints.length -1; i++) {
+      if(isBetween(waypoints[i], waypoints[i+1], newMarker)) {
+        return i+1;
+      }
+    }
+
+    if(trailType === "aToB") {
+      if (isBetween(waypoints[waypoints.length-1], destination, newMarker)) {
+        return waypoints.length;
+      }
+    } else {
+      if (isBetween(waypoints[waypoints.length-1], origin, newMarker)) {
+        return waypoints.length
+      }
+    }
+    
+    //If index isn't yet found, try again with less precision
+    return findNewMarkerIndex(newMarker, precision*10);
+  }
+  function handlePolylineClick(a, b, c) {
+    const position = c.latLng;
+    const newIndex = findNewMarkerIndex(position);
+    console.log("finding new index!------------", newIndex);
+
+  }
   const polyCoords = [];
   if (newTrailObj.origin && newTrailObj.waypoints.length > 0) {
     polyCoords.push(newTrailObj.origin);
@@ -117,7 +160,7 @@ function CreateRouteMap(props) {
           strokeColor="#008000"
           strokeOpacity={0.8}
           strokeWeight={2}
-          onClick={(a, b, c) => console.log(a, b, c.latLng.lat(), c.latLng.lng())}
+          onClick={handlePolylineClick}
         />
       }
     </Map>
