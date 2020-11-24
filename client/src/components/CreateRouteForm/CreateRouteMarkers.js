@@ -34,15 +34,14 @@ function CreateRouteMarkers(props) {
 
 
       <div className="trail-maker-waypoints">
+      <button onClick={event => { event.preventDefault(); setCurrentMarker(`Waypoint${newTrailObj.waypoints.length + 1}`) }}>Set {newTrailObj.waypoints.length > 0 ? "Another Waypoint?" : "A Waypoint"}</button><br />
         {newTrailObj.waypoints.map((wp, i) => (
           <>
-            <button for={`setWaypoint${i + 1}`} onClick={event => { event.preventDefault(); setCurrentMarker(`Waypoint${i + 1}`) }}>Set Waypoint</button>
+            {/* <button for={`setWaypoint${i + 1}`} onClick={event => { event.preventDefault(); setCurrentMarker(`Waypoint${i + 1}`) }}>Set Waypoint</button> */}
             <label for="setOrigin">Waypoint #{i + 1}: {`Lat: ${wp.lat()}, Lng: ${wp.lng()}`}</label><br />
             <button data-index={i} onClick={handleRemoveWaypoint}>x</button><br />
           </>
         ))}
-
-        <button onClick={event => { event.preventDefault(); setCurrentMarker(`Waypoint${newTrailObj.waypoints.length + 1}`) }}>Set {newTrailObj.waypoints.length > 0 ? "Another Waypoint?" : "A Waypoint"}</button><br />
       </div>
 
       <CreateRouteMap className="map-container" centerCoords={centerCoords} newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} currentMarker={currentMarker} setCurrentMarker={setCurrentMarker} />
