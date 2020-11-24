@@ -130,6 +130,7 @@ function CreateRouteMap(props) {
       fullscreenControl={false}
       onClick={handleMapClick}
       initialCenter={centerCoords}
+      mapType= "hybrid"
     >
       {newTrailObj.origin &&
         <Marker
