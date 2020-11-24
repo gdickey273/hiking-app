@@ -103,7 +103,7 @@ function CreateRouteMap(props) {
         />
       ))}
 
-      {newTrailObj.destination &&
+      {newTrailObj.destination && newTrailObj.trailType === "aToB" &&
         <Marker
           position={newTrailObj.destination}
           draggable={true}
