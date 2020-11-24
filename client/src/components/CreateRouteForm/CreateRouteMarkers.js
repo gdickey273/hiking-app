@@ -1,17 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import CreateRouteMap from "../CreateRouteMap";
 import extAPI from "../../utils/extAPI";
 import API from "../../utils/API";
 function CreateRouteMarkers(props) {
   const { newTrailObj, setNewTrailObj, centerCoords, setCenterCoords } = props;
   const [currentMarker, setCurrentMarker] = useState("");
-
   
   const handleRemoveWaypoint = (event) => {
     event.preventDefault();
     let arr = newTrailObj.waypoints;
     arr.splice(event.target.dataset.index, 1);
     setNewTrailObj({ ...newTrailObj, waypoints: arr });
+  }
+
+  function handleWaypointToggleClick(event) {
+    event.preventDefault(); 
+    // console.log(waypointButton.current);
+    // waypointButton.current.focus();
+    if (currentMarker === "waypoint") {
+      setCurrentMarker(null);
+    } else {
+      setCurrentMarker(`waypoint`); 
+    }
+    
   }
   return (
     <>
@@ -34,7 +45,7 @@ function CreateRouteMarkers(props) {
 
 
       <div className="trail-maker-waypoints">
-      <button onClick={event => { event.preventDefault(); setCurrentMarker(`Waypoint${newTrailObj.waypoints.length + 1}`) }}>Set {newTrailObj.waypoints.length > 0 ? "Another Waypoint?" : "A Waypoint"}</button><br />
+      <button onClick={handleWaypointToggleClick} >{currentMarker === "waypoint" ? "Stop Setting Waypoints" : "Set Waypoints"}</button><br />
         {newTrailObj.waypoints.map((wp, i) => (
           <>
             {/* <button for={`setWaypoint${i + 1}`} onClick={event => { event.preventDefault(); setCurrentMarker(`Waypoint${i + 1}`) }}>Set Waypoint</button> */}
