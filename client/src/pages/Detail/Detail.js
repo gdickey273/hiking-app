@@ -7,9 +7,11 @@ import UserTrailsMap from "../../components/UserTrailsMap";
 import APITrailsMap from "../../components/APITrailsMap";
 import API from "../../utils/API";
 import { withScriptjs } from "react-google-maps";
+import extAPI from "../../utils/extAPI";
 
 function Detail(props) {
   const [trail, setTrail] = useState({})
+  const [url, setUrl] = useState({})
 
   // When this component mounts, grab the trail with the _id of props.match.params.id
   // e.g. localhost:3000/trails/599dcb67f0f16317844583fc
@@ -22,13 +24,18 @@ function Detail(props) {
         setTrail(res.data)
       )
       .catch(err => console.log(err));
+
+    extAPI.getGoogleKey()
+      .then(res =>
+        setUrl(`https://maps.googleapis.com/maps/api/js?key=${res.data}`))
+      .catch(err => console.log(err));
   }, [id]);
 
   const date = new Date(trail.date);
   const formatDate = `${date.getMonth() + 1}/${date.getDate() + 1}/${date.getFullYear()}`;
 
   const MapLoader = withScriptjs(UserTrailsMap);
-  return (
+  return trail && (
     <div>
       <Container fluid>
         <Row>
@@ -42,7 +49,9 @@ function Detail(props) {
               name={trail.name}
             >
               <img className="card-img-top" src={trail.photos} alt="Card image cap"></img>
-              <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6><p class="card-text">Verified: {trail.userVerified}</p>
+              <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6>
+              <p className="card-text">Verified: {trail.userVerified}</p>
+              <p className="card-text">Rating: {trail.rating}</p>
               <p className="card-text">Length: {trail.length} miles</p>
               <p className="card-text">Elevation: +{trail.elevation}</p>
               <p className="card-text">Estimated duration: {trail.duration}</p>
@@ -52,26 +61,28 @@ function Detail(props) {
               <p className="card-text">Current Conditions (as of {formatDate}): {trail.currentCondition}</p>
               <p className="card-text">Traffic Levels: {trail.trafficLevels}</p>
               <p className="card-text">Available Water Sources: {trail.waterSources}</p>
+              <p>{trail.waypoints}</p>
             </Card>
           </Col>
         </Row>
       </Container>
       {
-        trail.destination &&
-        <MapLoader
-          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-wvyWjrqtg7umKsrvrJU19WrcSanUV7c"
-          loadingElement={<div style={{ height: `100%` }} />}
-          origin={trail.origin}
-          destination={trail.destination}
-          waypoints={trail.waypoints}
-        />
+        trail.destination ?
+          <MapLoader
+            googleMapURL={url}
+            loadingElement={<div style={{ height: `100%` }} />}
+            originLat={trail.originLat}
+            originLng={trail.originLng}
+            destination={trail.destination}
+            waypoints={trail.waypoints}
+          />
+          :
+          <APITrailsMap
+            name={trail.name}
+            originLat={trail.originLat}
+            originLng={trail.originLng}
+          />
       }
-      {!trail.destination &&
-        <APITrailsMap
-          name={trail.name}
-        />
-      }
-
     </div>
   );
 }

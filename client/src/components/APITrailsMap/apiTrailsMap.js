@@ -4,14 +4,15 @@ import extAPI from "../../utils/extAPI";
 function APITrailsMap(props) {
   const [url, setUrl] = useState({})
 
-  let trailName = props.name;
+  // let trail = `${props.name}+Trail`;
+  let origin = `${props.originLat},${props.originLng}`
 
   useEffect(() => {
-    extAPI.getTrailMap(trailName)
+    extAPI.getTrailMap(origin)
       .then(res =>
         setUrl(res.data))
       .catch(err => console.log(err));
-  }, [trailName]);
+  }, [props.originLat]);
 
   return (
     <div>
