@@ -67,7 +67,7 @@ function CreateRouteMap(props) {
       if (newTrailObj.destination) {
         polyCoords.push(newTrailObj.destination);
       }
-    } else if (newTrailObj.trailType) {
+    } else if (newTrailObj.trailType === "loop") {
       polyCoords.push(newTrailObj.origin);
     }
   }

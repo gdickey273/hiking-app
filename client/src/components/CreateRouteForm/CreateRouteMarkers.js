@@ -27,7 +27,7 @@ function CreateRouteMarkers(props) {
         :
         newTrailObj.origin &&
         <>
-          <label for="setDestination">Destination: {`Lat: ${newTrailObj.origin.lat()}, Lng: ${newTrailObj.origin.lng()}`}</label><br />
+          {/* <label for="setDestination">Destination: {`Lat: ${newTrailObj.origin.lat()}, Lng: ${newTrailObj.origin.lng()}`}</label><br /> */}
         </>
       }
     
