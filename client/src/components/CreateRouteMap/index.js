@@ -188,9 +188,9 @@ function CreateRouteMap(props) {
       {polyCoords.length > 2 &&
         <Polyline
           path={polyCoords}
-          strokeColor="#008000"
-          strokeOpacity={0.8}
-          strokeWeight={2}
+          strokeColor="#c94e02"
+          strokeOpacity={1}
+          strokeWeight={5}
           onClick={handlePolylineClick}
         />
       }
