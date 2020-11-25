@@ -5,6 +5,7 @@ import API from "../../utils/API";
 function CreateRouteMarkers(props) {
   const { newTrailObj, setNewTrailObj, centerCoords, setCenterCoords, formStage, setFormStage } = props;
   const [currentMarker, setCurrentMarker] = useState("");
+  const waypointNameString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
   
   const handleRemoveWaypoint = (event) => {
     event.preventDefault();
@@ -58,7 +59,7 @@ function CreateRouteMarkers(props) {
         {newTrailObj.waypoints.map((wp, i) => (
           <>
             {/* <button for={`setWaypoint${i + 1}`} onClick={event => { event.preventDefault(); setCurrentMarker(`Waypoint${i + 1}`) }}>Set Waypoint</button> */}
-            <label for="setOrigin">Waypoint #{i + 1}: {`Lat: ${wp.lat()}, Lng: ${wp.lng()}`}</label><br />
+            <label for="setOrigin">Waypoint {waypointNameString[i]}: {`Lat: ${wp.lat()}, Lng: ${wp.lng()}`}</label><br />
             <button data-index={i} onClick={handleRemoveWaypoint}>x</button><br />
           </>
         ))}
