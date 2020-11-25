@@ -31,7 +31,7 @@ function CreateRouteMap(props) {
           break;
         default:
           setNewTrailObj({ ...newTrailObj, waypoints: [...newTrailObj.waypoints, event.latLng] });
-        // setCurrentMarker("");
+          // setCurrentMarker("");
 
       }
     }
@@ -74,34 +74,34 @@ function CreateRouteMap(props) {
     if (isBetween(origin, waypoints[0], newMarker)) {
       return 0;
     }
-
-    for (let i = 0; i < waypoints.length - 1; i++) {
-      if (isBetween(waypoints[i], waypoints[i + 1], newMarker)) {
-        return i + 1;
+   
+    for (let i = 0; i < waypoints.length -1; i++) {
+      if(isBetween(waypoints[i], waypoints[i+1], newMarker)) {
+        return i+1;
       }
     }
 
-    if (trailType === "aToB") {
-      if (isBetween(waypoints[waypoints.length - 1], destination, newMarker)) {
+    if(trailType === "aToB") {
+      if (isBetween(waypoints[waypoints.length-1], destination, newMarker)) {
         return waypoints.length;
       }
     } else {
-      if (isBetween(waypoints[waypoints.length - 1], origin, newMarker)) {
+      if (isBetween(waypoints[waypoints.length-1], origin, newMarker)) {
         return waypoints.length
       }
     }
-
+    
     //If index isn't yet found, try again with less precision
-    return findNewMarkerIndex(newMarker, precision * 10);
+    return findNewMarkerIndex(newMarker, precision*10);
   }
-
+  
   //onPolylineClick, create new waypoint on polyline between adjacent markers
   function handlePolylineClick(a, b, c) {
     const position = c.latLng;
     const newIndex = findNewMarkerIndex(position);
     const arr = newTrailObj.waypoints;
     arr.splice(newIndex, 0, position);
-    setNewTrailObj({ ...newTrailObj, waypoints: arr });
+    setNewTrailObj({ ...newTrailObj, waypoints: arr});
     console.log("finding new index!------------", newIndex);
 
   }
@@ -117,10 +117,10 @@ function CreateRouteMap(props) {
     } else if (index < 26) {
       iconNumber = index - 16;
     }
-
+    
     if (iconNumber) {
       return `http://maps.google.com/mapfiles/kml/pal5/icon${iconNumber}.png`
-    }
+    } 
 
     if (index < 36) {
       iconNumber = index - 18;
@@ -128,8 +128,8 @@ function CreateRouteMap(props) {
     }
   }
   const polyCoords = [];
-  if (newTrailObj.trailType === "aToB") {
-    if (newTrailObj.origin && newTrailObj.waypoints.length > 0 && newTrailObj.destination) {
+  if (newTrailObj.trailType === "aToB"){
+    if (newTrailObj.origin && newTrailObj.waypoints.length > 0 && newTrailObj.destination){
       polyCoords.push(newTrailObj.origin);
       polyCoords.push.apply(polyCoords, [...newTrailObj.waypoints]);
       polyCoords.push(newTrailObj.destination);
@@ -139,7 +139,7 @@ function CreateRouteMap(props) {
     polyCoords.push.apply(polyCoords, [...newTrailObj.waypoints]);
   }
   if (polyCoords.length > 0) {
-    if (newTrailObj.trailType === "loop") {
+     if (newTrailObj.trailType === "loop") {
       polyCoords.push(newTrailObj.origin);
     }
   }
@@ -154,7 +154,7 @@ function CreateRouteMap(props) {
       fullscreenControl={false}
       onClick={handleMapClick}
       initialCenter={centerCoords}
-      mapType="hybrid"
+      mapType= "hybrid"
     >
       {newTrailObj.origin &&
         <Marker
