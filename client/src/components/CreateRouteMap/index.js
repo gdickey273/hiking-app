@@ -5,7 +5,7 @@ import { Map, InfoWindow, Marker, Polyline, GoogleApiWrapper } from "google-maps
 function CreateRouteMap(props) {
   const { currentMarker, setCurrentMarker, newTrailObj, setNewTrailObj, centerCoords } = props;
   const [currentLocation, setCurrentLocation] = useState({});
-
+  const waypointNameString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
 
   useEffect(() => {
     console.log(centerCoords);
@@ -38,6 +38,8 @@ function CreateRouteMap(props) {
   }
 
   function handleMarkerDrag(x, marker, y) {
+
+    console.log(marker.target.dataset.index);
     const la = marker.position.lat();
     const ln = marker.position.lng();
     const latLng = marker.position;
@@ -49,7 +51,7 @@ function CreateRouteMap(props) {
 
       setNewTrailObj({ ...newTrailObj, [key]: y.latLng });
     } else {
-      const i = parseInt(marker.title);
+      const i = parseInt(marker.title[0]);
       const arr = newTrailObj.waypoints;
       arr.splice(i, 1, y.latLng);
 
@@ -122,7 +124,7 @@ function CreateRouteMap(props) {
       return `http://maps.google.com/mapfiles/kml/pal5/icon${iconNumber}.png`
     } 
 
-    if (index < 36) {
+    if (index < 35) {
       iconNumber = index - 18;
       return `http://maps.google.com/mapfiles/kml/pal3/icon${iconNumber}.png`;
     }
@@ -171,7 +173,7 @@ function CreateRouteMap(props) {
           position={wp}
           draggable={true}
           onDragend={handleMarkerDrag}
-          title={"" + i}
+          title={i + ". Waypoint-"+waypointNameString[i]}
           key={i}
           icon={getWaypointIconUrl(i)}
 
