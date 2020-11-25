@@ -3,7 +3,7 @@ import CreateRouteMap from "../CreateRouteMap";
 import extAPI from "../../utils/extAPI";
 import API from "../../utils/API";
 function CreateRouteMarkers(props) {
-  const { newTrailObj, setNewTrailObj, centerCoords, setCenterCoords } = props;
+  const { newTrailObj, setNewTrailObj, centerCoords, setCenterCoords, formStage, setFormStage } = props;
   const [currentMarker, setCurrentMarker] = useState("");
   
   const handleRemoveWaypoint = (event) => {
@@ -24,6 +24,15 @@ function CreateRouteMarkers(props) {
     }
     
   }
+  let submitReady = false;
+  if (newTrailObj.trailType === "aToB") {
+    if (newTrailObj.origin && newTrailObj.waypoints.length > 0 && newTrailObj.destination) {
+      submitReady = true;
+    }
+  } else if (newTrailObj.origin && newTrailObj.waypoints.length > 0) {
+    submitReady = true;
+  } 
+
   return (
     <>
       <button name="setOrigin" onClick={event => { event.preventDefault(); setCurrentMarker("Origin") }}>Set Origin</button>
@@ -53,6 +62,10 @@ function CreateRouteMarkers(props) {
             <button data-index={i} onClick={handleRemoveWaypoint}>x</button><br />
           </>
         ))}
+      {submitReady && 
+        <button onClick={event => {event.preventDefault(); setFormStage("info")}}>Confirm Trail Path</button>
+      }  
+      
       </div>
 
       <CreateRouteMap className="map-container" centerCoords={centerCoords} newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} currentMarker={currentMarker} setCurrentMarker={setCurrentMarker} />
