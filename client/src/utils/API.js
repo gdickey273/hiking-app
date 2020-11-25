@@ -19,5 +19,21 @@ export default {
   // Saves a trail to the database
   saveTrail: function(trailData) {
     return axios.post("/api/trails", trailData);
-  }
+  },
+  // Saves a trail to the database
+  updateTrail: function(id, trailData) {
+    return axios({
+      method: "put",
+      url: "/api/trails/" + id,
+      data: { trailData }
+    });
+  },
+  // Saves a trail to the database
+  addFavorite: function(userID, trailID) {
+    return axios({
+      method: "put",
+      url: "/api/trails/user/" + userID,
+      data: { trailID }
+    });
+  },
 };

@@ -16,6 +16,14 @@ const userSchema = new Schema({
 			// The ObjectIds will refer to the ids in the Trail model
 			ref: 'Trail'
 		}
+	],
+	favorites: [
+		{
+			// Store ObjectIds in the array
+			type: Schema.Types.ObjectId,
+			// The ObjectIds will refer to the ids in the Trail model
+			ref: 'Trail'
+		}
 	]
 });
 
