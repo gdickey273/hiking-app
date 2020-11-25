@@ -18,6 +18,6 @@ export default {
   },
   // Saves a trail to the database
   saveTrail: function(trailData) {
-    return axios.post("/api/trals", trailData);
+    return axios.post("/api/trails", trailData);
   }
 };
