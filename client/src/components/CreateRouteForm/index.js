@@ -1,6 +1,7 @@
 import { use } from "passport";
 import React, { useState } from "react";
 import CreateRouteMarkers from "./CreateRouteMarkers";
+import CreateRouteInfo from "./CreateRouteInfo";
 import extAPI from "../../utils/extAPI";
 import API from "../../utils/API";
 import { set } from "mongoose";
@@ -8,12 +9,12 @@ import { set } from "mongoose";
 const CreateRouteForm = (prop) => {
 
   const [newTrailObj, setNewTrailObj] = useState({ waypoints: [] });
-
   const [centerCoords, setCenterCoords] = useState({});
+  const [formStage, setFormStage] = useState("init");
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    
+
   }
 
   const handleButtonClick = (event) => {
@@ -22,34 +23,36 @@ const CreateRouteForm = (prop) => {
 
     if (name === "submit") {
       console.log("form submit!");
-    let formComplete = true;
-    console.log()
-    if(!newTrailObj.state){
-      console.log("state false");
-      formComplete = false;
-    }
+      let formComplete = true;
+      console.log()
+      if (!newTrailObj.state) {
+        console.log("state false");
+        formComplete = false;
+      }
 
-    if(!newTrailObj.city){
-      console.log("city false");
-      formComplete = false;
-    }
+      if (!newTrailObj.city) {
+        console.log("city false");
+        formComplete = false;
+      }
 
-    if(!newTrailObj.trailType){
-      console.log("type false");
-      formComplete = false;
-    }
+      if (!newTrailObj.trailType) {
+        console.log("type false");
+        formComplete = false;
+      }
 
-    if(!newTrailObj.trailName){
-      console.log("name false");
-      formComplete = false;
-    }
+      if (!newTrailObj.trailName) {
+        console.log("name false");
+        formComplete = false;
+      }
 
-    if(formComplete) {
-      console.log("form complete! Setting centerCoords");
-      extAPI.getCoordinates(newTrailObj.city, newTrailObj.state)
-      .then(res => {
-        setCenterCoords(res.data)});
-    }
+      if (formComplete) {
+        console.log("form complete! Setting centerCoords");
+        extAPI.getCoordinates(newTrailObj.city, newTrailObj.state)
+          .then(res => {
+            setCenterCoords(res.data)
+          });
+        setFormStage("route");
+      }
     }
     if (name === "findWithinRadius") {
       API.getTrailsWithinRadius({ lat: 35.7795897, lng: -78.6381787 }, 50)
@@ -79,47 +82,57 @@ const CreateRouteForm = (prop) => {
             <p>Create a new route to add to your collection</p>
           </div>
 
-          <div>
-            <label>Trail Name</label><br />
-            <input type="text" name="trailName" onChange={handleInputChange}/>
-            <br />
-            {centerCoords.lat ?
-              <>
-                <h5>City: {newTrailObj.city}</h5>
-                <h5>State: {newTrailObj.state}</h5>
-              </>
-              :
-              <>
-                <label for="city">City</label><br />
-                <input type="text" name="city" onChange={handleInputChange} /><br />
-                <label for="state">State</label><br />
-                <input type="text" name="state" onChange={handleInputChange} /><br />
-              </>
-            }
+          {formStage === "init" &&
+            <>
+              <div>
+                <label>Trail Name</label><br />
+                <input type="text" name="trailName" onChange={handleInputChange} />
+                <br />
+                {centerCoords.lat ?
+                  <>
+                    <h5>City: {newTrailObj.city}</h5>
+                    <h5>State: {newTrailObj.state}</h5>
+                  </>
+                  :
+                  <>
+                    <label for="city">City</label><br />
+                    <input type="text" name="city" onChange={handleInputChange} /><br />
+                    <label for="state">State</label><br />
+                    <input type="text" name="state" onChange={handleInputChange} /><br />
+                  </>
+                }
 
-          </div>
-          <div className="trail-maker-input" onClick={handleTypeClick}>
+              </div>
+              <div className="trail-maker-input" onClick={handleTypeClick}>
 
-            <div>
-              <input type="radio" name="trailType" value="loop" />
-              <label for="trailType">Loop</label><br />
-            </div>
-            <div>
-              <input type="radio" name="trailType" value="outAndBack" />
-              <label for="trailType">Out 'n Back</label><br />
-            </div>
-            <div>
-              <input type="radio" name="trailType" value="aToB" />
-              <label for="other">A to B</label>
-            </div>
+                <div>
+                  <input type="radio" name="trailType" value="loop" />
+                  <label for="trailType">Loop</label><br />
+                </div>
+                <div>
+                  <input type="radio" name="trailType" value="outAndBack" />
+                  <label for="trailType">Out 'n Back</label><br />
+                </div>
+                <div>
+                  <input type="radio" name="trailType" value="aToB" />
+                  <label for="other">A to B</label>
+                </div>
 
-          </div>
-          <input type="submit" name="submit" onClick={handleButtonClick}/>
-
+              </div>
+              <input type="submit" name="submit" onClick={handleButtonClick} />
+            </>}
         </form>
-            
-        {centerCoords.lat &&
-          <CreateRouteMarkers newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} centerCoords={centerCoords} setCenterCoords={setCenterCoords} />
+
+        {formStage === "route" && centerCoords.lat &&
+          <CreateRouteMarkers
+            newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj}
+            centerCoords={centerCoords} setCenterCoords={setCenterCoords}
+            formStage={formStage} setFormStage={setFormStage} />
+        }
+
+        {formStage === "info" &&
+          <CreateRouteInfo
+            newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} />
         }
       </div>
 
