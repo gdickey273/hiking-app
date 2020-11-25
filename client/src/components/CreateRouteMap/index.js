@@ -59,7 +59,7 @@ function CreateRouteMap(props) {
   }
 
   //Returns an index in waypoint array at which new marker should be inserted
-  function findNewMarkerIndex(newMarker, precision = .0000001) {
+  function findNewMarkerIndex(newMarker, precision = .0000000001) {
     //returns true if point is between start and end points
     function isBetween(start, end, point) {
       const PRECISION = precision;
@@ -148,7 +148,7 @@ function CreateRouteMap(props) {
   return (
     <Map
       google={props.google}
-      zoom={10}
+      zoom={13}
       style={{ width: "100vw", height: "100vh" }}
       streetViewControl={false}
       fullscreenControl={false}
