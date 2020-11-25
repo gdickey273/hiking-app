@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 // import LoginForm from './pages/Auth/LoginForm';
 // import SignupForm from './pages/Auth/SignupForm';
 
-import { Route, Switch } from 'react-router-dom';
-import Trails from './pages/Trails';
-import Detail from "./pages/Detail";
-import NoMatch from "./pages/NoMatch";
+// import { Route, Switch } from 'react-router-dom';
+// import Trails from './pages/Trails';
+// import Detail from "./pages/Detail";
+// import NoMatch from "./pages/NoMatch";
 
 import Nav from "./components/Nav";
 import Banner from "./components/Banner";
@@ -18,6 +18,7 @@ import '../src/styles.css';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
+  const [trailId, setTrailId] = useState(null);
 
   // useEffect(() => {
   //   AUTH.getUser().then(response => {
@@ -60,14 +61,18 @@ function App() {
   //   });
   // };
 
+  function renderTrailById(id) {
+    setTrailId(id)
+  }
+
   return (
         <div className="app">
             <header>
             <Nav />
-            <Banner />
+            <Banner renderTrailById={renderTrailById}/>
             {/* <Info /> */}
             </header>
-            <Main />
+            <Main trailId={trailId}/>
             <Footer />
         </div>
   );

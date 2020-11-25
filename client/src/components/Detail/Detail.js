@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { Col, Row, Container } from "../../components/Grid";
-import { Card } from "../../components/Card";
-import UserTrailsMap from "../../components/UserTrailsMap";
-import APITrailsMap from "../../components/APITrailsMap";
+import { Col, Row, Container } from "../Grid";
+import { Card } from "../Card";
+import UserTrailsMap from "../UserTrailsMap";
+import APITrailsMap from "../APITrailsMap";
 import API from "../../utils/API";
 import { withScriptjs } from "react-google-maps";
 import extAPI from "../../utils/extAPI";
@@ -15,7 +15,7 @@ function Detail(props) {
 
   // When this component mounts, grab the trail with the _id of props.match.params.id
   // e.g. localhost:3000/trails/599dcb67f0f16317844583fc
-  const { id } = useParams();
+  const id = props.trailId;
 
   useEffect(() => {
     API.getTrail(id)
