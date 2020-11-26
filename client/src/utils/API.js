@@ -28,7 +28,7 @@ export default {
       data: { trailData }
     });
   },
-  // Saves a trail to the database
+  // Saves a favorite trail to user
   addFavorite: function(userID, trailID) {
     return axios({
       method: "put",
@@ -36,4 +36,8 @@ export default {
       data: { trailID }
     });
   },
+  // Gets all favorite trails for a given user
+  getFavorites: function(userID) {
+    return axios.get("/api/trails/user/" + userID);
+  }
 };

@@ -11,6 +11,7 @@ import Nav from "./components/Nav";
 import Banner from "./components/Banner";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
+import Favorites from "./components/Favorites";
 import AUTH from './utils/AUTH';
 import '../src/reset.css';
 import '../src/styles.css';
@@ -66,15 +67,16 @@ function App() {
   }
 
   return (
-        <div className="app">
-            <header>
-            <Nav />
-            <Banner renderTrailById={renderTrailById}/>
-            {/* <Info /> */}
-            </header>
-            <Main trailId={trailId}/>
-            <Footer />
-        </div>
+    <div className="app">
+      <header>
+        <Nav />
+        <Banner renderTrailById={renderTrailById} />
+        {/* <Info /> */}
+      </header>
+      <Main trailId={trailId} />
+      <Footer />
+      {/* <Favorites renderTrailById={renderTrailById}/> */}
+    </div>
   );
 }
 

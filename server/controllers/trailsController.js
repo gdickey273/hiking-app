@@ -14,17 +14,17 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 
-	findAllByUser: function (req, res) {
+	findUserFavorites: function (req, res) {
 		if (req.user) {
 			db.User
 				.find({ _id: req.user._id })
-				.populate({ path: 'trails', options: { sort: { date: -1 } } })
+				.populate({ path: 'favorites', options: { sort: { date: -1 } } })
 				.then(users => {
-					res.json({ trails: users[0].trails });
+					res.json({ favorites: users[0].favorites });
 				})
 				.catch(err => res.status(422).json(err));
 		} else {
-			return res.json({ trails: null });
+			return res.json({ favorites: null });
 		}
 	},
 	findById: function (req, res) {
