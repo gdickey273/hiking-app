@@ -1,5 +1,4 @@
-import fetch from "node-fetch";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import API from "../../utils/API";
 import extAPI from "../../utils/extAPI";
 
@@ -8,6 +7,7 @@ import extAPI from "../../utils/extAPI";
 function CreateRouteInfo(props) {
   const { newTrailObj, setNewTrailObj } = props;
   
+  //On page load send request to backend for trail distance and update state to render on form
   useEffect(() => {
     async function fetchDistance() {
       const response = await extAPI.getTrailDistance(newTrailObj.origin, newTrailObj.waypoints, newTrailObj.trailType, newTrailObj.destination)
