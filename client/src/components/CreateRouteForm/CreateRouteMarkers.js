@@ -52,8 +52,8 @@ function CreateRouteMarkers(props) {
       <button onClick={handleWaypointToggleClick} >{currentMarker === "waypoint" ? "Stop Setting Waypoints" : "Set Waypoints"}</button><br />
         {newTrailObj.waypoints.map((wp, i) => (
           <>
-            <label for="setOrigin">Waypoint {waypointNameString[i]}: {`Lat: ${wp.lat()}, Lng: ${wp.lng()}`}</label><br />
-            <button data-index={i} onClick={handleRemoveWaypoint}>x</button><br />
+            <label for="setOrigin" key={"label-" + i}>Waypoint {waypointNameString[i]}: {`Lat: ${wp.lat()}, Lng: ${wp.lng()}`}</label><br />
+            <button data-index={i} onClick={handleRemoveWaypoint} key={"remove-" + i}>x</button><br />
           </>
         ))}
       {submitReady && 
