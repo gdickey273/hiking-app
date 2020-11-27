@@ -88,7 +88,7 @@ module.exports = {
 	},
 	update: function (req, res) {
 		db.Trail
-			.findOneAndUpdate({ _id: req.params.id }, req.body)
+			.findOneAndUpdate({ _id: req.params.id }, req.body.trailData, { new: true })
 			.then(dbModel => {
 				console.log(dbModel);
 				res.json(dbModel);

@@ -83,6 +83,7 @@ function Trails(props) {
       const filteredTrails = trailsToFilter.filter(trail => { return trail.length < formObject.length });
       setTrails(filteredTrails)
     }
+    formEl.current.reset();
   };
 
   return (
