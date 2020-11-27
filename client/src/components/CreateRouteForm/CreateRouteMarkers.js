@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState } from "react";
 import CreateRouteMap from "../CreateRouteMap";
-import extAPI from "../../utils/extAPI";
-import API from "../../utils/API";
+
 function CreateRouteMarkers(props) {
   const { newTrailObj, setNewTrailObj, centerCoords, setCenterCoords, formStage, setFormStage } = props;
   const [currentMarker, setCurrentMarker] = useState("");
@@ -16,8 +15,6 @@ function CreateRouteMarkers(props) {
 
   function handleWaypointToggleClick(event) {
     event.preventDefault(); 
-    // console.log(waypointButton.current);
-    // waypointButton.current.focus();
     if (currentMarker === "waypoint") {
       setCurrentMarker(null);
     } else {
@@ -46,10 +43,7 @@ function CreateRouteMarkers(props) {
           <label for="setDestination">Destination: {newTrailObj.destination && `Lat: ${newTrailObj.destination.lat()}, Lng: ${newTrailObj.destination.lng()}`}</label><br />
         </>
         :
-        newTrailObj.origin &&
-        <>
-          {/* <label for="setDestination">Destination: {`Lat: ${newTrailObj.origin.lat()}, Lng: ${newTrailObj.origin.lng()}`}</label><br /> */}
-        </>
+        <></>
       }
     
 
@@ -58,13 +52,12 @@ function CreateRouteMarkers(props) {
       <button onClick={handleWaypointToggleClick} >{currentMarker === "waypoint" ? "Stop Setting Waypoints" : "Set Waypoints"}</button><br />
         {newTrailObj.waypoints.map((wp, i) => (
           <>
-            {/* <button for={`setWaypoint${i + 1}`} onClick={event => { event.preventDefault(); setCurrentMarker(`Waypoint${i + 1}`) }}>Set Waypoint</button> */}
             <label for="setOrigin">Waypoint {waypointNameString[i]}: {`Lat: ${wp.lat()}, Lng: ${wp.lng()}`}</label><br />
             <button data-index={i} onClick={handleRemoveWaypoint}>x</button><br />
           </>
         ))}
       {submitReady && 
-        <button onClick={event => {event.preventDefault(); setFormStage("info")}}>Confirm Trail Path</button>
+        <button onClick={event => {event.preventDefault(); setFormStage("info");}}>Confirm Trail Path</button>
       }  
       
       </div>
