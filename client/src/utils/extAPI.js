@@ -2,16 +2,28 @@ import axios from "axios";
 
 export default {
   // Gets weather data with passed coordinates
-  getWeather: function(lat, lon) {
+  getWeather: function (lat, lon) {
     return axios.get(`/api/weather/${lat},${lon}`);
   },
-  getTrailMap: function(origin) {
+  getTrailMap: function (origin) {
     return axios.get(`/api/mapSearch/${origin}`);
   },
-  getCoordinates: function(city, state) {
+  getCoordinates: function (city, state) {
     return axios.get(`/api/geocode/${city}/${state}`);
   },
-  getGoogleKey: function() {
+  getGoogleKey: function () {
     return axios.get(`/api/key/`);
+  },
+  getTrailDistance: function (origin, waypoints, trailType, destination) {
+    return axios({
+        method: "post",
+        url: "/api/distance",
+        data: {
+          origin,
+          waypoints,
+          trailType,
+          destination
+        }
+      })
   }
 }; 
