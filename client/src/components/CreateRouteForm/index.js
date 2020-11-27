@@ -124,8 +124,8 @@ const CreateRouteForm = (prop) => {
         }
       </div>
 
-      <h5>{JSON.stringify(newTrailObj)}</h5>
-      <h5>{JSON.stringify(centerCoords)}</h5>
+      {/* <h5>{JSON.stringify(newTrailObj)}</h5>
+      <h5>{JSON.stringify(centerCoords)}</h5> */}
     </div>
   )
 }
