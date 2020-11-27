@@ -114,7 +114,8 @@ const CreateRouteForm = (prop) => {
           <CreateRouteMarkers
             newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj}
             centerCoords={centerCoords} setCenterCoords={setCenterCoords}
-            formStage={formStage} setFormStage={setFormStage} />
+            formStage={formStage} setFormStage={setFormStage} 
+            key={"key"}/>
         }
 
         {formStage === "info" &&
