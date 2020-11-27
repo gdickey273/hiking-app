@@ -1,10 +1,8 @@
-import { use } from "passport";
 import React, { useState } from "react";
 import CreateRouteMarkers from "./CreateRouteMarkers";
 import CreateRouteInfo from "./CreateRouteInfo";
 import extAPI from "../../utils/extAPI";
 import API from "../../utils/API";
-import { set } from "mongoose";
 
 const CreateRouteForm = (prop) => {
 
@@ -22,31 +20,21 @@ const CreateRouteForm = (prop) => {
     const { name } = event.target;
 
     if (name === "submit") {
-      console.log("form submit!");
       let formComplete = true;
-      console.log()
       if (!newTrailObj.state) {
-        console.log("state false");
         formComplete = false;
       }
-
       if (!newTrailObj.city) {
-        console.log("city false");
         formComplete = false;
       }
-
       if (!newTrailObj.trailType) {
-        console.log("type false");
         formComplete = false;
       }
-
       if (!newTrailObj.trailName) {
-        console.log("name false");
         formComplete = false;
       }
 
       if (formComplete) {
-        console.log("form complete! Setting centerCoords");
         extAPI.getCoordinates(newTrailObj.city, newTrailObj.state)
           .then(res => {
             setCenterCoords(res.data)
@@ -54,17 +42,16 @@ const CreateRouteForm = (prop) => {
         setFormStage("route");
       }
     }
-    if (name === "findWithinRadius") {
-      API.getTrailsWithinRadius({ lat: 35.7795897, lng: -78.6381787 }, 50)
-        .then(res => {
-          console.log(res);
-        })
-        ;
-    }
+    // if (name === "findWithinRadius") {
+    //   API.getTrailsWithinRadius({ lat: 35.7795897, lng: -78.6381787 }, 50)
+    //     .then(res => {
+    //       console.log(res);
+    //     })
+    //     ;
+    // }
   }
   const handleTypeClick = (event) => {
     setNewTrailObj({ ...newTrailObj, trailType: event.target.value });
-    console.log(event.target.value);
   }
 
   const handleInputChange = (event) => {
@@ -95,26 +82,26 @@ const CreateRouteForm = (prop) => {
                   </>
                   :
                   <>
-                    <label for="city">City</label><br />
+                    <label>City</label><br />
                     <input type="text" name="city" onChange={handleInputChange} /><br />
-                    <label for="state">State</label><br />
+                    <label>State</label><br />
                     <input type="text" name="state" onChange={handleInputChange} /><br />
                   </>
                 }
 
               </div>
-              <div className="trail-maker-input" onClick={handleTypeClick}>
+              <div className="trail-maker-input">
 
                 <div>
-                  <input type="radio" name="trailType" value="loop" />
+                  <input type="radio" name="trailType" value="loop" onClick={handleTypeClick} />
                   <label for="trailType">Loop</label><br />
                 </div>
                 <div>
-                  <input type="radio" name="trailType" value="outAndBack" />
+                  <input type="radio" name="trailType" value="outAndBack" onClick={handleTypeClick} />
                   <label for="trailType">Out 'n Back</label><br />
                 </div>
                 <div>
-                  <input type="radio" name="trailType" value="aToB" />
+                  <input type="radio" name="trailType" value="aToB" onClick={handleTypeClick} />
                   <label for="other">A to B</label>
                 </div>
 
@@ -127,7 +114,8 @@ const CreateRouteForm = (prop) => {
           <CreateRouteMarkers
             newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj}
             centerCoords={centerCoords} setCenterCoords={setCenterCoords}
-            formStage={formStage} setFormStage={setFormStage} />
+            formStage={formStage} setFormStage={setFormStage} 
+            key={"key"}/>
         }
 
         {formStage === "info" &&
