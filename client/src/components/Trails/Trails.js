@@ -1,17 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
-import { Card } from "../../components/Card";
-import { Input, Select, FormBtn } from "../../components/Form";
+import { Col, Row, Container } from "../Grid";
+import { List, ListItem } from "../List";
+import { Card } from "../Card";
+import { Input, Select, FormBtn } from "../Form";
 // import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 
-function Trails() {
+function Trails(props) {
   // Setting our component's initial state
   const [trails, setTrails] = useState([]);
   const [formObject, setFormObject] = useState({});
+  const [searchStarted, setSearchStarted] = useState(false);
   const formEl = useRef(null);
 
   // Load all trails and store them with setTrails
@@ -39,9 +40,14 @@ function Trails() {
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { name, value } = event.target;
+    
     if (value === "") {
       loadTrails();
+      setSearchStarted(false);
+    } else {
+      setSearchStarted(true);
     }
+
     let trailsToFilter = trails;
     if (name === "name") {
       const filteredTrails = trailsToFilter.filter(trail => { return trail.name.toLowerCase().indexOf(value.toLowerCase()) !== -1 });
@@ -52,8 +58,9 @@ function Trails() {
       setTrails(filteredTrails)
     }
 
-    if(name === "rating" || name === "length") {
-      setFormObject({ ...formObject,
+    if (name === "rating" || name === "length") {
+      setFormObject({
+        ...formObject,
         [name]: value
       })
     }
@@ -115,26 +122,31 @@ function Trails() {
             </form>
           </Card>
         </Col>
-        <Col size="md-6 sm-12">
-          <Card>
-            {trails.length ? (
-              <List>
-                {trails.map(trail => (
-                  <ListItem key={trail._id}>
-                    <Link to={"/trails/" + trail._id}>
-                      <strong>
-                        {trail.name}/{trail.city}/{trail.length}mi./{trail.rating}stars
-                      </strong>
-                    </Link>
-                    {/* <DeleteBtn onClick={() => deleteTrail(trail._id)} /> */}
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-                <h3>No Results to Display</h3>
-              )}
-          </Card>
-        </Col>
+        {searchStarted ? (
+            <Col size="md-6 sm-12">
+              <Card>
+                {trails.length ? (
+                  <List>
+                    {trails.map(trail => (
+                      <ListItem key={trail._id}>
+                        <a onClick={() => props.renderTrailById(trail._id)}>
+                          <strong>
+                            {trail.name}/{trail.city}/{trail.length}mi./{trail.rating}stars
+                        </strong>
+                        </a>
+                        {/* <DeleteBtn onClick={() => deleteTrail(trail._id)} /> */}
+                      </ListItem>
+                    ))}
+                  </List>
+                ) : (
+                    <h3>No Results to Display</h3>
+                  )}
+              </Card>
+            </Col>
+          ) 
+          : 
+          (<h3>No Results to Display</h3>)
+        }
       </Row>
     </Container>
   );

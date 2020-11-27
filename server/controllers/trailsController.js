@@ -95,6 +95,17 @@ module.exports = {
 			})
 			.catch(err => res.status(422).json(err));
 	},
+	addFavorite: function (req, res) {
+		console.log('user id!', req.user._id);
+		console.log('body!', req.body);
+		db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { favorites : req.body.trailID } }, { new: true })
+			.then((dbUser) => {
+				console.log('dbUser', dbUser);
+				// If the User was updated successfully, send it back to the client
+				res.json(dbUser);
+			})
+			.catch(err => res.status(422).json(err));
+	},
 	remove: function (req, res) {
 		db.User.findOneAndUpdate({ _id: req.user._id }, { $pull: { trails: new ObjectId(req.params.id) } }, { new: true })
 			.then(() => {
