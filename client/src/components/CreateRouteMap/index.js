@@ -1,22 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Map, InfoWindow, Marker, Polyline, GoogleApiWrapper } from "google-maps-react";
+import React from "react";
+import { Map, Marker, Polyline, GoogleApiWrapper } from "google-maps-react";
 
 
 function CreateRouteMap(props) {
   const { currentMarker, setCurrentMarker, newTrailObj, setNewTrailObj, centerCoords } = props;
-  const [currentLocation, setCurrentLocation] = useState({});
   const waypointNameString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
-
-  useEffect(() => {
-    console.log(centerCoords);
-    // if(navigator.geolocation) {
-    //   navigator.geolocation.getCurrentPosition((data) => {
-    //     const lat = data.coords.latitude;
-    //     const lng = data.coords.longitude;
-    //     setCurrentLocation({lat, lng});
-    //   })
-    // }
-  })
 
   function handleMapClick(mapProps, map, event) {
     if (currentMarker) {
@@ -31,26 +19,17 @@ function CreateRouteMap(props) {
           break;
         default:
           setNewTrailObj({ ...newTrailObj, waypoints: [...newTrailObj.waypoints, event.latLng] });
-          // setCurrentMarker("");
-
       }
     }
   }
 
   function handleMarkerDrag(x, marker, y) {
-
-    console.log(marker.target.dataset.index);
-    const la = marker.position.lat();
-    const ln = marker.position.lng();
-    const latLng = marker.position;
-
+ 
     if (marker.title === "Origin" || marker.title === "Destination") {
       let key = marker.title.toLowerCase();
-      console.log("marker.title------------------", marker.title);
-      console.log("marker.title.toLowercase()", marker.title.toLowerCase())
-
       setNewTrailObj({ ...newTrailObj, [key]: y.latLng });
     } else {
+      //if dragged marker is a waypoint update that waypoint's coordinates in the newTrailObj.waypoint array
       const i = parseInt(marker.title[0]);
       const arr = newTrailObj.waypoints;
       arr.splice(i, 1, y.latLng);
@@ -65,9 +44,9 @@ function CreateRouteMap(props) {
     //returns true if point is between start and end points
     function isBetween(start, end, point) {
       const PRECISION = precision;
-      console.log("end.lat", end.lat, "point.lng", point.lng, "start.lat", start.lat);
+      // console.log("end.lat", end.lat, "point.lng", point.lng, "start.lat", start.lat);
       const result = Math.abs((end.lat() - start.lat()) * (point.lng() - start.lng()) - (end.lng() - start.lng()) * (point.lat() - start.lat())) < PRECISION;
-      console.log("result: ", result);
+      // console.log("result: ", result);
       return result;
     }
 
@@ -104,8 +83,6 @@ function CreateRouteMap(props) {
     const arr = newTrailObj.waypoints;
     arr.splice(newIndex, 0, position);
     setNewTrailObj({ ...newTrailObj, waypoints: arr});
-    console.log("finding new index!------------", newIndex);
-
   }
 
   function getWaypointIconUrl(index) {
