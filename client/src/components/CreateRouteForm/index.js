@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import CreateRouteMarkers from "./CreateRouteMarkers";
 import CreateRouteInfo from "./CreateRouteInfo";
 import extAPI from "../../utils/extAPI";
-import API from "../../utils/API";
 
 const CreateRouteForm = (prop) => {
 
@@ -93,15 +92,15 @@ const CreateRouteForm = (prop) => {
               <div className="trail-maker-input">
 
                 <div>
-                  <input type="radio" name="trailType" value="loop" onClick={handleTypeClick} />
+                  <input type="radio" name="trailType" value="Loop" onClick={handleTypeClick} />
                   <label for="trailType">Loop</label><br />
                 </div>
                 <div>
-                  <input type="radio" name="trailType" value="outAndBack" onClick={handleTypeClick} />
+                  <input type="radio" name="trailType" value="Out 'n Back" onClick={handleTypeClick} />
                   <label for="trailType">Out 'n Back</label><br />
                 </div>
                 <div>
-                  <input type="radio" name="trailType" value="aToB" onClick={handleTypeClick} />
+                  <input type="radio" name="trailType" value="A to B" onClick={handleTypeClick} />
                   <label for="other">A to B</label>
                 </div>
 
