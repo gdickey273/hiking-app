@@ -25,5 +25,8 @@ export default {
           destination
         }
       })
+  },
+  uploadImage: function (image) {
+    return axios.post('/api/image-uploads', image);
   }
 }; 
