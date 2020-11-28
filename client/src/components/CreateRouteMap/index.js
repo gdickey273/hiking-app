@@ -62,7 +62,7 @@ function CreateRouteMap(props) {
       }
     }
 
-    if(trailType === "aToB") {
+    if(trailType === "A to B") {
       if (isBetween(waypoints[waypoints.length-1], destination, newMarker)) {
         return waypoints.length;
       }
@@ -107,7 +107,7 @@ function CreateRouteMap(props) {
     }
   }
   const polyCoords = [];
-  if (newTrailObj.trailType === "aToB"){
+  if (newTrailObj.trailType === "A to B"){
     if (newTrailObj.origin && newTrailObj.waypoints.length > 0 && newTrailObj.destination){
       polyCoords.push(newTrailObj.origin);
       polyCoords.push.apply(polyCoords, [...newTrailObj.waypoints]);
@@ -118,7 +118,7 @@ function CreateRouteMap(props) {
     polyCoords.push.apply(polyCoords, [...newTrailObj.waypoints]);
   }
   if (polyCoords.length > 0) {
-     if (newTrailObj.trailType === "loop") {
+     if (newTrailObj.trailType === "Loop") {
       polyCoords.push(newTrailObj.origin);
     }
   }
@@ -128,7 +128,7 @@ function CreateRouteMap(props) {
     <Map
       google={props.google}
       zoom={13}
-      style={{ width: "100vw", height: "100vh" }}
+      style={{ width: "100vw", height: "100vh", marginLeft:"-100vw" }}
       streetViewControl={false}
       fullscreenControl={false}
       onClick={handleMapClick}
@@ -157,7 +157,7 @@ function CreateRouteMap(props) {
         />
       ))}
 
-      {newTrailObj.destination && newTrailObj.trailType === "aToB" &&
+      {newTrailObj.destination && newTrailObj.trailType === "A to B" &&
         <Marker
           position={newTrailObj.destination}
           draggable={true}
