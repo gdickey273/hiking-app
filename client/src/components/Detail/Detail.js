@@ -11,6 +11,7 @@ import { withScriptjs } from "react-google-maps";
 import extAPI from "../../utils/extAPI";
 import { TextArea, Select, FormBtn, Input } from "../Form";
 import { ListItem } from "../List";
+import DropZone from "../DropZone";
 
 function Detail(props) {
   const [trail, setTrail] = useState({})
@@ -116,7 +117,6 @@ function Detail(props) {
 
   function uploadImage(event) {
     event.preventDefault();
-
     const fd = new FormData();
     fd.append('image', formObject.photos);
 
@@ -124,6 +124,8 @@ function Detail(props) {
       .then(res => {
         let photos = trail.photos;
         photos.push(res.data.imageURL);
+
+        console.log(photos);
         
         API.updateTrail(id, { ...trail, photos: photos })
         .then(res => {
@@ -171,6 +173,7 @@ function Detail(props) {
                   </button>
                 }
               </form>
+              {/* <DropZone uploadImage={uploadImage} /> */}
               <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6>
               <p className="card-text" name="userVerified" onClick={handleVerify}>Verified: {trail.userVerified}(CHECK ICON)</p>
               <p className="card-text">Rating: {trail.rating}</p>
