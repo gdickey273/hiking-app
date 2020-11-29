@@ -40,22 +40,27 @@ function Trails(props) {
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { name, value } = event.target;
-    
-    if (value === "") {
-      loadTrails();
-      setSearchStarted(false);
-    } else {
-      setSearchStarted(true);
-    }
 
     let trailsToFilter = trails;
     if (name === "name") {
       const filteredTrails = trailsToFilter.filter(trail => { return trail.name.toLowerCase().indexOf(value.toLowerCase()) !== -1 });
       setTrails(filteredTrails)
+      if (value === "") {
+        loadTrails();
+        setSearchStarted(false);
+      } else {
+        setSearchStarted(true);
+      }
     }
     if (name === "city") {
       const filteredTrails = trailsToFilter.filter(trail => { return trail.city.toLowerCase().indexOf(value.toLowerCase()) !== -1 });
       setTrails(filteredTrails)
+      if (value === "") {
+        loadTrails();
+        setSearchStarted(false);
+      } else {
+        setSearchStarted(true);
+      }
     }
 
     if (name === "rating" || name === "length") {
@@ -74,16 +79,20 @@ function Trails(props) {
     }
 
     let trailsToFilter = trails;
-    if (formObject.rating) {
+    if(formObject.rating && formObject.length) {
+      const ratedTrails = trailsToFilter.filter(trail => { return trail.rating > formObject.rating });
+      const filteredTrails = ratedTrails.filter(trail => { return trail.length < formObject.length });
+      setTrails(filteredTrails)
+      setSearchStarted(true);
+    } else if (formObject.rating) {
       const filteredTrails = trailsToFilter.filter(trail => { return trail.rating > formObject.rating });
       setTrails(filteredTrails)
-    }
-
-    if (formObject.length) {
+      setSearchStarted(true);
+    } else if (formObject.length) {
       const filteredTrails = trailsToFilter.filter(trail => { return trail.length < formObject.length });
       setTrails(filteredTrails)
+      setSearchStarted(true);
     }
-    formEl.current.reset();
   };
 
   return (
@@ -115,11 +124,9 @@ function Trails(props) {
                 <option value="10"> 10</option>
                 <option value="15"> 15</option>
               </Select>
-              <FormBtn
-                onClick={handleFormSubmit}
-              >
+              <FormBtn onClick={handleFormSubmit}>
                 Search
-                </FormBtn>
+              </FormBtn>
             </form>
           </Card>
         </Col>
