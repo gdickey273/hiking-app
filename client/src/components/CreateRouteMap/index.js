@@ -30,7 +30,7 @@ function CreateRouteMap(props) {
       setNewTrailObj({ ...newTrailObj, [key]: {lat: y.latLng.lat(), lng: y.latLng.lng()}});
     } else {
       //if dragged marker is a waypoint update that waypoint's coordinates in the newTrailObj.waypoint array
-      const i = parseInt(marker.title[0]);
+      const i = parseInt(marker.title.split(".")[0]);
       const arr = newTrailObj.waypoints;
       arr.splice(i, 1, {lat: y.latLng.lat(), lng: y.latLng.lng()});
 
@@ -88,22 +88,22 @@ function CreateRouteMap(props) {
 
   function getWaypointIconUrl(index) {
     let iconNumber;
-    if (index < 8) {
-      iconNumber = 48 + index;
-    } else if (index < 16) {
-      iconNumber = 32 + index;
-    } else if (index < 24) {
-      iconNumber = 8 + index;
-    } else if (index < 26) {
-      iconNumber = index - 16;
+    if (index < 7) {
+      iconNumber = 49 + index;
+    } else if (index < 15) {
+      iconNumber = 33 + index;
+    } else if (index < 23) {
+      iconNumber = 9 + index;
+    } else if (index < 25) {
+      iconNumber = index - 15;
     }
     
     if (iconNumber) {
       return `http://maps.google.com/mapfiles/kml/pal5/icon${iconNumber}.png`
     } 
 
-    if (index < 35) {
-      iconNumber = index - 18;
+    if (index < 34) {
+      iconNumber = index - 17;
       return `http://maps.google.com/mapfiles/kml/pal3/icon${iconNumber}.png`;
     }
   }
