@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CreateRouteMarkers from "./CreateRouteMarkers";
 import CreateRouteInfo from "./CreateRouteInfo";
 import extAPI from "../../utils/extAPI";
-import API from "../../utils/API";
 
 const CreateRouteForm = (prop) => {
 
   const [newTrailObj, setNewTrailObj] = useState({ waypoints: [] });
   const [centerCoords, setCenterCoords] = useState({});
   const [formStage, setFormStage] = useState("init");
+  const [API, setAPI] = useState({const: 1});
+
+  useEffect(() => {
+    extAPI.getGoogleKey()
+      .then(res =>
+        setAPI({...API, key: res.data}))
+      .catch(err => console.log(err))
+  }, [API.const])
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -93,16 +100,16 @@ const CreateRouteForm = (prop) => {
               <div className="trail-maker-input">
 
                 <div>
-                  <input type="radio" name="trailType" value="loop" onClick={handleTypeClick} />
-                  <label for="trailType">Loop</label><br />
+                  <input type="radio" name="trailType" value="Loop" onClick={handleTypeClick} />
+                  <label>Loop</label><br />
                 </div>
                 <div>
-                  <input type="radio" name="trailType" value="outAndBack" onClick={handleTypeClick} />
-                  <label for="trailType">Out 'n Back</label><br />
+                  <input type="radio" name="trailType" value="Out 'n Back" onClick={handleTypeClick} />
+                  <label>Out 'n Back</label><br />
                 </div>
                 <div>
-                  <input type="radio" name="trailType" value="aToB" onClick={handleTypeClick} />
-                  <label for="other">A to B</label>
+                  <input type="radio" name="trailType" value="A to B" onClick={handleTypeClick} />
+                  <label>A to B</label>
                 </div>
 
               </div>
@@ -110,12 +117,13 @@ const CreateRouteForm = (prop) => {
             </>}
         </form>
 
-        {formStage === "route" && centerCoords.lat &&
+        {centerCoords.lat && (formStage === "route" || formStage === "preview") &&
           <CreateRouteMarkers
             newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj}
             centerCoords={centerCoords} setCenterCoords={setCenterCoords}
             formStage={formStage} setFormStage={setFormStage} 
-            key={"key"}/>
+            APIKey={API.key}/>
+            
         }
 
         {formStage === "info" &&
