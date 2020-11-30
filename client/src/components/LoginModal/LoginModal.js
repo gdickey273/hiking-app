@@ -44,12 +44,14 @@ function LoginModal({ login }) {
     event.preventDefault();
     login(userObject.username, userObject.password);
     setRedirectTo('/');
+    setModalState(false);
   };
 
   return (
     <div className="LoginModal">
       <div className={`modalBackground modalShowing-${modalState}`}>
         <div className="modalInner">
+        <button style={{float: "right"}} onClick={() => toggleLoginState()}>x</button>
           <form>
             <label htmlFor="username">Username: </label>
             <input

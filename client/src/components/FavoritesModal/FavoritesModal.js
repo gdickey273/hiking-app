@@ -31,6 +31,7 @@ function FavoritesModal(props) {
     <div className="FavoritesModal">
       <div className={`modalBackground modalShowing-${modalState}`}>
         <div className="modalInner">
+          <button style={{float: "right"}} onClick={() => toggleLoginState()}>x</button>
           <Col size="md-6 sm-12">
             <Card name="Your Favorites">
               {favs?.length ? (
