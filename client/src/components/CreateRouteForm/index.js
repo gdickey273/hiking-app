@@ -101,15 +101,15 @@ const CreateRouteForm = (prop) => {
 
                 <div>
                   <input type="radio" name="trailType" value="Loop" onClick={handleTypeClick} />
-                  <label for="trailType">Loop</label><br />
+                  <label>Loop</label><br />
                 </div>
                 <div>
                   <input type="radio" name="trailType" value="Out 'n Back" onClick={handleTypeClick} />
-                  <label for="trailType">Out 'n Back</label><br />
+                  <label>Out 'n Back</label><br />
                 </div>
                 <div>
                   <input type="radio" name="trailType" value="A to B" onClick={handleTypeClick} />
-                  <label for="other">A to B</label>
+                  <label>A to B</label>
                 </div>
 
               </div>
@@ -123,6 +123,7 @@ const CreateRouteForm = (prop) => {
             centerCoords={centerCoords} setCenterCoords={setCenterCoords}
             formStage={formStage} setFormStage={setFormStage} 
             APIKey={API.key}/>
+            
         }
 
         {formStage === "info" &&
