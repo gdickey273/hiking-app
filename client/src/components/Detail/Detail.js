@@ -15,6 +15,7 @@ import DropZone from "../DropZone";
 
 function Detail(props) {
   const [trail, setTrail] = useState({})
+  const [user, setUser] = useState({})
   const [url, setUrl] = useState({})
   const [formObject, setFormObject] = useState({});
   const [fileSelected, setFileSelected] = useState(false);
@@ -35,6 +36,13 @@ function Detail(props) {
     extAPI.getGoogleKey()
       .then(res =>
         setUrl(`https://maps.googleapis.com/maps/api/js?key=${res.data}`))
+      .catch(err => console.log(err));
+
+    AUTH.getUser()
+      .then(res =>
+        // console.log(res.data.user._id)
+        setUser(res.data.user)
+      )
       .catch(err => console.log(err));
   }, [id]);
 
@@ -65,7 +73,7 @@ function Detail(props) {
       })
     }
 
-    if(name === 'photos') {
+    if (name === 'photos') {
       setFileSelected(true)
       setFormObject({
         ...formObject,
@@ -83,7 +91,11 @@ function Detail(props) {
 
     if (formObject.comments) {
       let commentsArr = trail.comments;
-      commentsArr.push(formObject.comments);
+      commentsArr.push({
+        comment: formObject.comments,
+        userName: `${user.firstName} ${user.lastName}`,
+        userID: user._id
+      });
 
       API.updateTrail(id, { ...trail, comments: commentsArr })
         .then(res => {
@@ -105,13 +117,9 @@ function Detail(props) {
   }
 
   function addFavorite() {
-    AUTH.getUser()
-      .then(res =>
-        // console.log(res.data.user._id)
-        API.addFavorite(res.data.user._id, id)
-          .then(response =>
-            console.log(response.data))
-      )
+    API.addFavorite(user._id, id)
+      .then(response =>
+        console.log(response.data))
       .catch(err => console.log(err));
   }
 
@@ -126,15 +134,15 @@ function Detail(props) {
         photos.push(res.data.imageURL);
 
         console.log(photos);
-        
+
         API.updateTrail(id, { ...trail, photos: photos })
-        .then(res => {
-          // console.log(res.data)
-          formEl.current.reset();
-          setTrail(res.data);
-        })
+          .then(res => {
+            // console.log(res.data)
+            formEl.current.reset();
+            setTrail(res.data);
+          })
       })
-        .catch(err => console.log(err));
+      .catch(err => console.log(err));
   }
 
   const date = new Date(trail.date);
@@ -194,7 +202,7 @@ function Detail(props) {
               <p className="card-text">Trail Type: {trail.trailType}</p>
               <p className="card-text">Terrain: {trail.terrain}</p>
               <p className="card-text">User Comments: {trail.comments && trail.comments.map((comment, i) => (
-                <ListItem key={i}>{comment}</ListItem>
+                <ListItem key={i}>{comment.comment} - {comment.userName}</ListItem>
               ))}</p>
               <form ref={formEl}>
                 <TextArea
