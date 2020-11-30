@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CreateRouteMarkers from "./CreateRouteMarkers";
 import CreateRouteInfo from "./CreateRouteInfo";
 import extAPI from "../../utils/extAPI";
@@ -8,6 +8,14 @@ const CreateRouteForm = (prop) => {
   const [newTrailObj, setNewTrailObj] = useState({ waypoints: [] });
   const [centerCoords, setCenterCoords] = useState({});
   const [formStage, setFormStage] = useState("init");
+  const [API, setAPI] = useState({const: 1});
+
+  useEffect(() => {
+    extAPI.getGoogleKey()
+      .then(res =>
+        setAPI({...API, key: res.data}))
+      .catch(err => console.log(err))
+  }, [API.const])
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -109,12 +117,12 @@ const CreateRouteForm = (prop) => {
             </>}
         </form>
 
-        {formStage === "route" && centerCoords.lat &&
+        {centerCoords.lat && (formStage === "route" || formStage === "preview") &&
           <CreateRouteMarkers
             newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj}
             centerCoords={centerCoords} setCenterCoords={setCenterCoords}
             formStage={formStage} setFormStage={setFormStage} 
-            key={"key"}/>
+            APIKey={API.key}/>
         }
 
         {formStage === "info" &&
