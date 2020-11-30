@@ -24,10 +24,10 @@ function CreateRouteInfo(props) {
   async function handleSubmit(event) {
     event.preventDefault();
     const waypointArr = newTrailObj.waypoints.map(wp => {
-      return `${wp.lat()}, ${wp.lng()}`
+      return `${wp.lat}, ${wp.lng}`
     });
     
-    const destination = `${newTrailObj.destination?.lat()}, ${newTrailObj.destination?.lng()}`;
+    const destination = `${newTrailObj.destination?.lat}, ${newTrailObj.destination?.lng}`;
     const acent = parseFloat(newTrailObj.ascent);
     const decent = parseFloat(newTrailObj.decent);
     const elevation = decent > 0 ? [acent, decent*-1] : [acent, decent];
@@ -36,8 +36,8 @@ function CreateRouteInfo(props) {
       name: newTrailObj.trailName,
       city: newTrailObj.city,
       state: newTrailObj.state,
-      originLat: newTrailObj.origin.lat(),
-      originLng: newTrailObj.origin.lng(),
+      originLat: newTrailObj.origin.lat,
+      originLng: newTrailObj.origin.lng,
       destination,
       waypoints: waypointArr,
       trailType: newTrailObj.trailType,
@@ -54,7 +54,7 @@ function CreateRouteInfo(props) {
     }
 
     if (trailObj.trailType === "aToB") {
-      trailObj.destination = `${newTrailObj.destination.lat()}, ${newTrailObj.destination.lng()}`;
+      trailObj.destination = `${newTrailObj.destination.lat}, ${newTrailObj.destination.lng}`;
     }
 
     API.saveTrail(trailObj)
