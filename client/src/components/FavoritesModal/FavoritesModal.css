@@ -1,4 +1,4 @@
-.LoginModal {
+.FavoritesModal {
   text-align: center;
 }
 
@@ -10,5 +10,5 @@
 
 .modalShowing-true{
   opacity: 1;
-  pointer-events: visible !important;
+  pointer-events: showing;
 }

@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
 
 import { Col, Row, Container } from "../Grid";
 import { Card } from "../Card";
@@ -116,7 +115,9 @@ function Detail(props) {
       .catch(err => console.log(err));
   }
 
-  function addFavorite() {
+  function addFavorite(event) {
+    event.preventDefault();
+    console.log(user, id)
     API.addFavorite(user._id, id)
       .then(response =>
         console.log(response.data))
@@ -153,16 +154,11 @@ function Detail(props) {
     <div className="trail-selected-container">
       <Container fluid>
         <Row>
-          <Col size="md-2">
-            <div className="mt-3"><Link to="/">←</Link>Home</div>
-          </Col>
-        </Row>
-        <Row>
           <Col size="md-12">
             <Card
               name={trail.name}
             >
-              <p onClick={addFavorite}>(STAR ICON)</p>
+              <button style={{float: 'right'}} onClick={() => addFavorite()}><i className="fas fa-star"></i></button>
               {trail.photos && trail.photos.map((photo, i) => (
                 <img key={i} className="card-img-top" src={photo} alt="Card image cap"></img>
               ))}
@@ -183,7 +179,7 @@ function Detail(props) {
               </form>
               {/* <DropZone uploadImage={uploadImage} /> */}
               <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6>
-              <p className="card-text" name="userVerified" onClick={handleVerify}>Verified: {trail.userVerified}(CHECK ICON)</p>
+              <p className="card-text">Verified: {trail.userVerified} <button name="userVerified" onClick={handleVerify}><i className="fas fa-check"></i></button></p>
               <p className="card-text">Rating: {trail.rating}</p>
               <form ref={formEl}>
                 <Select name="rating" onChange={handleInputChange}>

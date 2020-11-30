@@ -9,14 +9,6 @@ const userSchema = new Schema({
 	lastName: { type: String, unique: false },
 	username: { type: String, unique: false, required: false },
 	password: { type: String, unique: false, required: false },
-	trails: [
-		{
-			// Store ObjectIds in the array
-			type: Schema.Types.ObjectId,
-			// The ObjectIds will refer to the ids in the Trail model
-			ref: 'Trail'
-		}
-	],
 	favorites: [
 		{
 			// Store ObjectIds in the array

@@ -18,8 +18,10 @@ module.exports = {
 		if (req.user) {
 			db.User
 				.find({ _id: req.user._id })
-				.populate({ path: 'favorites', options: { sort: { date: -1 } } })
+				.populate({ path: 'favorites',
+				model: 'Trail', options: { sort: { date: -1 } } })
 				.then(users => {
+					console.log(users)
 					res.json({ favorites: users[0].favorites });
 				})
 				.catch(err => res.status(422).json(err));
@@ -77,7 +79,7 @@ module.exports = {
 			.create(req.body)
 			.then(dbTrail => {
 				console.log('dbTrail', dbTrail)
-				return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { trails : dbTrail._id } }, { new: true });
+				return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { favorites : dbTrail._id } }, { new: true });
 			})
 			.then((dbUser) => {
 				console.log('dbUser', dbUser);
