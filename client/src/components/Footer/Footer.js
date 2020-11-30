@@ -2,10 +2,10 @@ import React from "react";
 import './Footer.css';
 import Info from "../Info";
 
-function Footer(){
+function Footer(props){
   return (
     <footer>
-      <Info />
+      <Info trailId={props.trailId}/>
     </footer>
   )
 };

@@ -74,7 +74,7 @@ function App() {
         {/* <Info /> */}
       </header>
       <Main trailId={trailId} />
-      <Footer />
+      <Footer trailId={trailId} />
       {/* <Favorites renderTrailById={renderTrailById}/> */}
     </div>
   );

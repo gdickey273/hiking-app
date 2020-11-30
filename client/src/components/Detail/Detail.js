@@ -9,13 +9,15 @@ import API from "../../utils/API";
 import AUTH from "../../utils/AUTH";
 import { withScriptjs } from "react-google-maps";
 import extAPI from "../../utils/extAPI";
-import { TextArea, Select, FormBtn } from "../Form";
+import { TextArea, Select, FormBtn, Input } from "../Form";
 import { ListItem } from "../List";
+import DropZone from "../DropZone";
 
 function Detail(props) {
   const [trail, setTrail] = useState({})
   const [url, setUrl] = useState({})
   const [formObject, setFormObject] = useState({});
+  const [fileSelected, setFileSelected] = useState(false);
   const formEl = useRef(null);
 
   // When this component mounts, grab the trail with the _id of props.match.params.id
@@ -62,6 +64,14 @@ function Detail(props) {
         [name]: value
       })
     }
+
+    if(name === 'photos') {
+      setFileSelected(true)
+      setFormObject({
+        ...formObject,
+        [name]: event.target.files[0]
+      })
+    }
   }
 
   function handleFormSubmit(event) {
@@ -72,11 +82,9 @@ function Detail(props) {
     }
 
     if (formObject.comments) {
-      console.log(formObject.comments);
       let commentsArr = trail.comments;
       commentsArr.push(formObject.comments);
-      console.log(commentsArr);
-  
+
       API.updateTrail(id, { ...trail, comments: commentsArr })
         .then(res => {
           // console.log(res.data)
@@ -107,8 +115,26 @@ function Detail(props) {
       .catch(err => console.log(err));
   }
 
-  function updateTrail(event) {
+  function uploadImage(event) {
+    event.preventDefault();
+    const fd = new FormData();
+    fd.append('image', formObject.photos);
 
+    extAPI.uploadImage(fd)
+      .then(res => {
+        let photos = trail.photos;
+        photos.push(res.data.imageURL);
+
+        console.log(photos);
+        
+        API.updateTrail(id, { ...trail, photos: photos })
+        .then(res => {
+          // console.log(res.data)
+          formEl.current.reset();
+          setTrail(res.data);
+        })
+      })
+        .catch(err => console.log(err));
   }
 
   const date = new Date(trail.date);
@@ -129,7 +155,25 @@ function Detail(props) {
               name={trail.name}
             >
               <p onClick={addFavorite}>(STAR ICON)</p>
-              <img className="card-img-top" src={trail.photos} alt="Card image cap"></img>
+              {trail.photos && trail.photos.map((photo, i) => (
+                <img key={i} className="card-img-top" src={photo} alt="Card image cap"></img>
+              ))}
+              <form ref={formEl}>
+                <Input
+                  name='photos'
+                  type='file'
+                  accept='.jpg, .png, .jpeg'
+                  onChange={handleInputChange} />
+                {fileSelected &&
+                  <button
+                    type='button'
+                    disabled={!fileSelected}
+                    onClick={uploadImage}>
+                    Upload Image
+                  </button>
+                }
+              </form>
+              {/* <DropZone uploadImage={uploadImage} /> */}
               <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6>
               <p className="card-text" name="userVerified" onClick={handleVerify}>Verified: {trail.userVerified}(CHECK ICON)</p>
               <p className="card-text">Rating: {trail.rating}</p>
@@ -149,8 +193,8 @@ function Detail(props) {
               <p className="card-text">Estimated duration: {trail.duration}</p>
               <p className="card-text">Trail Type: {trail.trailType}</p>
               <p className="card-text">Terrain: {trail.terrain}</p>
-              <p className="card-text">User Comments: {trail.comments && trail.comments.map(comment => (
-                <ListItem key={trail._id}>{comment}</ListItem>
+              <p className="card-text">User Comments: {trail.comments && trail.comments.map((comment, i) => (
+                <ListItem key={i}>{comment}</ListItem>
               ))}</p>
               <form ref={formEl}>
                 <TextArea
