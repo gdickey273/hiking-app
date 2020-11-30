@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withScriptjs } from "react-google-maps";
 import CreateRouteMap from "../CreateRouteMap";
 import UserTrailsMap from "../UserTrailsMap";
@@ -8,14 +8,26 @@ function CreateRouteMarkers(props) {
 
 
   const { APIKey, newTrailObj, setNewTrailObj, centerCoords, setCenterCoords, formStage, setFormStage } = props;
-  console.log("-----------APIKey-------------", APIKey);
   const [currentMarker, setCurrentMarker] = useState("");
   const [previewCoords, setPreviewCoords] = useState({});
-  const waypointNameString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
+  const [isPreviewReady, setIsPreviewReady] = useState(false);
+  const waypointNameString = "BCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
 
-  // useEffect(() => {
-  //   if (newTrailObj.waypoints.length > 4 && !newTrailObj.isPolylinePath) setCurrentMarker("");
-  // })
+  useEffect(() => {
+    let previewReady = false;
+    if (newTrailObj.trailType === "A to B") {
+      if (newTrailObj.origin && newTrailObj.waypoints.length > 0 && newTrailObj.destination) {
+        previewReady = true;
+      }
+    } else if (newTrailObj.origin && newTrailObj.waypoints.length > 0) {
+      previewReady = true;
+    }
+    setIsPreviewReady(previewReady);
+  }, [newTrailObj]);
+
+  useEffect(() => {
+    if (newTrailObj.waypoints.length > 4 && !newTrailObj.isPolylinePath) setCurrentMarker("");
+  }, [newTrailObj, currentMarker]);
 
   const handleRemoveWaypoint = (event) => {
     event.preventDefault();
@@ -61,14 +73,7 @@ function CreateRouteMarkers(props) {
   }
 
 
-  let previewReady = false;
-  if (newTrailObj.trailType === "A to B") {
-    if (newTrailObj.origin && newTrailObj.waypoints.length > 0 && newTrailObj.destination) {
-      previewReady = true;
-    }
-  } else if (newTrailObj.origin && newTrailObj.waypoints.length > 0) {
-    previewReady = true;
-  }
+ 
 
   const MapLoader = withScriptjs(UserTrailsMap);
   return (
@@ -79,13 +84,13 @@ function CreateRouteMarkers(props) {
             <h5>{newTrailObj.trailType === "A to B" ? `Please place markers at trail Origin, Destination, and 5 waypoints in between.` : `Please place markers at trail Origin and 5 waypoints along desired route.`}</h5>
           }
           <button name="setOrigin" onClick={event => { event.preventDefault(); setCurrentMarker("Origin") }}>Set Origin</button>
-          <label for="setOrigin">Origin: {newTrailObj.origin && `Lat: ${newTrailObj.origin.lat}, Lng: ${newTrailObj.origin.lng}`}</label><br />
+          <label>Origin (marker A): {newTrailObj.origin && `Lat: ${newTrailObj.origin.lat}, Lng: ${newTrailObj.origin.lng}`}</label><br />
 
           {newTrailObj.trailType === "A to B"
             ?
             <>
               <button name="setDestination" onClick={event => { event.preventDefault(); setCurrentMarker("Destination") }}>Set Destination</button>
-              <label for="setDestination">Destination: {newTrailObj.destination && `Lat: ${newTrailObj.destination.lat}, Lng: ${newTrailObj.destination.lng}`}</label><br />
+              <label>Destination: {newTrailObj.destination && `Lat: ${newTrailObj.destination.lat}, Lng: ${newTrailObj.destination.lng}`}</label><br />
             </>
             :
             <></>
@@ -96,19 +101,17 @@ function CreateRouteMarkers(props) {
           <div className="trail-maker-waypoints">
             <button onClick={handleWaypointToggleClick} >{currentMarker === "waypoint" ? "Stop Setting Waypoints" : "Set Waypoints"}</button><br />
             {newTrailObj.waypoints.map((wp, i) => (
-              <>
-                <label for="setOrigin" key={"label-" + i}>Waypoint {waypointNameString[i]}: {`Lat: ${wp.lat}, Lng: ${wp.lng}`}</label><br />
+              <div key={i}>
+                <label key={"label-" + i}>Waypoint (Marker {waypointNameString[i]}): {`Lat: ${wp.lat}, Lng: ${wp.lng}`}</label><br />
                 <button data-index={i} onClick={handleRemoveWaypoint} key={"remove-" + i}>x</button><br />
-              </>
+              </div>
             ))}
-            {previewReady &&
+            {isPreviewReady && !newTrailObj.isPolylinePath &&
               <button onClick={event => { event.preventDefault(); setFormStage("preview"); formatCoordinates(newTrailObj.origin, newTrailObj.waypoints, newTrailObj.trailType, newTrailObj.destination) }}>Preview Trail Path</button>
             }
             {newTrailObj.isPolylinePath &&
               <button onClick={event => { event.preventDefault(); setFormStage("info"); }}>Confirm Polyline Path</button>
             }
-
-            <h5>{JSON.stringify(previewCoords)}</h5>
 
           </div>
         </>
@@ -118,8 +121,8 @@ function CreateRouteMarkers(props) {
         <>
           <h5>Does this path look right? Please confirm the newly rendered path, reposition waypoints to correct path, or use more waypoints to draw the path.</h5>
           <button onClick={event => { event.preventDefault(); setNewTrailObj({ ...newTrailObj, isPolylinePath: false }); setFormStage("info"); }}>Confirm Rendered Path</button>
-          <button onClick={event => { event.preventDefault(); setFormStage("route"); }}>Reposition Points</button>
-          <button onClick={event => { event.preventDefault(); setNewTrailObj({ ...newTrailObj, isPolylinePath: true }); }}>Draw Path With Points</button>
+          <button onClick={event => { event.preventDefault(); setFormStage("route"); setPreviewCoords()}}>Reposition Points</button>
+          <button onClick={event => { event.preventDefault(); setFormStage("route"); setNewTrailObj({ ...newTrailObj, isPolylinePath: true }); }}>Draw Path With Points</button>
 
 
 
