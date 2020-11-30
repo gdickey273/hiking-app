@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './FavoritesModal.css';
 import API from "../../utils/API";
-import AUTH from "../../utils/AUTH";
 
 import { Col } from "../Grid";
 import { List, ListItem } from "../List";
@@ -10,6 +9,8 @@ import { Card } from "../Card";
 function FavoritesModal(props) {
   const [favs, setFavs] = useState([])
 
+  const user = props.user;
+
   const [modalState, setModalState] = useState(false);
 
   const toggleLoginState = () => {
@@ -17,14 +18,12 @@ function FavoritesModal(props) {
   }
 
   useEffect(() => {
-    AUTH.getUser()
-      .then(response =>
-       {
-        API.getFavorites(response.data.user._id)
+    API.getFavorites(user._id)
       .then(res =>
         {
+        console.log(res.data)
         setFavs(res.data.favorites)
-      })})
+        })
       .catch(err => console.log(err));
   }, []);
 
