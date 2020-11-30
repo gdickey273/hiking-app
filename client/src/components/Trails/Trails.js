@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 
 import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import { Card } from "../Card";
 import { Input, Select, FormBtn } from "../Form";
-// import DeleteBtn from "../../components/DeleteBtn";
 import API from "../../utils/API";
 
 function Trails(props) {
-  // Setting our component's initial state
+
   const [trails, setTrails] = useState([]);
   const [formObject, setFormObject] = useState({});
   const [searchStarted, setSearchStarted] = useState(false);
@@ -29,13 +27,6 @@ function Trails(props) {
       })
       .catch(err => console.log(err));
   };
-
-  // Deletes a trails from the database with a given id, then reloads trails from the db
-  // function deleteTrail(id) {
-  //   API.deleteTrail(id)
-  //     .then(res => loadTrails())
-  //     .catch(err => console.log(err));
-  // }
 
   // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
@@ -146,13 +137,12 @@ function Trails(props) {
                   <List>
                     {trails.map(trail => (
                       <ListItem key={trail._id}>
-                        <a onClick={() => props.renderTrailById(trail._id)}>
+                        <button style={{backgroundColor: "transparent", border: "none"}} onClick={() => props.renderTrailById(trail._id)}>
                           {/* <strong>
                             {trail.name}/{trail.city}/{trail.length}mi./{trail.rating}stars
                         </strong> */}
-                        <img className="photo-containers" src={trail.photos}/>
-                        </a>
-                        {/* <DeleteBtn onClick={() => deleteTrail(trail._id)} /> */}
+                        <img className="photo-containers" src={trail.photos} alt={trail.name}/>
+                        </button>
                       </ListItem>
                     ))}
                   </List>

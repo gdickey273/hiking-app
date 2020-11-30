@@ -16,6 +16,7 @@ function APITrailsMap(props) {
   return (
     <div>
       <iframe
+        title={props.name}
         width="600"
         height="450"
         frameBorder="0" style={{ border: "0" }}

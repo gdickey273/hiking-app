@@ -117,7 +117,7 @@ function Detail(props) {
 
   function addFavorite(event) {
     event.preventDefault();
-    console.log(user, id)
+    console.log(user, id);
     API.addFavorite(user._id, id)
       .then(response =>
         console.log(response.data))
@@ -133,8 +133,6 @@ function Detail(props) {
       .then(res => {
         let photos = trail.photos;
         photos.push(res.data.imageURL);
-
-        console.log(photos);
 
         API.updateTrail(id, { ...trail, photos: photos })
           .then(res => {
@@ -161,7 +159,7 @@ function Detail(props) {
               {props.loggedIn && 
               <button style={{float: 'right'}} onClick={() => addFavorite()}><i className="fas fa-star"></i></button>}
               {trail.photos && trail.photos.map((photo, i) => (
-                <img key={i} className="card-img-top" src={photo} alt="Card image cap"></img>
+                <img key={i} className="card-img-top" src={photo} alt={trail.name}></img>
               ))}
               {!props.loggedIn && <h4>Log in to make updates to this trail!</h4>}
               {props.loggedIn && 
@@ -229,6 +227,7 @@ function Detail(props) {
       </Container>
       {
         trail.destination ?
+        // loads routed map for user created routes
           <MapLoader
             googleMapURL={url}
             loadingElement={<div style={{ height: `100%` }} />}
@@ -238,6 +237,7 @@ function Detail(props) {
             waypoints={trail.waypoints}
           />
           :
+          // loads google map using origin for API trails which do not contain a destination/waypoints
           <APITrailsMap
             name={trail.name}
             originLat={trail.originLat}
