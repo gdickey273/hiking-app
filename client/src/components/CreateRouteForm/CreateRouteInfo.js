@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 import extAPI from "../../utils/extAPI";
 
@@ -6,6 +6,7 @@ import extAPI from "../../utils/extAPI";
 
 function CreateRouteInfo(props) {
   const { newTrailObj, setNewTrailObj } = props;
+  const [fileSelected, setFileSelected] = useState(false);
 
   //On page load send request to backend for trail distance and update state to render on form
   useEffect(() => {
@@ -19,6 +20,30 @@ function CreateRouteInfo(props) {
   function handleInputChange(event) {
     const { name, value } = event.target;
     setNewTrailObj({ ...newTrailObj, [name]: value });
+  }
+
+  function handleFileSelected(event) {
+    const { name, value } = event.target;
+
+    if (name === 'photos') {
+      setFileSelected(true)
+      setNewTrailObj({
+        ...newTrailObj,
+        [name]: event.target.files[0]
+      })
+    }
+  }
+
+  function uploadImage(event) {
+    event.preventDefault();
+    const fd = new FormData();
+    fd.append('image', newTrailObj.photos);
+
+    extAPI.uploadImage(fd)
+      .then(res => {
+        setNewTrailObj({ ...newTrailObj, photos: res.data.imageURL })
+      })
+      .catch(err => console.log(err));
   }
 
   async function handleSubmit(event) {
@@ -50,7 +75,8 @@ function CreateRouteInfo(props) {
       trafficLevels: newTrailObj.traffic,
       waterSources: newTrailObj.waterSources,
       elevation,
-      userVerified: 1
+      userVerified: 1,
+      photos: newTrailObj.photos
     }
 
     if (trailObj.trailType === "aToB") {
@@ -93,7 +119,17 @@ function CreateRouteInfo(props) {
           <input name="traffic" onChange={handleInputChange} value={newTrailObj.traffic}></input>
           <label>Water Sources</label><br />
           <input name="waterSources" onChange={handleInputChange} value={newTrailObj.waterSources}></input>
-
+          <label>Add Photos</label><br />
+          <input name="photos" onChange={handleFileSelected} type='file'
+            accept='.jpg, .png, .jpeg' /><br />
+          {fileSelected &&
+            <button
+              type='button'
+              disabled={!fileSelected}
+              onClick={uploadImage}>
+              Upload Image
+                  </button>
+          }
           <button onClick={handleSubmit}>Submit Trail</button>
         </form>
       </div>

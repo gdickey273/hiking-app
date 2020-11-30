@@ -43,6 +43,11 @@ const trailSchema = new Schema({
 		type: Number,
 		required: true
 	},
+	rateCount: {
+		type: Number,
+		required: false,
+		default: 0
+	},
 	comments: {
 		type: Array,
 		required: true

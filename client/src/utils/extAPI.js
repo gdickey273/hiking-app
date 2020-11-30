@@ -8,6 +8,9 @@ export default {
   getTrailMap: function (origin) {
     return axios.get(`/api/mapSearch/${origin}`);
   },
+  getStreetview: function (origin) {
+    return axios.get(`/api/streetview/${origin}`);
+  },
   getCoordinates: function (city, state) {
     return axios.get(`/api/geocode/${city}/${state}`);
   },
@@ -25,5 +28,8 @@ export default {
           destination
         }
       })
+  },
+  uploadImage: function (image) {
+    return axios.post('/api/image-uploads', image);
   }
 }; 

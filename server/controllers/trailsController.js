@@ -14,17 +14,19 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 
-	findAllByUser: function (req, res) {
+	findUserFavorites: function (req, res) {
 		if (req.user) {
 			db.User
 				.find({ _id: req.user._id })
-				.populate({ path: 'trails', options: { sort: { date: -1 } } })
+				.populate({ path: 'favorites',
+				model: 'Trail', options: { sort: { date: -1 } } })
 				.then(users => {
-					res.json({ trails: users[0].trails });
+					console.log(users)
+					res.json({ favorites: users[0].favorites });
 				})
 				.catch(err => res.status(422).json(err));
 		} else {
-			return res.json({ trails: null });
+			return res.json({ favorites: null });
 		}
 	},
 	findById: function (req, res) {
@@ -77,7 +79,7 @@ module.exports = {
 			.create(req.body)
 			.then(dbTrail => {
 				console.log('dbTrail', dbTrail)
-				return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { trails : dbTrail._id } }, { new: true });
+				return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { favorites : dbTrail._id } }, { new: true });
 			})
 			.then((dbUser) => {
 				console.log('dbUser', dbUser);
@@ -88,9 +90,8 @@ module.exports = {
 	},
 	update: function (req, res) {
 		db.Trail
-			.findOneAndUpdate({ _id: req.params.id }, req.body)
+			.findOneAndUpdate({ _id: req.params.id }, req.body.trailData, { new: true })
 			.then(dbModel => {
-				console.log(dbModel);
 				res.json(dbModel);
 			})
 			.catch(err => res.status(422).json(err));

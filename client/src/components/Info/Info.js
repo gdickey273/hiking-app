@@ -1,8 +1,9 @@
 import React from "react";
 import './Info.css';
 import TrailsWeather from '../TrailsWeather';
+import Streetview from '../Streetview';
 
-function Info(){
+function Info(props){
   return (
    <div className="module-select">
 
@@ -12,6 +13,7 @@ function Info(){
        <div className="module-toggle-containers toggle-mid-bottom"><i className="fas fa-images"></i></div>
        <div className="module-toggle-containers toggle-bottom"><i className="fas fa-comments"></i></div>
      </div>
+    {props.trailId && <Streetview trailId={props.trailId}/>}
    </div>
   )
 };

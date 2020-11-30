@@ -21,9 +21,7 @@ router
 // Matches with "/api/trails/user/:userID"
 router 
 	.route('/user/:userID')
-	.get(trailsController.findAllByUser)
+	.get(trailsController.findUserFavorites)
 	.put(trailsController.addFavorite);
-
-
 
 module.exports = router;
