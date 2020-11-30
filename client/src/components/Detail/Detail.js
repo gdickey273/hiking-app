@@ -150,7 +150,7 @@ function Detail(props) {
 
   const MapLoader = withScriptjs(UserTrailsMap);
   return trail && (
-    <div>
+    <div className="trail-selected-container">
       <Container fluid>
         <Row>
           <Col size="md-2">

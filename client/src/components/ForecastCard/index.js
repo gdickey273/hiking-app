@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Conditions from '../Conditions/Conditions';
+import Conditions from '../WeatherConditions/Conditions';
 import classes from './Forecast.module.css';
 
 const Forecast = () => {
@@ -25,7 +25,7 @@ const Forecast = () => {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-                "x-rapidapi-key": "896f638738msh22dc63917c22c23p19d7ffjsn560d550ebd3c"
+                "x-rapidapi-key": process.env.REACT_APP_API_KEY
             }
         })
         .then(response => response.json())
