@@ -4,11 +4,7 @@ let moment = require('moment');
 
 const conditions = (props) => {
     console.log(props)
-    let newDate = new Date();
-    const weekday = props.dt * 1000
-    newDate.setTime(weekday)
-    
-
+        
     // const imgURL = `owf owf-${props.weather[0].id} owf-5x`
     
     return (
@@ -21,11 +17,12 @@ const conditions = (props) => {
             {props.responseObj.map(obj => (
                 <div className="col-sm-2">
                     <div className="card">
-                        <h3 className="card-title">{moment(newDate).format('dddd')}</h3>
-                        <p className="text-muted">{moment(newDate).format('MMMM Do, h:mm a')}</p>                        
-                        <h2>{Math.round(obj.main.temp)} °F</h2>
+                        <p className="card-title">{moment((obj.dt * 1000)).format('dddd')}</p>
+                        <p className="text-muted">{moment(obj.dt * 1000).format('MMMM Do, h:mm a')}</p>                        
+                        <p>{Math.round(((obj.main.feels_like)))} °F</p>
                             <div className="card-body">
                                 <p className="card-text">{obj.weather[0].description}</p>
+                                <p className="imgURL">{obj.weather[0].id}</p>
                             </div>
                     </div>
                 </div>
