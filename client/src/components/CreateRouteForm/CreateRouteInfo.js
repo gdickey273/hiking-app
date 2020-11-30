@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 import extAPI from "../../utils/extAPI";
 
@@ -6,12 +6,13 @@ import extAPI from "../../utils/extAPI";
 
 function CreateRouteInfo(props) {
   const { newTrailObj, setNewTrailObj } = props;
-  
+  const [fileSelected, setFileSelected] = useState(false);
+
   //On page load send request to backend for trail distance and update state to render on form
   useEffect(() => {
     async function fetchDistance() {
       const response = await extAPI.getTrailDistance(newTrailObj.origin, newTrailObj.waypoints, newTrailObj.trailType, newTrailObj.destination)
-      setNewTrailObj({ ...newTrailObj, length: Math.round(response.data.totalLength * 100)/100 });
+      setNewTrailObj({ ...newTrailObj, length: Math.round(response.data.totalLength * 100) / 100 });
     }
     fetchDistance();
   }, [newTrailObj.origin]);
@@ -19,6 +20,30 @@ function CreateRouteInfo(props) {
   function handleInputChange(event) {
     const { name, value } = event.target;
     setNewTrailObj({ ...newTrailObj, [name]: value });
+  }
+
+  function handleFileSelected(event) {
+    const { name, value } = event.target;
+
+    if (name === 'photos') {
+      setFileSelected(true)
+      setNewTrailObj({
+        ...newTrailObj,
+        [name]: event.target.files[0]
+      })
+    }
+  }
+
+  function uploadImage(event) {
+    event.preventDefault();
+    const fd = new FormData();
+    fd.append('image', newTrailObj.photos);
+
+    extAPI.uploadImage(fd)
+      .then(res => {
+        setNewTrailObj({ ...newTrailObj, photos: res.data.imageURL })
+      })
+      .catch(err => console.log(err));
   }
 
   async function handleSubmit(event) {
@@ -37,7 +62,8 @@ function CreateRouteInfo(props) {
       waypoints: waypointArr,
       rating: newTrailObj.rating,
       comments: newTrailObj.comments,
-      length: newTrailObj.length
+      length: newTrailObj.length,
+      photos: newTrailObj.photos
     }
 
     if (trailObj.trailType === "aToB") {
@@ -68,6 +94,17 @@ function CreateRouteInfo(props) {
           <input name="condition" onChange={handleInputChange} placeholder="Well maintained, fallen trees, etc." value={newTrailObj.condition} /><br />
           <label>Comments</label><br />
           <textarea maxLength="500" onChange={handleInputChange} name="comments" value={newTrailObj.comments}></textarea>
+          <label>Add Photos</label><br />
+          <input name="photos" onChange={handleFileSelected} type='file'
+            accept='.jpg, .png, .jpeg' /><br />
+          {fileSelected &&
+            <button
+              type='button'
+              disabled={!fileSelected}
+              onClick={uploadImage}>
+              Upload Image
+                  </button>
+          }
           <button onClick={handleSubmit}>Submit Trail</button>
         </form>
       </div>
