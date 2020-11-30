@@ -1,49 +1,53 @@
-import React from "react";
+import React, { Fragment } from "react";
 import LoginModal from "../LoginModal";
 import RegisterModal from "../RegisterModal";
 import FavoritesModal from "../FavoritesModal";
-// import { Link } from 'react-router-dom';
-// import { Col } from '../Grid';
 import './Nav.css';
 
-// const Nav = (props) => {
-//   let greeting;
+function Nav(props) {
+  let greeting;
 
-//   if (props.user === null) {
-// 		greeting = <p>Hello guest</p>
-// 	} else if (props.user.firstName) {
-// 		greeting = (
-// 			<Fragment>
-// 				Welcome back, <strong>{props.user.firstName}</strong>
-// 			</Fragment>
-// 		)
-// 	} else if (props.user.username) {
-// 		greeting = (
-// 			<Fragment>
-// 				Welcome back, <strong>{props.user.username} </strong>
-// 			</Fragment>
-// 		)
-//   }
-
-function Nav(props){
+  if (props.user === null) {
+    greeting = <p>Hello guest</p>
+  } else if (props.user.firstName) {
+    greeting = (
+      <Fragment>
+        Welcome back, <strong>{props.user.firstName}</strong>
+      </Fragment>
+    )
+  } else if (props.user.username) {
+    greeting = (
+      <Fragment>
+        Welcome back, <strong>{props.user.username} </strong>
+      </Fragment>
+    )
+  }
   return (
     <div className="nav">
       <h1>TRAILSHARE</h1>
 
       <div className="account">
-        <ol>
-          <LoginModal />
-          <RegisterModal />
-          <FavoritesModal renderTrailById={props.renderTrailById}/>
-        </ol>
+        {props.user &&
+          <ol>
+            <FavoritesModal renderTrailById={props.renderTrailById} user={props.user} />
+            <button onClick={props.logout}>Logout</button>
+          </ol>
+        }
+        {!props.user &&
+          <ol>
+            <LoginModal login={props.login} />
+            <RegisterModal />
+          </ol>
+        }
       </div>
 
       <div className="social">
+        {greeting}
         <i className="fab fa-instagram-square"></i>
         <i className="fab fa-twitter-square"></i>
         <i className="fab fa-facebook-square"></i>
       </div>
-    </div>
+    </div >
   )
 };
 

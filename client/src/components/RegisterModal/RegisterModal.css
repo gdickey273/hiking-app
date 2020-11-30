@@ -4,11 +4,11 @@
 
 .registerBackground{
   opacity: 0;
-  pointer-events: none;
+  /* pointer-events: none; */
   transition: opacity 0.2s ease-in-out;
 }
 
 .registerShowing-true{
   opacity: 1;
-  pointer-events: showing;
+  pointer-events: visible !important;
 }
