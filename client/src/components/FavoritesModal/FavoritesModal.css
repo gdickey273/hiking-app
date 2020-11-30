@@ -10,5 +10,5 @@
 
 .modalShowing-true{
   opacity: 1;
-  pointer-events: showing;
+  pointer-events: visible !important;
 }
