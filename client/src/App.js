@@ -39,6 +39,7 @@ function App() {
       if (response.status === 200) {
         setLoggedIn(false);
         setUser(null);
+        window.location.reload();
       }
     });
   };
@@ -71,8 +72,8 @@ function App() {
         <Banner renderTrailById={renderTrailById} />
         {/* <Info /> */}
       </header>
-      <Main trailId={trailId} />
-      <Footer trailId={trailId} />
+      <Main trailId={trailId} loggedIn={loggedIn}/>
+      <Footer trailId={trailId} loggedIn={loggedIn}/>
     </div>
   );
 }

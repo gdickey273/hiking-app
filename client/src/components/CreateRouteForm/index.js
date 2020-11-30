@@ -3,8 +3,9 @@ import CreateRouteMarkers from "./CreateRouteMarkers";
 import CreateRouteInfo from "./CreateRouteInfo";
 import extAPI from "../../utils/extAPI";
 import API from "../../utils/API";
+import { PresignedPost } from "aws-sdk/clients/s3";
 
-const CreateRouteForm = (prop) => {
+const CreateRouteForm = (props) => {
 
   const [newTrailObj, setNewTrailObj] = useState({ waypoints: [] });
   const [centerCoords, setCenterCoords] = useState({});
@@ -62,67 +63,76 @@ const CreateRouteForm = (prop) => {
 
   return (
     <div>
-      <div className="trail-maker">
-        <form className="map-form" onSubmit={handleFormSubmit}>
+      {!props.loggedIn &&
+        <div className="trail-maker">
           <div className="trail-maker-heading">
             <h2>Trail Maker</h2>
-            <p>Create a new route to add to your collection</p>
+            <p>Log in to create a new route to add to your collection!</p>
           </div>
+        </div>
+      }
+      {props.loggedIn &&
+        <div className="trail-maker">
+          <form className="map-form" onSubmit={handleFormSubmit}>
+            <div className="trail-maker-heading">
+              <h2>Trail Maker</h2>
+              <p>Create a new route to add to your collection</p>
+            </div>
 
-          {formStage === "init" &&
-            <>
-              <div>
-                <label>Trail Name</label><br />
-                <input type="text" name="trailName" onChange={handleInputChange} />
-                <br />
-                {centerCoords.lat ?
-                  <>
-                    <h5>City: {newTrailObj.city}</h5>
-                    <h5>State: {newTrailObj.state}</h5>
-                  </>
-                  :
-                  <>
-                    <label>City</label><br />
-                    <input type="text" name="city" onChange={handleInputChange} /><br />
-                    <label>State</label><br />
-                    <input type="text" name="state" onChange={handleInputChange} /><br />
-                  </>
-                }
-
-              </div>
-              <div className="trail-maker-input">
-
+            {formStage === "init" &&
+              <>
                 <div>
-                  <input type="radio" name="trailType" value="loop" onClick={handleTypeClick} />
-                  <label for="trailType">Loop</label><br />
-                </div>
-                <div>
-                  <input type="radio" name="trailType" value="outAndBack" onClick={handleTypeClick} />
-                  <label for="trailType">Out 'n Back</label><br />
-                </div>
-                <div>
-                  <input type="radio" name="trailType" value="aToB" onClick={handleTypeClick} />
-                  <label for="other">A to B</label>
-                </div>
+                  <label>Trail Name</label><br />
+                  <input type="text" name="trailName" onChange={handleInputChange} />
+                  <br />
+                  {centerCoords.lat ?
+                    <>
+                      <h5>City: {newTrailObj.city}</h5>
+                      <h5>State: {newTrailObj.state}</h5>
+                    </>
+                    :
+                    <>
+                      <label>City</label><br />
+                      <input type="text" name="city" onChange={handleInputChange} /><br />
+                      <label>State</label><br />
+                      <input type="text" name="state" onChange={handleInputChange} /><br />
+                    </>
+                  }
 
-              </div>
-              <input type="submit" name="submit" onClick={handleButtonClick} />
-            </>}
-        </form>
+                </div>
+                <div className="trail-maker-input">
 
-        {formStage === "route" && centerCoords.lat &&
-          <CreateRouteMarkers
-            newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj}
-            centerCoords={centerCoords} setCenterCoords={setCenterCoords}
-            formStage={formStage} setFormStage={setFormStage} 
-            key={"key"}/>
-        }
+                  <div>
+                    <input type="radio" name="trailType" value="loop" onClick={handleTypeClick} />
+                    <label for="trailType">Loop</label><br />
+                  </div>
+                  <div>
+                    <input type="radio" name="trailType" value="outAndBack" onClick={handleTypeClick} />
+                    <label for="trailType">Out 'n Back</label><br />
+                  </div>
+                  <div>
+                    <input type="radio" name="trailType" value="aToB" onClick={handleTypeClick} />
+                    <label for="other">A to B</label>
+                  </div>
 
-        {formStage === "info" &&
-          <CreateRouteInfo
-            newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} />
-        }
-      </div>
+                </div>
+                <input type="submit" name="submit" onClick={handleButtonClick} />
+              </>}
+          </form>
+
+          {formStage === "route" && centerCoords.lat &&
+            <CreateRouteMarkers
+              newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj}
+              centerCoords={centerCoords} setCenterCoords={setCenterCoords}
+              formStage={formStage} setFormStage={setFormStage}
+              key={"key"} />
+          }
+
+          {formStage === "info" &&
+            <CreateRouteInfo
+              newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} />
+          }
+        </div>}
 
       {/* <h5>{JSON.stringify(newTrailObj)}</h5>
       <h5>{JSON.stringify(centerCoords)}</h5> */}

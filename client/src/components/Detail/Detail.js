@@ -158,10 +158,13 @@ function Detail(props) {
             <Card
               name={trail.name}
             >
-              <button style={{float: 'right'}} onClick={() => addFavorite()}><i className="fas fa-star"></i></button>
+              {props.loggedIn && 
+              <button style={{float: 'right'}} onClick={() => addFavorite()}><i className="fas fa-star"></i></button>}
               {trail.photos && trail.photos.map((photo, i) => (
                 <img key={i} className="card-img-top" src={photo} alt="Card image cap"></img>
               ))}
+              {!props.loggedIn && <h4>Log in to make updates to this trail!</h4>}
+              {props.loggedIn && 
               <form ref={formEl}>
                 <Input
                   name='photos'
@@ -177,11 +180,15 @@ function Detail(props) {
                   </button>
                 }
               </form>
+              }
               {/* <DropZone uploadImage={uploadImage} /> */}
               <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6>
-              <p className="card-text">Verified: {trail.userVerified} <button name="userVerified" onClick={handleVerify}><i className="fas fa-check"></i></button></p>
+              {props.loggedIn && 
+              <p className="card-text">Verified by {trail.userVerified} users <button name="userVerified" onClick={handleVerify}><i className="fas fa-check"></i></button></p>}
+              {!props.loggedIn && 
+              <p className="card-text">Verified by {trail.userVerified} users <i className="fas fa-check"></i></p>}
               <p className="card-text">Rating: {trail.rating}</p>
-              <form ref={formEl}>
+              {props.loggedIn && <form ref={formEl}>
                 <Select name="rating" onChange={handleInputChange}>
                   <option value="rating">Rate this Trail</option>
                   <option value="1">(insert star icon) 1</option>
@@ -190,7 +197,7 @@ function Detail(props) {
                   <option value="4"> 4</option>
                   <option value="5"> 5</option>
                 </Select>
-              </form>
+              </form>}
 
               <p className="card-text">Length: {trail.length} miles</p>
               <p className="card-text">Elevation: +{trail.elevation}</p>
@@ -200,7 +207,7 @@ function Detail(props) {
               <p className="card-text">User Comments: {trail.comments && trail.comments.map((comment, i) => (
                 <ListItem key={i}>{comment.comment} - {comment.userName}</ListItem>
               ))}</p>
-              <form ref={formEl}>
+              {props.loggedIn && <form ref={formEl}>
                 <TextArea
                   onChange={handleInputChange}
                   name="comments"
@@ -211,7 +218,7 @@ function Detail(props) {
                 >
                   Submit
                 </FormBtn>
-              </form>
+              </form>}
 
               <p className="card-text">Current Conditions (as of {formatDate}): {trail.currentCondition}</p>
               <p className="card-text">Traffic Levels: {trail.trafficLevels}</p>
