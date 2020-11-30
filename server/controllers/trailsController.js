@@ -18,7 +18,7 @@ module.exports = {
 		if (req.user) {
 			db.User
 				.find({ _id: req.user._id })
-				.populate({ path: 'favorites', options: { sort: { date: -1 } } })
+				.populate({ path: 'favorites' })
 				.then(users => {
 					res.json({ favorites: users[0].favorites });
 				})

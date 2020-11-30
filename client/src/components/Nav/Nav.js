@@ -1,6 +1,7 @@
 import React from "react";
-import LoginModal from "../LoginModal"
-import RegisterModal from "../RegisterModal"
+import LoginModal from "../LoginModal";
+import RegisterModal from "../RegisterModal";
+import FavoritesModal from "../FavoritesModal";
 // import { Link } from 'react-router-dom';
 // import { Col } from '../Grid';
 import './Nav.css';
@@ -24,7 +25,7 @@ import './Nav.css';
 // 		)
 //   }
 
-function Nav(){
+function Nav(props){
   return (
     <div className="nav">
       <h1>TRAILSHARE</h1>
@@ -33,6 +34,7 @@ function Nav(){
         <ol>
           <LoginModal />
           <RegisterModal />
+          <FavoritesModal renderTrailById={props.renderTrailById}/>
         </ol>
       </div>
 
