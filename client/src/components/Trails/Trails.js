@@ -93,6 +93,7 @@ function Trails(props) {
       setTrails(filteredTrails)
       setSearchStarted(true);
     }
+    formEl.current.reset();
   };
 
   return (
