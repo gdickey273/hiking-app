@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import './RegisterModal.css';
-import { Redirect, Link } from 'react-router-dom';
 import AUTH from '../../utils/AUTH';
 
 function RegisterModal() {
@@ -19,7 +18,6 @@ function RegisterModal() {
     confirmPassword: '',
     redirectTo: null
   });
-  const [redirectTo, setRedirectTo] = useState(null);
 
   const handleChange = (event) => {
     setUserObject({
@@ -30,16 +28,14 @@ function RegisterModal() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // TODO - validate!
+
     AUTH.signup({
       firstName: userObject.firstName,
       lastName: userObject.lastName,
       username: userObject.username,
       password: userObject.password
     }).then(response => {
-      // console.log(response);
       if (!response.data.errmsg) {
-        setRedirectTo('/');
         setModalState(false);
       } else {
         console.log('duplicate');

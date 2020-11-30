@@ -6,14 +6,14 @@ import Detail from '../Detail';
 function Main(props) {
   return props.trailId?.length > 0 ? (
     <main>
-      <Detail trailId={props.trailId} />      
-      <CreateRouteForm />
+      <Detail trailId={props.trailId} loggedIn={props.loggedIn}/>      
+      <CreateRouteForm loggedIn={props.loggedIn}/>
     </main>
   )
   :
   (
     <main>     
-      <CreateRouteForm />
+      <CreateRouteForm loggedIn={props.loggedIn}/>
     </main>
   )
 };

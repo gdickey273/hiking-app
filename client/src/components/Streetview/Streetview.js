@@ -5,7 +5,6 @@ import API from "../../utils/API";
 function Streetview(props) {
   const [url, setUrl] = useState({})
 
-  // let origin = `${props.originLat},${props.originLng}`
   const id = props.trailId;
 
   useEffect(() => {
@@ -23,6 +22,7 @@ function Streetview(props) {
   return (
     <div>
       <iframe
+        title="streetview"
         width="100%"
         height="625"
         frameBorder="0" style={{ border: "0" }}

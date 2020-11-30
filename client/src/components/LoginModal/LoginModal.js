@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import './LoginModal.css';
-// import { Redirect, Link } from 'react-router-dom';
 
 function LoginModal({ login }) {
 
@@ -31,8 +30,6 @@ function LoginModal({ login }) {
     password: ''
   });
 
-  const [redirectTo, setRedirectTo] = useState(null);
-
   const handleChange = (event) => {
     setUserObject({
       ...userObject,
@@ -43,7 +40,6 @@ function LoginModal({ login }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     login(userObject.username, userObject.password);
-    setRedirectTo('/');
     setModalState(false);
   };
 

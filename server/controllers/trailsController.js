@@ -21,7 +21,6 @@ module.exports = {
 				.populate({ path: 'favorites',
 				model: 'Trail', options: { sort: { date: -1 } } })
 				.then(users => {
-					console.log(users)
 					res.json({ favorites: users[0].favorites });
 				})
 				.catch(err => res.status(422).json(err));
