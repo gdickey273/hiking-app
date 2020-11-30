@@ -12,7 +12,7 @@
             "length": 4.1,
             "elevation": [300, -100],
             "duration": 83,
-            "trailType": "Paved",
+            "trailType": "A to B",
             "terrain": "Road"
         },
         {
@@ -32,7 +32,7 @@
             "length": 0.5,
             "elevation": [0, 0],
             "duration": 10,
-            "trailType": "Paved",
+            "trailType": "A to B",
             "terrain": "Sidewalk/Road"
         }
     ]

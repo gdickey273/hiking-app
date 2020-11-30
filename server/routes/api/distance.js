@@ -13,13 +13,13 @@ router.post('/', async function(req, res) {
   }
 
   switch (trailType) {
-    case "aToB": 
+    case "A to B": 
       totalLength += getDistance([waypoints[waypoints.length - 1].lat, waypoints[waypoints.length - 1].lng], [destination.lat, destination.lng]);
       break;
-    case "loop":
+    case "Loop":
       totalLength += getDistance([waypoints[waypoints.length - 1].lat, waypoints[waypoints.length - 1].lng], [origin.lat, origin.lng]);
       break;
-    case "outAndBack":
+    case "Out 'n Back":
       totalLength = totalLength*2;
       break;
   }

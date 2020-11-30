@@ -10,29 +10,29 @@ function CreateRouteMap(props) {
     if (currentMarker) {
       switch (currentMarker) {
         case "Origin":
-          setNewTrailObj({ ...newTrailObj, origin: event.latLng });
+          setNewTrailObj({ ...newTrailObj, origin: {lat: event.latLng.lat(), lng: event.latLng.lng() }});
           setCurrentMarker("");
           break;
         case "Destination":
-          setNewTrailObj({ ...newTrailObj, destination: event.latLng });
+          setNewTrailObj({ ...newTrailObj, destination: {lat: event.latLng.lat(), lng: event.latLng.lng() }});
           setCurrentMarker("");
           break;
         default:
-          setNewTrailObj({ ...newTrailObj, waypoints: [...newTrailObj.waypoints, event.latLng] });
+          setNewTrailObj({ ...newTrailObj, waypoints: [...newTrailObj.waypoints, {lat: event.latLng.lat(), lng: event.latLng.lng() }] });
       }
     }
   }
 
   function handleMarkerDrag(x, marker, y) {
- 
+
     if (marker.title === "Origin" || marker.title === "Destination") {
       let key = marker.title.toLowerCase();
-      setNewTrailObj({ ...newTrailObj, [key]: y.latLng });
+      setNewTrailObj({ ...newTrailObj, [key]: {lat: y.latLng.lat(), lng: y.latLng.lng()}});
     } else {
       //if dragged marker is a waypoint update that waypoint's coordinates in the newTrailObj.waypoint array
-      const i = parseInt(marker.title[0]);
+      const i = parseInt(marker.title.split(".")[0]);
       const arr = newTrailObj.waypoints;
-      arr.splice(i, 1, y.latLng);
+      arr.splice(i, 1, {lat: y.latLng.lat(), lng: y.latLng.lng()});
 
       setNewTrailObj({ ...newTrailObj, waypoints: arr });
     }
@@ -45,7 +45,7 @@ function CreateRouteMap(props) {
     function isBetween(start, end, point) {
       const PRECISION = precision;
       // console.log("end.lat", end.lat, "point.lng", point.lng, "start.lat", start.lat);
-      const result = Math.abs((end.lat() - start.lat()) * (point.lng() - start.lng()) - (end.lng() - start.lng()) * (point.lat() - start.lat())) < PRECISION;
+      const result = Math.abs((end.lat - start.lat) * (point.lng - start.lng) - (end.lng - start.lng) * (point.lat - start.lat)) < PRECISION;
       // console.log("result: ", result);
       return result;
     }
@@ -62,7 +62,7 @@ function CreateRouteMap(props) {
       }
     }
 
-    if(trailType === "aToB") {
+    if(trailType === "A to B") {
       if (isBetween(waypoints[waypoints.length-1], destination, newMarker)) {
         return waypoints.length;
       }
@@ -78,7 +78,8 @@ function CreateRouteMap(props) {
   
   //onPolylineClick, create new waypoint on polyline between adjacent markers
   function handlePolylineClick(a, b, c) {
-    const position = c.latLng;
+    const position = {lat: c.latLng.lat(), lng: c.latLng.lng()};
+    console.log("-----------------position------------------", position);
     const newIndex = findNewMarkerIndex(position);
     const arr = newTrailObj.waypoints;
     arr.splice(newIndex, 0, position);
@@ -87,48 +88,48 @@ function CreateRouteMap(props) {
 
   function getWaypointIconUrl(index) {
     let iconNumber;
-    if (index < 8) {
-      iconNumber = 48 + index;
-    } else if (index < 16) {
-      iconNumber = 32 + index;
-    } else if (index < 24) {
-      iconNumber = 8 + index;
-    } else if (index < 26) {
-      iconNumber = index - 16;
+    if (index < 7) {
+      iconNumber = 49 + index;
+    } else if (index < 15) {
+      iconNumber = 33 + index;
+    } else if (index < 23) {
+      iconNumber = 9 + index;
+    } else if (index < 25) {
+      iconNumber = index - 15;
     }
     
     if (iconNumber) {
       return `http://maps.google.com/mapfiles/kml/pal5/icon${iconNumber}.png`
     } 
 
-    if (index < 35) {
-      iconNumber = index - 18;
+    if (index < 34) {
+      iconNumber = index - 17;
       return `http://maps.google.com/mapfiles/kml/pal3/icon${iconNumber}.png`;
     }
   }
   const polyCoords = [];
-  if (newTrailObj.trailType === "aToB"){
+ 
+  if (newTrailObj.trailType === "A to B"){
     if (newTrailObj.origin && newTrailObj.waypoints.length > 0 && newTrailObj.destination){
       polyCoords.push(newTrailObj.origin);
       polyCoords.push.apply(polyCoords, [...newTrailObj.waypoints]);
       polyCoords.push(newTrailObj.destination);
     }
-  } else if (newTrailObj.origin && newTrailObj.waypoints.length > 0) {
-    polyCoords.push(newTrailObj.origin);
-    polyCoords.push.apply(polyCoords, [...newTrailObj.waypoints]);
+    } else if (newTrailObj.origin && newTrailObj.waypoints.length > 0) {
+      polyCoords.push(newTrailObj.origin);
+      polyCoords.push.apply(polyCoords, [...newTrailObj.waypoints]);
   }
   if (polyCoords.length > 0) {
-     if (newTrailObj.trailType === "loop") {
+     if (newTrailObj.trailType === "Loop") {
       polyCoords.push(newTrailObj.origin);
     }
   }
-
-
+ 
   return (
     <Map
       google={props.google}
       zoom={13}
-      style={{ width: "100vw", height: "100vh" }}
+      style={{ width: "100vw", height: "100vh", marginLeft:"-100vw" }}
       streetViewControl={false}
       fullscreenControl={false}
       onClick={handleMapClick}
@@ -157,7 +158,7 @@ function CreateRouteMap(props) {
         />
       ))}
 
-      {newTrailObj.destination && newTrailObj.trailType === "aToB" &&
+      {newTrailObj.destination && newTrailObj.trailType === "A to B" &&
         <Marker
           position={newTrailObj.destination}
           draggable={true}
