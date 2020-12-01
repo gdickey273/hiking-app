@@ -4,6 +4,7 @@ import { Col, Row, Container } from "../Grid";
 import { Card } from "../Card";
 import UserTrailsMap from "../UserTrailsMap";
 import APITrailsMap from "../APITrailsMap";
+import UserPolylineMap from "../UserPolylineMap";
 import API from "../../utils/API";
 import AUTH from "../../utils/AUTH";
 import { withScriptjs } from "react-google-maps";
@@ -156,35 +157,35 @@ function Detail(props) {
             <Card
               name={trail.name}
             >
-              {props.loggedIn && 
-              <button style={{float: 'right'}} onClick={() => addFavorite()}><i className="fas fa-star"></i></button>}
+              {props.loggedIn &&
+                <button style={{ float: 'right' }} onClick={() => addFavorite()}><i className="fas fa-star"></i></button>}
               {trail.photos && trail.photos.map((photo, i) => (
                 <img key={i} className="card-img-top" src={photo} alt={trail.name}></img>
               ))}
               {!props.loggedIn && <h4>Log in to make updates to this trail!</h4>}
-              {props.loggedIn && 
-              <form ref={formEl}>
-                <Input
-                  name='photos'
-                  type='file'
-                  accept='.jpg, .png, .jpeg'
-                  onChange={handleInputChange} />
-                {fileSelected &&
-                  <button
-                    type='button'
-                    disabled={!fileSelected}
-                    onClick={uploadImage}>
-                    Upload Image
+              {props.loggedIn &&
+                <form ref={formEl}>
+                  <Input
+                    name='photos'
+                    type='file'
+                    accept='.jpg, .png, .jpeg'
+                    onChange={handleInputChange} />
+                  {fileSelected &&
+                    <button
+                      type='button'
+                      disabled={!fileSelected}
+                      onClick={uploadImage}>
+                      Upload Image
                   </button>
-                }
-              </form>
+                  }
+                </form>
               }
               {/* <DropZone uploadImage={uploadImage} /> */}
               <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6>
-              {props.loggedIn && 
-              <p className="card-text">Verified by {trail.userVerified} users <button name="userVerified" onClick={handleVerify}><i className="fas fa-check"></i></button></p>}
-              {!props.loggedIn && 
-              <p className="card-text">Verified by {trail.userVerified} users <i className="fas fa-check"></i></p>}
+              {props.loggedIn &&
+                <p className="card-text">Verified by {trail.userVerified} users <button name="userVerified" onClick={handleVerify}><i className="fas fa-check"></i></button></p>}
+              {!props.loggedIn &&
+                <p className="card-text">Verified by {trail.userVerified} users <i className="fas fa-check"></i></p>}
               <p className="card-text">Rating: {trail.rating}</p>
               {props.loggedIn && <form ref={formEl}>
                 <Select name="rating" onChange={handleInputChange}>
@@ -225,25 +226,30 @@ function Detail(props) {
           </Col>
         </Row>
       </Container>
-      {
-        trail.destination ?
+
+      {!trail.isPolylinePath && trail.destination &&
         // loads routed map for user created routes
-          <MapLoader
-            googleMapURL={url}
-            loadingElement={<div style={{ height: `100%` }} />}
-            originLat={trail.originLat}
-            originLng={trail.originLng}
-            destination={trail.destination}
-            waypoints={trail.waypoints}
-          />
-          :
-          // loads google map using origin for API trails which do not contain a destination/waypoints
-          <APITrailsMap
-            name={trail.name}
-            originLat={trail.originLat}
-            originLng={trail.originLng}
-          />
+        <MapLoader
+          googleMapURL={url}
+          loadingElement={<div style={{ height: `100%` }} />}
+          originLat={trail.originLat}
+          originLng={trail.originLng}
+          destination={trail.destination}
+          waypoints={trail.waypoints}
+        />
       }
+      {!trail.isPolylinePath && !trail.destination &&
+        // loads google map using origin for API trails which do not contain a destination/waypoints
+        <APITrailsMap
+          name={trail.name}
+          originLat={trail.originLat}
+          originLng={trail.originLng}
+        />
+      }
+
+      {trail.isPolylinePath && (
+        <UserPolylineMap trail={trail} />
+      )}
     </div>
   );
 }

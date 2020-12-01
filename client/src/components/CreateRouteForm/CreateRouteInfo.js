@@ -51,8 +51,13 @@ function CreateRouteInfo(props) {
     const waypointArr = newTrailObj.waypoints.map(wp => {
       return `${wp.lat}, ${wp.lng}`
     });
+    let destination;
+    if (newTrailObj.trailType === "Loop") {
+      destination = `${newTrailObj.origin.lat}, ${newTrailObj.origin.lng}`;
+    } else if (newTrailObj.trailType === "Out 'n Back") {
+      destination = waypointArr.pop();
+    } else destination = `${newTrailObj.destination?.lat}, ${newTrailObj.destination?.lng}`;
     
-    const destination = `${newTrailObj.destination?.lat}, ${newTrailObj.destination?.lng}`;
     const acent = parseFloat(newTrailObj.ascent);
     const decent = parseFloat(newTrailObj.decent);
     const elevation = decent > 0 ? [acent, decent*-1] : [acent, decent];
@@ -76,6 +81,7 @@ function CreateRouteInfo(props) {
       waterSources: newTrailObj.waterSources,
       elevation,
       userVerified: 1,
+      isPolylinePath: newTrailObj.isPolylinePath ? 1 : 0,
       photos: newTrailObj.photos
     }
 

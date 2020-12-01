@@ -99,6 +99,11 @@ const trailSchema = new Schema({
 		type: String,
 		required: false,
 		default: 'No information available'
+	},
+	isPolylinePath: {
+		type: Number,
+		required: true,
+		default: 0
 	}
 });
 
