@@ -7,13 +7,13 @@ function Main(props) {
   return props.trailId?.length > 0 ? (
     <main>
       <Detail trailId={props.trailId} loggedIn={props.loggedIn}/>      
-      <CreateRouteForm loggedIn={props.loggedIn}/>
+      <CreateRouteForm loggedIn={props.loggedIn} setTrailId={props.setTrailId}/>
     </main>
   )
   :
   (
     <main>     
-      <CreateRouteForm loggedIn={props.loggedIn}/>
+      <CreateRouteForm loggedIn={props.loggedIn} setTrailId={props.setTrailId}/>
     </main>
   )
 };

@@ -13,7 +13,7 @@ function Info(props){
        <div className="module-toggle-containers toggle-mid-bottom"><i className="fas fa-images"></i></div>
        <div className="module-toggle-containers toggle-bottom"><i className="fas fa-comments"></i></div>
      </div>
-    {props.trailId && <Streetview trailId={props.trailId}/>}
+    {props.trailId?.length > 0 && <Streetview trailId={props.trailId}/>}
    </div>
   )
 };

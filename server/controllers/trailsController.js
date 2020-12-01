@@ -77,13 +77,14 @@ module.exports = {
 		db.Trail
 			.create(req.body)
 			.then(dbTrail => {
-				console.log('dbTrail', dbTrail)
+				console.log('dbTrail', dbTrail);
+				res.json(dbTrail);
 				return db.User.findOneAndUpdate({ _id: req.user._id }, { $push: { favorites : dbTrail._id } }, { new: true });
 			})
 			.then((dbUser) => {
 				console.log('dbUser', dbUser);
 				// If the User was updated successfully, send it back to the client
-				res.json(dbUser);
+				// res.json(dbUser);
 			})
 			.catch(err => res.status(422).json(err));
 	},
