@@ -28,7 +28,7 @@ function UserPolylineMap(props) {
     polyArr.push(origin);
     polyArr.push.apply(polyArr, [...waypoints]);
 
-    if (trail.trailType === "A to B") {
+    if (trail.trailType === "A to B" || trail.trailType === "Out 'n Back") {
       polyArr.push(destination);
     }
 
