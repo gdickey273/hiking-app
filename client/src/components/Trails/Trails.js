@@ -5,6 +5,7 @@ import { List, ListItem } from "../List";
 import { Card } from "../Card";
 import { Input, Select, FormBtn } from "../Form";
 import API from "../../utils/API";
+import StockPhoto from "./stock-trail.jpg";
 
 function Trails(props) {
 
@@ -70,7 +71,7 @@ function Trails(props) {
     }
 
     let trailsToFilter = trails;
-    if(formObject.rating && formObject.length) {
+    if (formObject.rating && formObject.length) {
       const ratedTrails = trailsToFilter.filter(trail => { return trail.rating > formObject.rating });
       const filteredTrails = ratedTrails.filter(trail => { return trail.length < formObject.length });
       setTrails(filteredTrails)
@@ -105,8 +106,8 @@ function Trails(props) {
                 name="city"
                 placeholder="Search by city"
               />
-              <Select 
-                name="rating" 
+              <Select
+                name="rating"
                 onChange={handleInputChange}
               >
                 <option value="rating">Rating</option>
@@ -114,8 +115,8 @@ function Trails(props) {
                 <option value="3"> 3</option>
                 <option value="4"> 4</option>
               </Select>
-              <Select 
-                name="length" 
+              <Select
+                name="length"
                 onChange={handleInputChange}
               >
                 <option value="length">Length</option>
@@ -131,28 +132,33 @@ function Trails(props) {
           </Card>
         </Col>
         {searchStarted ? (
-            <Col size="md-6 sm-12">
-              <Card>
-                {trails.length ? (
-                  <List>
-                    {trails.map(trail => (
-                      <ListItem key={trail._id}>
-                        <button style={{backgroundColor: "transparent", border: "none"}} onClick={() => props.renderTrailById(trail._id)}>
-                          {/* <strong>
+          <Col size="md-6 sm-12">
+            <Card>
+              {trails.length ? (
+                <List>
+                  {trails.map(trail => (
+                    <ListItem key={trail._id}>
+                      <button style={{ backgroundColor: "transparent", border: "none" }} onClick={() => props.renderTrailById(trail._id)}>
+                        {/* <strong>
                             {trail.name}/{trail.city}/{trail.length}mi./{trail.rating}stars
                         </strong> */}
-                        <img className="photo-containers" src={trail.photos} alt={trail.name}/>
-                        </button>
-                      </ListItem>
-                    ))}
-                  </List>
-                ) : (
-                    <h3>No Results to Display</h3>
-                  )}
-              </Card>
-            </Col>
-          ) 
-          : 
+                        {/* <img className="photo-containers" src={trail.photos} alt={trail.name} /> */}
+                        {(trail.photos && trail.photos.length) ? 
+                          (<img className="photo-containers" src={trail.photos} alt={trail.name}></img>)
+                          :
+                          (<img className="photo-containers" src={StockPhoto} alt="stock trail"></img>)
+                        }
+                      </button>
+                    </ListItem>
+                  ))}
+                </List>
+              ) : (
+                  <h3>No Results to Display</h3>
+                )}
+            </Card>
+          </Col>
+        )
+          :
           (<h3 className="no-results">No Results to Display</h3>)
         }
       </Row>

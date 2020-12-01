@@ -3,14 +3,14 @@ import extAPI from "../../utils/extAPI";
 import API from "../../utils/API";
 
 function Streetview(props) {
-  const [url, setUrl] = useState({})
-
+  const [url, setUrl] = useState(null)
+ 
   const id = props.trailId;
 
   useEffect(() => {
     API.getTrail(id)
       .then(res =>
-        {// console.log(res.data)
+        { // console.log(res.data)
         let origin = `${res.data.originLat},${res.data.originLng}`;
         extAPI.getStreetview(origin)
           .then(response =>
@@ -19,7 +19,7 @@ function Streetview(props) {
       .catch(err => console.log(err));
   }, [id]);
 
-  return (
+  return url && (
     <div>
       <iframe
         title="streetview"

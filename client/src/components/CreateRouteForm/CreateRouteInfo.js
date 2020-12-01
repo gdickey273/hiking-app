@@ -91,7 +91,7 @@ function CreateRouteInfo(props) {
 
     API.saveTrail(trailObj)
       .then(res => {
-        console.log(res);
+        props.setTrailId(res.data._id);
       })
       .catch(err => console.log(err));
   }

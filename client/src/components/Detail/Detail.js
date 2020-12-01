@@ -11,6 +11,7 @@ import { withScriptjs } from "react-google-maps";
 import extAPI from "../../utils/extAPI";
 import { TextArea, Select, FormBtn, Input } from "../Form";
 import { ListItem } from "../List";
+import StockPhoto from "./stock-trail.jpg";
 import DropZone from "../DropZone";
 
 function Detail(props) {
@@ -145,9 +146,11 @@ function Detail(props) {
       .catch(err => console.log(err));
   }
 
+
   const date = new Date(trail.date);
   const formatDate = `${date.getMonth() + 1}/${date.getDate() + 1}/${date.getFullYear()}`;
 
+  console.log(trail);
   const MapLoader = withScriptjs(UserTrailsMap);
   return trail && (
     <div className="trail-selected-container">
@@ -158,10 +161,15 @@ function Detail(props) {
               name={trail.name}
             >
               {props.loggedIn &&
-                <button style={{ float: 'right' }} onClick={() => addFavorite()}><i className="fas fa-star"></i></button>}
-              {trail.photos && trail.photos.map((photo, i) => (
+                <button style={{ float: 'right' }} onClick={() => addFavorite()}><i className="fas fa-star"></i></button>
+              }
+              {(trail.photos && trail.photos.length) ? (trail.photos.map((photo, i) => (
                 <img key={i} className="card-img-top" src={photo} alt={trail.name}></img>
-              ))}
+              )))
+                :
+                (<img className="card-img-top" src={StockPhoto} alt="stock trail"></img>)
+              }
+
               {!props.loggedIn && <h4>Log in to make updates to this trail!</h4>}
               {props.loggedIn &&
                 <form ref={formEl}>
@@ -244,6 +252,7 @@ function Detail(props) {
           name={trail.name}
           originLat={trail.originLat}
           originLng={trail.originLng}
+          zoom="16"
         />
       }
 
