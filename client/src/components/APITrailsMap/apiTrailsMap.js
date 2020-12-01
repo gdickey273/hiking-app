@@ -4,7 +4,7 @@ import extAPI from "../../utils/extAPI";
 function APITrailsMap(props) {
   const [url, setUrl] = useState({})
 
-  let origin = `${props.originLat},${props.originLng}`
+  let origin = `${props.originLat},${props.originLng}&zoom=${props.zoom}`
 
   useEffect(() => {
     extAPI.getTrailMap(origin)
