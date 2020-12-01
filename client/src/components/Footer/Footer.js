@@ -3,7 +3,7 @@ import './Footer.css';
 import Info from "../Info";
 
 function Footer(props){
-  return (
+  return props.trailId?.length > 0 && (
     <footer>
       <Info trailId={props.trailId}/>
     </footer>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CreateRouteMarkers from "./CreateRouteMarkers";
 import CreateRouteInfo from "./CreateRouteInfo";
+import APITrailsMap from "../APITrailsMap";
 import extAPI from "../../utils/extAPI";
 
 const CreateRouteForm = (props) => {
@@ -126,20 +127,29 @@ const CreateRouteForm = (props) => {
                   <input type="submit" name="submit" onClick={handleButtonClick} />
                 </>}
             </form>
+ 
+              {formStage === "init" &&
+                <APITrailsMap
+                  name="map of the Triangle"
+                  originLat="35.878547"
+                  originLng="-78.830304"
+                  zoom="10" />
+              }
 
-            {centerCoords.lat && (formStage === "route" || formStage === "preview") &&
-              <CreateRouteMarkers
-                newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj}
-                centerCoords={centerCoords} setCenterCoords={setCenterCoords}
-                formStage={formStage} setFormStage={setFormStage}
-                APIKey={API.key} />
+              {centerCoords.lat && (formStage === "route" || formStage === "preview") &&
+                <CreateRouteMarkers
+                  newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj}
+                  centerCoords={centerCoords} setCenterCoords={setCenterCoords}
+                  formStage={formStage} setFormStage={setFormStage}
+                  APIKey={API.key} />
 
-            }
+              }
 
-            {formStage === "info" &&
-              <CreateRouteInfo
-                newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} />
-            }
+              {formStage === "info" &&
+                <CreateRouteInfo
+                  newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} setTrailId={props.setTrailId}/>
+              }
+
           </div>
 
           {/* <h5>{JSON.stringify(newTrailObj)}</h5>
