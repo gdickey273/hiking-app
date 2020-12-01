@@ -3,11 +3,7 @@ let db = require("../models");
 let APIData = require("../data/seedHikingData.json");
 let userData = require("../data/seedUserHikingData.json");
 const { User } = require("../models");
-
-mongoose.connect("mongodb://localhost/hiking-app", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
+const fs = require("fs");
 
 let trailSeed = [];
 
@@ -21,11 +17,12 @@ for(i = 0; i < APIData.trails.length; i++) {
     originLng: APIData.trails[i].longitude,
     rating: APIData.trails[i].stars,
     rateCount: APIData.trails[i].starVotes,
-    comments: [{comment: APIData.trails[i].summary, userName: "Anonymus", userID: null}],
+    comments: [{comment: APIData.trails[i].summary, userName: "Anonymous", userID: null}],
     photos: [APIData.trails[i].imgMedium],
     length: APIData.trails[i].length,
     elevation: [APIData.trails[i].ascent, APIData.trails[i].descent],
-    currentCondition: APIData.trails[i].conditionDetails
+    currentCondition: APIData.trails[i].conditionDetails,
+    isPolylinePath: 0
   })
 }
 
@@ -54,6 +51,12 @@ for(i = 0; i < userData.UserHikingData.length; i++) {
   })
 }
 
+function seedLocalDB(){
+  mongoose.connect("mongodb://localhost/hiking-app", {
+  useNewUrlParser: true,
+  useFindAndModify: false
+});
+
 db.Trail.deleteMany({})
   .then(() => db.Trail.collection.insertMany(trailSeed))
   .then(data => {
@@ -64,3 +67,12 @@ db.Trail.deleteMany({})
     console.error(err);
     process.exit(1);
   });
+}
+
+//creates a JSON file named seed.json for seeding Mongodb Atlas database for Heroku.
+// mongoimport --uri "mongodb+srv://gdickey273:<PASSWORD>@cluster0.a2fqy.mongodb.net/hiking-app?retryWrites=true&w=majority" --collection trails --drop --file seed.json --jsonArray
+function writeJSONSeedFile() {
+  fs.writeFile("seed.json", JSON.stringify(trailSeed), (err) => {if(err) throw err; console.log('file saved!')});
+}
+
+seedLocalDB();
