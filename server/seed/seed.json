@@ -1,0 +1,2081 @@
+[
+  {
+    "name": "Company Mill Trail",
+    "date": "2020-11-15 08:23:30",
+    "city": "Cary",
+    "state": " North Carolina",
+    "originLat": 35.8365,
+    "originLng": -78.7599,
+    "rating": 4.4,
+    "rateCount": 39,
+    "comments": [
+      {
+        "comment": "A great get away in the heart of the triangle with some scenic running down on Crabtree Creek.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7072380_medium_1598618597.jpg"
+    ],
+    "length": 5.1,
+    "elevation": [
+      382,
+      -565
+    ],
+    "currentCondition": "Dry, Mostly Dry, Fallen Trees - na",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Eno Outer Loop",
+    "date": "1970-01-01 00:00:00",
+    "city": "Hillsborough",
+    "state": " North Carolina",
+    "originLat": 36.0739,
+    "originLng": -79.0062,
+    "rating": 4.7,
+    "rateCount": 7,
+    "comments": [
+      {
+        "comment": "This longer loop visits the three highest points in the park",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7033128_medium_1554997293.jpg"
+    ],
+    "length": 7.1,
+    "elevation": [
+      841,
+      -841
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Campbell Creek Loop Trail",
+    "date": "2020-09-20 08:25:33",
+    "city": "Broadway",
+    "state": " North Carolina",
+    "originLat": 35.462,
+    "originLng": -78.9123,
+    "rating": 4.2,
+    "rateCount": 16,
+    "comments": [
+      {
+        "comment": "Two areas of well-maintained trails. Great views of the Cape Fear River and the famous Raven Rock",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7002019_medium_1554220098.jpg"
+    ],
+    "length": 5,
+    "elevation": [
+      436,
+      -436
+    ],
+    "currentCondition": "Mostly Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Al Buehler and Sally Meyerhoff Trails",
+    "date": "1970-01-01 00:00:00",
+    "city": "Durham",
+    "state": " North Carolina",
+    "originLat": 35.9971,
+    "originLng": -78.9523,
+    "rating": 4.2,
+    "rateCount": 9,
+    "comments": [
+      {
+        "comment": "A very well-maintained trail circumscribing the Washington Duke golf course.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7041055_medium_1555103475.jpg"
+    ],
+    "length": 3.7,
+    "elevation": [
+      216,
+      -225
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Peninsula Loop",
+    "date": "2020-10-24 13:45:01",
+    "city": "Holly Springs",
+    "state": " North Carolina",
+    "originLat": 35.6201,
+    "originLng": -78.9273,
+    "rating": 4,
+    "rateCount": 14,
+    "comments": [
+      {
+        "comment": "The Peninsula Trail will lead visitors along the lake shore through a variety of forest habitats.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7013848_medium_1554823479.jpg"
+    ],
+    "length": 4.8,
+    "elevation": [
+      125,
+      -125
+    ],
+    "currentCondition": "",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "De Hart Botanical Gardens",
+    "date": "2020-09-07 11:33:02",
+    "city": "Youngsville",
+    "state": " North Carolina",
+    "originLat": 36.024,
+    "originLng": -78.3542,
+    "rating": 4.5,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "An excellent way to enjoy nature and its wonders.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7030412_medium_1554926937.jpg"
+    ],
+    "length": 2.8,
+    "elevation": [
+      179,
+      -178
+    ],
+    "currentCondition": "",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Bond Park Lake Loop",
+    "date": "2020-09-06 13:49:59",
+    "city": "Morrisville",
+    "state": " North Carolina",
+    "originLat": 35.7846,
+    "originLng": -78.8293,
+    "rating": 4.3,
+    "rateCount": 3,
+    "comments": [
+      {
+        "comment": "An easy, short loop run around the lake on singletrack, mulched, and paved trail.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7028067_medium_1554917523.jpg"
+    ],
+    "length": 3,
+    "elevation": [
+      84,
+      -84
+    ],
+    "currentCondition": "Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Turkey Creek/Cedar Ridge Loop",
+    "date": "1970-01-01 00:00:00",
+    "city": "Cary",
+    "state": " North Carolina",
+    "originLat": 35.843,
+    "originLng": -78.7251,
+    "rating": 4.2,
+    "rateCount": 6,
+    "comments": [
+      {
+        "comment": "A good rolling loop trail through established NC forest with water features.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7066436_medium_1579572571.jpg"
+    ],
+    "length": 5.2,
+    "elevation": [
+      290,
+      -289
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Horton Grove Nature Preserve Loop",
+    "date": "1970-01-01 00:00:00",
+    "city": "Butner",
+    "state": " North Carolina",
+    "originLat": 36.1278,
+    "originLng": -78.8386,
+    "rating": 4.2,
+    "rateCount": 6,
+    "comments": [
+      {
+        "comment": "This loop combines the varied terrain of several trails to make a great longer run.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7071228_medium_1595472724.jpg"
+    ],
+    "length": 6,
+    "elevation": [
+      299,
+      -299
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Korstian Foot Trail Loop",
+    "date": "2020-09-20 15:01:17",
+    "city": "Chapel Hill",
+    "state": " North Carolina",
+    "originLat": 35.9781,
+    "originLng": -79.0225,
+    "rating": 3.9,
+    "rateCount": 9,
+    "comments": [
+      {
+        "comment": "This loop combines several of Korstian's foot trails.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7026295_medium_1554913885.jpg"
+    ],
+    "length": 6.9,
+    "elevation": [
+      482,
+      -480
+    ],
+    "currentCondition": "Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "MST: West Point to Pump Station",
+    "date": "2020-10-31 08:27:28",
+    "city": "Durham",
+    "state": " North Carolina",
+    "originLat": 36.069,
+    "originLng": -78.9081,
+    "rating": 4,
+    "rateCount": 5,
+    "comments": [
+      {
+        "comment": "Take the Mountains-to-Sea Trail along the Eno River from West Point to the Pump Station and back.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7013580_medium_1554822836.jpg"
+    ],
+    "length": 9.3,
+    "elevation": [
+      325,
+      -325
+    ],
+    "currentCondition": "Mostly Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Umstead Loop",
+    "date": "2020-09-28 14:35:46",
+    "city": "Cary",
+    "state": " North Carolina",
+    "originLat": 35.8809,
+    "originLng": -78.7585,
+    "rating": 4,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "A scenic 12 mile loop around Umstead State Park (two ponds, steep hill section, and one stream crossing!)",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7036183_medium_1555021716.jpg"
+    ],
+    "length": 12.9,
+    "elevation": [
+      678,
+      -678
+    ],
+    "currentCondition": "",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Lake Johnson - West Loop",
+    "date": "2020-10-21 08:17:23",
+    "city": "West Raleigh",
+    "state": " North Carolina",
+    "originLat": 35.7705,
+    "originLng": -78.7179,
+    "rating": 3.6,
+    "rateCount": 10,
+    "comments": [
+      {
+        "comment": "A fun, urban trail with sections of singletrack and a wilderness feel.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7008019_medium_1554324032.jpg"
+    ],
+    "length": 2.9,
+    "elevation": [
+      129,
+      -130
+    ],
+    "currentCondition": "Some Mud",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Creedmoor Cross City Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Creedmoor",
+    "state": " North Carolina",
+    "originLat": 36.1222,
+    "originLng": -78.6797,
+    "rating": 4,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "The City of Creedmoor answer for Greenways, that connect the City to Lake Rogers.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7070553_medium_1593636656.jpg"
+    ],
+    "length": 2,
+    "elevation": [
+      107,
+      -78
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Lake Trail",
+    "date": "2020-09-06 10:19:58",
+    "city": "Morrisville",
+    "state": " North Carolina",
+    "originLat": 35.8421,
+    "originLng": -78.7954,
+    "rating": 3.4,
+    "rateCount": 5,
+    "comments": [
+      {
+        "comment": "The Lake Trail is a great urban escape and one of the best in the Triangle area!",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7024051_medium_1554846143.jpg"
+    ],
+    "length": 6.4,
+    "elevation": [
+      205,
+      -208
+    ],
+    "currentCondition": "Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Durant Nature Park Loop",
+    "date": "1970-01-01 00:00:00",
+    "city": "Rolesville",
+    "state": " North Carolina",
+    "originLat": 35.8948,
+    "originLng": -78.5793,
+    "rating": 3.3,
+    "rateCount": 3,
+    "comments": [
+      {
+        "comment": "A rustic run that will remind you of summer camp.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7038484_medium_1555088446.jpg"
+    ],
+    "length": 3.2,
+    "elevation": [
+      220,
+      -224
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Battle Branch / Bolin Creek Loop",
+    "date": "2020-09-19 07:45:52",
+    "city": "Chapel Hill",
+    "state": " North Carolina",
+    "originLat": 35.9259,
+    "originLng": -79.0323,
+    "rating": 3.3,
+    "rateCount": 4,
+    "comments": [
+      {
+        "comment": "Wilderness in the heart of Chapel Hill adjacent to UNC Chapel Hill Campus, with plenty of hills.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7008008_medium_1554324011.jpg"
+    ],
+    "length": 3.7,
+    "elevation": [
+      239,
+      -239
+    ],
+    "currentCondition": "Dry - Cool 60",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Jimmy Rogers Road Out-and-Back",
+    "date": "1970-01-01 00:00:00",
+    "city": "Gorman",
+    "state": " North Carolina",
+    "originLat": 36.0132,
+    "originLng": -78.7777,
+    "rating": 3,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "A section of the MST along Falls Lake. The boardwalk by Little Lick Creek Bridge is the main highlight.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7070806_medium_1594330178.jpg"
+    ],
+    "length": 7.6,
+    "elevation": [
+      232,
+      -232
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Rolling View Marina View Out-and-Back",
+    "date": "2020-11-10 11:29:58",
+    "city": "Creedmoor",
+    "state": " North Carolina",
+    "originLat": 36.0124,
+    "originLng": -78.6891,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "A pleasant section of the MST following the lake early on. The highlight is seeing Rolling View Marina coming into view.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7072564_medium_1599231523.jpg"
+    ],
+    "length": 8.2,
+    "elevation": [
+      427,
+      -426
+    ],
+    "currentCondition": "Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Falls Lake Trail - Section 1",
+    "date": "2020-10-27 09:36:20",
+    "city": "Wake Forest",
+    "state": " North Carolina",
+    "originLat": 35.9398,
+    "originLng": -78.581,
+    "rating": 4.9,
+    "rateCount": 7,
+    "comments": [
+      {
+        "comment": "Section 1 of the Falls Lake Trail leading from the dam at Falls of Neuse Road to Raven Ridge Road.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7037985_medium_1555087216.jpg"
+    ],
+    "length": 3.6,
+    "elevation": [
+      197,
+      -152
+    ],
+    "currentCondition": "Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Laurel Bluffs Trail (East)",
+    "date": "1970-01-01 00:00:00",
+    "city": "Durham",
+    "state": " North Carolina",
+    "originLat": 36.0716,
+    "originLng": -78.9351,
+    "rating": 5,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "The eastern section of the Laurel Bluffs Trail, leadring from the Pump Station to Guess Road.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7013580_medium_1554822836.jpg"
+    ],
+    "length": 2.4,
+    "elevation": [
+      118,
+      -88
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Highland Trail 1",
+    "date": "1970-01-01 00:00:00",
+    "city": "Morrisville",
+    "state": " North Carolina",
+    "originLat": 35.8424,
+    "originLng": -78.7927,
+    "rating": 5,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "A moderate multi-use loop in Lake Crabtree County Park.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      ""
+    ],
+    "length": 2.3,
+    "elevation": [
+      102,
+      -100
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Sal's Branch Trail",
+    "date": "2020-11-14 15:06:18",
+    "city": "Cary",
+    "state": " North Carolina",
+    "originLat": 35.8809,
+    "originLng": -78.7584,
+    "rating": 4,
+    "rateCount": 19,
+    "comments": [
+      {
+        "comment": "A three mile loop starting from the visitor center at William B. Umstead State Park.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7036183_medium_1555021716.jpg"
+    ],
+    "length": 2.6,
+    "elevation": [
+      197,
+      -206
+    ],
+    "currentCondition": "Some Mud",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Raven Rock Loop Trail",
+    "date": "2020-11-07 10:40:55",
+    "city": "Broadway",
+    "state": " North Carolina",
+    "originLat": 35.4622,
+    "originLng": -78.9122,
+    "rating": 4.4,
+    "rateCount": 11,
+    "comments": [
+      {
+        "comment": "A lovely trail through the woods that convenes on the beautiful Raven Rock formation.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7002020_medium_1554220101.jpg"
+    ],
+    "length": 2.2,
+    "elevation": [
+      175,
+      -176
+    ],
+    "currentCondition": "Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Sycamore Trail",
+    "date": "2020-11-15 14:27:39",
+    "city": "Cary",
+    "state": " North Carolina",
+    "originLat": 35.8719,
+    "originLng": -78.7609,
+    "rating": 4,
+    "rateCount": 18,
+    "comments": [
+      {
+        "comment": "An easy trail for running with minimal difficulty.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7002698_medium_1554227082.jpg"
+    ],
+    "length": 4.9,
+    "elevation": [
+      311,
+      -319
+    ],
+    "currentCondition": "Some Mud",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Mountains-to-Sea Trail: Segment 10",
+    "date": "2020-09-19 17:05:21",
+    "city": "Hillsborough",
+    "state": " North Carolina",
+    "originLat": 36.047,
+    "originLng": -79.0113,
+    "rating": 4,
+    "rateCount": 11,
+    "comments": [
+      {
+        "comment": "Eno River and Falls Lake: Eno River State Park to Falls Lake Dam",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7072092_medium_1597863487.jpg"
+    ],
+    "length": 76.7,
+    "elevation": [
+      2646,
+      -2832
+    ],
+    "currentCondition": "Mostly Dry, Fallen Trees - Nice day",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Cox Mountain Trail",
+    "date": "2020-10-24 11:27:42",
+    "city": "Hillsborough",
+    "state": " North Carolina",
+    "originLat": 36.0739,
+    "originLng": -79.0063,
+    "rating": 3.9,
+    "rateCount": 15,
+    "comments": [
+      {
+        "comment": "A nice jaunt up Cox Mountain.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7033459_medium_1554998038.jpg"
+    ],
+    "length": 3.6,
+    "elevation": [
+      354,
+      -330
+    ],
+    "currentCondition": "Mostly Dry, Some Mud",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Al Buehler Cross Country Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Durham",
+    "state": " North Carolina",
+    "originLat": 35.997,
+    "originLng": -78.9519,
+    "rating": 4.5,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "This trail is the larger of two available at the Duke Forest and includes scenic surroundings.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7041055_medium_1555103475.jpg"
+    ],
+    "length": 2.9,
+    "elevation": [
+      159,
+      -170
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Holden Mill Trail",
+    "date": "2020-11-06 12:25:45",
+    "city": "Hillsborough",
+    "state": " North Carolina",
+    "originLat": 36.0853,
+    "originLng": -79.0081,
+    "rating": 4.5,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "Pass the ruins of the Holden Mill and the rocky river bottoms of the Eno.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7033459_medium_1554998038.jpg"
+    ],
+    "length": 2.6,
+    "elevation": [
+      274,
+      -272
+    ],
+    "currentCondition": "Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Falls Lake Trail: Section 6",
+    "date": "2020-10-27 11:09:33",
+    "city": "Wake Forest",
+    "state": " North Carolina",
+    "originLat": 35.9602,
+    "originLng": -78.645,
+    "rating": 4.5,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "Section of Falls Lake Trail/Mountains-to-Sea Trail through Blue Jay Point County Park.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      ""
+    ],
+    "length": 3.4,
+    "elevation": [
+      179,
+      -183
+    ],
+    "currentCondition": "Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Buffalo Creek Greenway",
+    "date": "2020-10-17 13:11:12",
+    "city": "Smithfield",
+    "state": " North Carolina",
+    "originLat": 35.5093,
+    "originLng": -78.3501,
+    "rating": 4.5,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "Very enjoyable trail—fantastic addition to Smithfield, NC with a historical marker of a bridge.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      ""
+    ],
+    "length": 2.7,
+    "elevation": [
+      38,
+      -29
+    ],
+    "currentCondition": "Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Apex Community Park Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Apex",
+    "state": " North Carolina",
+    "originLat": 35.7535,
+    "originLng": -78.8252,
+    "rating": 4.1,
+    "rateCount": 7,
+    "comments": [
+      {
+        "comment": "A relaxing and scenic trail around Apex Lake.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7072932_medium_1599849916.jpg"
+    ],
+    "length": 2.2,
+    "elevation": [
+      76,
+      -97
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Loblolly Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Cary",
+    "state": " North Carolina",
+    "originLat": 35.8363,
+    "originLng": -78.7593,
+    "rating": 3.9,
+    "rateCount": 8,
+    "comments": [
+      {
+        "comment": "The Loblolly Trail leads from the Reedy Creek entrance to the park boundary.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7015146_medium_1554825893.jpg"
+    ],
+    "length": 3.3,
+    "elevation": [
+      261,
+      -376
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Eagle Spur Trail",
+    "date": "2020-08-10 08:04:29",
+    "city": "Chapel Hill",
+    "state": " North Carolina",
+    "originLat": 35.8864,
+    "originLng": -78.9627,
+    "rating": 3.8,
+    "rateCount": 8,
+    "comments": [
+      {
+        "comment": "An old rail line that runs through wetlands.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7027687_medium_1554916723.jpg"
+    ],
+    "length": 2.6,
+    "elevation": [
+      21,
+      -41
+    ],
+    "currentCondition": "I just hiked to the end and back at dusk a few days ago. There is about 18-20 inches of water at the beginning but it's only knee deep. I think I counted 3 downed trees only 2 of those you have to bypass. and I did bypass where the culverts are being out in by trail volunteers. If you dont mind getting your shoes wet it's an easy walk to end where a small but nice view of the lake is. I would bet you could camp on that peninsula easily.",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Mingo Creek Trail",
+    "date": "2020-10-17 13:57:10",
+    "city": "Knightdale",
+    "state": " North Carolina",
+    "originLat": 35.791,
+    "originLng": -78.4944,
+    "rating": 4,
+    "rateCount": 3,
+    "comments": [
+      {
+        "comment": "A great trail that borders a wetland.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7067167_medium_1581991402.jpg"
+    ],
+    "length": 3.5,
+    "elevation": [
+      34,
+      -115
+    ],
+    "currentCondition": "Mostly Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Crabtree Creek Trail",
+    "date": "2020-09-26 09:57:30",
+    "city": "Raleigh",
+    "state": " North Carolina",
+    "originLat": 35.7724,
+    "originLng": -78.5431,
+    "rating": 4,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "A paved path that is part of the Capital Area Greenway Trail System.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7035919_medium_1555021179.jpg"
+    ],
+    "length": 15.2,
+    "elevation": [
+      275,
+      -242
+    ],
+    "currentCondition": "Muddy - Took the Neuse River Trail/ MST",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Laurel Bluff Trail (Central)",
+    "date": "2020-09-26 11:37:54",
+    "city": "Hillsborough",
+    "state": " North Carolina",
+    "originLat": 36.063,
+    "originLng": -78.972,
+    "rating": 4,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "A rolling trail that follows the Eno River.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7037459_medium_1555086030.jpg"
+    ],
+    "length": 2.9,
+    "elevation": [
+      228,
+      -139
+    ],
+    "currentCondition": "Muddy, Fallen Trees",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Shelley Lake Trail",
+    "date": "2020-11-09 12:20:28",
+    "city": "West Raleigh",
+    "state": " North Carolina",
+    "originLat": 35.8558,
+    "originLng": -78.6614,
+    "rating": 4,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "Part of the City of Raleigh Parks, this greenway path snakes around Shelley Lake.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7033502_medium_1554998145.jpg"
+    ],
+    "length": 2.1,
+    "elevation": [
+      80,
+      -57
+    ],
+    "currentCondition": "Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Black Creek Greenway",
+    "date": "1970-01-01 00:00:00",
+    "city": "Cary",
+    "state": " North Carolina",
+    "originLat": 35.8392,
+    "originLng": -78.7822,
+    "rating": 4,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "Another nature-filled trail of the Cary Trail System.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7054856_medium_1555707759.jpg"
+    ],
+    "length": 7.4,
+    "elevation": [
+      431,
+      -381
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Rocky Branch Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "West Raleigh",
+    "state": " North Carolina",
+    "originLat": 35.789,
+    "originLng": -78.686,
+    "rating": 4,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "Wonderful trail going through southwestern Raleigh.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7055249_medium_1555708670.jpg"
+    ],
+    "length": 4.1,
+    "elevation": [
+      30,
+      -210
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Reedy Creek Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "West Raleigh",
+    "state": " North Carolina",
+    "originLat": 35.7937,
+    "originLng": -78.6845,
+    "rating": 4,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "Reedy Creek Trail connects the NC Museum of Art, the House Creek Greenway, and Umstead State Park.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7067216_medium_1582147141.jpg"
+    ],
+    "length": 5.1,
+    "elevation": [
+      253,
+      -312
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Treyburn Greenway: Old Oxford Hwy Section",
+    "date": "1970-01-01 00:00:00",
+    "city": "Gorman",
+    "state": " North Carolina",
+    "originLat": 36.0918,
+    "originLng": -78.8467,
+    "rating": 4,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "The continuation of the Teknika Parkway Greenway",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7054851_medium_1555707748.jpg"
+    ],
+    "length": 2.1,
+    "elevation": [
+      86,
+      -15
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Leigh Farm Loop",
+    "date": "1970-01-01 00:00:00",
+    "city": "Chapel Hill",
+    "state": " North Carolina",
+    "originLat": 35.9218,
+    "originLng": -78.9833,
+    "rating": 4,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "82 acre property, that flows the I40 highway close to Chapel Hill, in Durham County.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      ""
+    ],
+    "length": 2.4,
+    "elevation": [
+      119,
+      -130
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "White Oak Greenway",
+    "date": "1970-01-01 00:00:00",
+    "city": "Apex",
+    "state": " North Carolina",
+    "originLat": 35.7756,
+    "originLng": -78.8474,
+    "rating": 4,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "A relatively new addition to the greenway system",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      ""
+    ],
+    "length": 5.5,
+    "elevation": [
+      52,
+      -195
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Road Closed Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Butner",
+    "state": " North Carolina",
+    "originLat": 36.1271,
+    "originLng": -78.7898,
+    "rating": 4,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "An old road that locals love to run, hike, 4-wheel, and hunt on, as well as just enjoying.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7031130_medium_1554929166.jpg"
+    ],
+    "length": 2,
+    "elevation": [
+      52,
+      -61
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Mountains-to-Sea Trail: Segment 9",
+    "date": "1970-01-01 00:00:00",
+    "city": "McLeansville",
+    "state": " North Carolina",
+    "originLat": 36.1703,
+    "originLng": -79.7439,
+    "rating": 3.7,
+    "rateCount": 6,
+    "comments": [
+      {
+        "comment": "Revolution and Textiles: Bryan Park to Eno River State Park",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7037202_medium_1555085460.jpg"
+    ],
+    "length": 62.1,
+    "elevation": [
+      1509,
+      -1902
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Neuse River Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Wake Forest",
+    "state": " North Carolina",
+    "originLat": 35.9398,
+    "originLng": -78.581,
+    "rating": 3.7,
+    "rateCount": 6,
+    "comments": [
+      {
+        "comment": "The Neuse River Trail is a scenic greenway paralleling the Neuse River from Falls Lake Dam to Johnston County.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7061160_medium_1563995497.jpg"
+    ],
+    "length": 30.5,
+    "elevation": [
+      398,
+      -465
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "American Tobacco Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Scotts Mill",
+    "state": " North Carolina",
+    "originLat": 35.7153,
+    "originLng": -78.9433,
+    "rating": 3.7,
+    "rateCount": 3,
+    "comments": [
+      {
+        "comment": "A mostly Unpaved, hard-packed Rail Trail.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7039348_medium_1555091184.jpg"
+    ],
+    "length": 23,
+    "elevation": [
+      589,
+      -507
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "RTP",
+    "date": "2020-08-16 14:22:15",
+    "city": "Morrisville",
+    "state": " North Carolina",
+    "originLat": 35.8526,
+    "originLng": -78.8896,
+    "rating": 3.7,
+    "rateCount": 3,
+    "comments": [
+      {
+        "comment": "Smooth and rolling trail.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7038119_medium_1555087542.jpg"
+    ],
+    "length": 3.2,
+    "elevation": [
+      115,
+      -112
+    ],
+    "currentCondition": "Muddy - Construction zone about halfway through the trail prevents crossing.",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Mountain Laurel Loop",
+    "date": "1970-01-01 00:00:00",
+    "city": "Broadway",
+    "state": " North Carolina",
+    "originLat": 35.455,
+    "originLng": -78.9087,
+    "rating": 3.7,
+    "rateCount": 3,
+    "comments": [
+      {
+        "comment": "A beautiful, shady, singletrack trail that winds through the forest and over wooden bridges at Raven Rock State Park.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      ""
+    ],
+    "length": 6.3,
+    "elevation": [
+      353,
+      -365
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Durham-Duncan Line",
+    "date": "2020-08-10 19:25:22",
+    "city": "Fearrington Village",
+    "state": " North Carolina",
+    "originLat": 35.8267,
+    "originLng": -78.9942,
+    "rating": 3.7,
+    "rateCount": 3,
+    "comments": [
+      {
+        "comment": "A trail along the old rail line.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7030024_medium_1554926054.jpg"
+    ],
+    "length": 2.8,
+    "elevation": [
+      53,
+      -57
+    ],
+    "currentCondition": "Fallen Trees - I crossed a few down trees, I was able to move one off of the trail. Towards the end by the peninsula there is a very large tree blocking the path, reroute toward the trunk of the tree and you'll be fine.",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Forest Demonstration Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Fearrington Village",
+    "state": " North Carolina",
+    "originLat": 35.7735,
+    "originLng": -79.0421,
+    "rating": 3.7,
+    "rateCount": 3,
+    "comments": [
+      {
+        "comment": "This trail offers an opportunity to see a forest in various stages of management and learn about forest management.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7039236_medium_1555090693.jpg"
+    ],
+    "length": 2,
+    "elevation": [
+      62,
+      -62
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "House Creek Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "West Raleigh",
+    "state": " North Carolina",
+    "originLat": 35.8367,
+    "originLng": -78.677,
+    "rating": 3.7,
+    "rateCount": 3,
+    "comments": [
+      {
+        "comment": "A hilly and challenging trail that connects the Crabtree Creek Trail  and Reedy Creek Trail.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7063167_medium_1568911469.jpg"
+    ],
+    "length": 3.5,
+    "elevation": [
+      296,
+      -65
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Lake Lynn Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "West Raleigh",
+    "state": " North Carolina",
+    "originLat": 35.8887,
+    "originLng": -78.6948,
+    "rating": 3.4,
+    "rateCount": 5,
+    "comments": [
+      {
+        "comment": "Part of the Capital Area Greenway, the Lake Lynn Loop is a 2-mile trail around the lake.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7013739_medium_1554823019.jpg"
+    ],
+    "length": 2.7,
+    "elevation": [
+      27,
+      -50
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "New Hope Creek North",
+    "date": "1970-01-01 00:00:00",
+    "city": "Chapel Hill",
+    "state": " North Carolina",
+    "originLat": 35.993,
+    "originLng": -79.0343,
+    "rating": 3.5,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "This trail follow the north side of New Hope Creek.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7026295_medium_1554913885.jpg"
+    ],
+    "length": 3.7,
+    "elevation": [
+      2,
+      -120
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Transis Camp Road",
+    "date": "1970-01-01 00:00:00",
+    "city": "Chapel Hill",
+    "state": " North Carolina",
+    "originLat": 35.8608,
+    "originLng": -78.9907,
+    "rating": 3.5,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "The main gravel road that is closed to cars at different times of the year.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7030029_medium_1554926066.jpg"
+    ],
+    "length": 3.4,
+    "elevation": [
+      16,
+      -63
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Falls Lake Trail - Section 2",
+    "date": "2020-10-17 12:45:30",
+    "city": "Rolesville",
+    "state": " North Carolina",
+    "originLat": 35.9303,
+    "originLng": -78.6076,
+    "rating": 3.5,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "Section of Falls Lake Trail/Mountains-to-Sea Trail from Raven Ridge Road to Red Fox Run.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      ""
+    ],
+    "length": 2.6,
+    "elevation": [
+      139,
+      -123
+    ],
+    "currentCondition": "Dry, Mostly Dry - Bleh",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "West Loop Bridal Trail",
+    "date": "2020-10-17 11:21:29",
+    "city": "Broadway",
+    "state": " North Carolina",
+    "originLat": 35.4837,
+    "originLng": -78.9039,
+    "rating": 3.5,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "A rolling trail with mixed pine forest and a lovely creek.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7046617_medium_1555535147.jpg"
+    ],
+    "length": 4,
+    "elevation": [
+      290,
+      -302
+    ],
+    "currentCondition": "Some Mud",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Peninsula Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Holly Springs",
+    "state": " North Carolina",
+    "originLat": 35.6197,
+    "originLng": -78.9301,
+    "rating": 3.3,
+    "rateCount": 3,
+    "comments": [
+      {
+        "comment": "The Peninsula Trail will lead visitors along the lake shore through a variety of forest habitats.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7013848_medium_1554823479.jpg"
+    ],
+    "length": 4.4,
+    "elevation": [
+      132,
+      -117
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Reedy Creek Multiuse Trail",
+    "date": "2020-08-13 08:26:00",
+    "city": "Cary",
+    "state": " North Carolina",
+    "originLat": 35.8431,
+    "originLng": -78.7792,
+    "rating": 3.3,
+    "rateCount": 3,
+    "comments": [
+      {
+        "comment": "A very wide gravel/dirt trail that traverses Umstead State Park and provides access to other trails.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7066436_medium_1579572571.jpg"
+    ],
+    "length": 5.2,
+    "elevation": [
+      227,
+      -205
+    ],
+    "currentCondition": "Dry",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Lake Johnson East Greenway Trail",
+    "date": "2020-09-30 05:31:36",
+    "city": "West Raleigh",
+    "state": " North Carolina",
+    "originLat": 35.7627,
+    "originLng": -78.7142,
+    "rating": 3.1,
+    "rateCount": 7,
+    "comments": [
+      {
+        "comment": "A great 3-mile loop around the eastern part of Lake Johnson.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7008019_medium_1554324032.jpg"
+    ],
+    "length": 2.2,
+    "elevation": [
+      126,
+      -134
+    ],
+    "currentCondition": "Fallen Trees",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "North Loop",
+    "date": "2020-11-15 08:15:54",
+    "city": "Durham",
+    "state": " North Carolina",
+    "originLat": 36.0197,
+    "originLng": -78.9843,
+    "rating": 3,
+    "rateCount": 4,
+    "comments": [
+      {
+        "comment": "A gravel trail through mostly forested terrain inside the Durham Division.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7021473_medium_1554839559.jpg"
+    ],
+    "length": 3.1,
+    "elevation": [
+      138,
+      -140
+    ],
+    "currentCondition": "Some Mud",
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Third Fork Creek Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Chapel Hill",
+    "state": " North Carolina",
+    "originLat": 35.9218,
+    "originLng": -78.9602,
+    "rating": 3,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "A relaxing and peaceful trail through a growing area of Durham.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7037674_medium_1555086528.jpg"
+    ],
+    "length": 4.1,
+    "elevation": [
+      102,
+      -96
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Wooden Bridge Road",
+    "date": "1970-01-01 00:00:00",
+    "city": "Durham",
+    "state": " North Carolina",
+    "originLat": 36.0012,
+    "originLng": -79.0266,
+    "rating": 3,
+    "rateCount": 2,
+    "comments": [
+      {
+        "comment": "A connection between Mt. Sinai and Whitfield Rd.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7024161_medium_1554846388.jpg"
+    ],
+    "length": 2.3,
+    "elevation": [
+      165,
+      -217
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Kit Creek Loop",
+    "date": "1970-01-01 00:00:00",
+    "city": "Morrisville",
+    "state": " North Carolina",
+    "originLat": 35.8651,
+    "originLng": -78.8834,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "A nice, easy greenway loop.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7039651_medium_1555092359.jpg"
+    ],
+    "length": 3.2,
+    "elevation": [
+      193,
+      -191
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "East Fork Mine Creek Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Raleigh",
+    "state": " North Carolina",
+    "originLat": 35.8943,
+    "originLng": -78.6346,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "This is a relatively new trail so watch closely for trail markers.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7035914_medium_1555021169.jpg"
+    ],
+    "length": 3.2,
+    "elevation": [
+      97,
+      -253
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Woodcroft Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Chapel Hill",
+    "state": " North Carolina",
+    "originLat": 35.921,
+    "originLng": -78.9505,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "A relaxing and enjoyable trail that brings one close to nature, despite the closeness of homes.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7056084_medium_1555710716.jpg"
+    ],
+    "length": 2.4,
+    "elevation": [
+      120,
+      -133
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Richland Creek Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Cary",
+    "state": " North Carolina",
+    "originLat": 35.8009,
+    "originLng": -78.7255,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "A quirky trail that burrows under the freeway and accesses Carl Schenck Memorial Forest.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7067216_medium_1582147141.jpg"
+    ],
+    "length": 3.2,
+    "elevation": [
+      56,
+      -111
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Dry Creek Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Chapel Hill",
+    "state": " North Carolina",
+    "originLat": 35.9616,
+    "originLng": -79.0286,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "A neighborhood trail with a nice finish.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7040426_medium_1555093760.jpg"
+    ],
+    "length": 2,
+    "elevation": [
+      44,
+      -224
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Park Center Loop",
+    "date": "1970-01-01 00:00:00",
+    "city": "Morrisville",
+    "state": " North Carolina",
+    "originLat": 35.8908,
+    "originLng": -78.8625,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "The main trail of the RTP Trail System.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7051846_medium_1555693749.jpg"
+    ],
+    "length": 5.5,
+    "elevation": [
+      251,
+      -253
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Honeycutt Creek Trail (Paved)",
+    "date": "1970-01-01 00:00:00",
+    "city": "Raleigh",
+    "state": " North Carolina",
+    "originLat": 35.8933,
+    "originLng": -78.6344,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "A relaxing run along Honeycutt Creek Trail.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      ""
+    ],
+    "length": 2.3,
+    "elevation": [
+      110,
+      -199
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Kit Creek Extension",
+    "date": "1970-01-01 00:00:00",
+    "city": "Morrisville",
+    "state": " North Carolina",
+    "originLat": 35.8574,
+    "originLng": -78.882,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "A great addition to the RTP Trail system.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7039651_medium_1555092359.jpg"
+    ],
+    "length": 4.3,
+    "elevation": [
+      164,
+      -125
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "RTP Connector",
+    "date": "1970-01-01 00:00:00",
+    "city": "Durham",
+    "state": " North Carolina",
+    "originLat": 35.8988,
+    "originLng": -78.88,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "A greenway trail for keeping RTP employees and residents healthy.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7051847_medium_1555693752.jpg"
+    ],
+    "length": 2.7,
+    "elevation": [
+      105,
+      -70
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "West Ellerbee Creek Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Durham",
+    "state": " North Carolina",
+    "originLat": 36.0244,
+    "originLng": -78.9291,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "The western continuation of the Ellerbe Creek Trail.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7054956_medium_1555707986.jpg"
+    ],
+    "length": 3.1,
+    "elevation": [
+      59,
+      -112
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Abbotts Creek Trail",
+    "date": "1970-01-01 00:00:00",
+    "city": "Rolesville",
+    "state": " North Carolina",
+    "originLat": 35.9052,
+    "originLng": -78.594,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "A West Raleigh section of the Capital Area Greenway.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7040407_medium_1555093726.jpg"
+    ],
+    "length": 3.1,
+    "elevation": [
+      37,
+      -205
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Falls Lake Trail Section 3",
+    "date": "1970-01-01 00:00:00",
+    "city": "Wake Forest",
+    "state": " North Carolina",
+    "originLat": 35.9452,
+    "originLng": -78.5902,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "Section of Falls Lake Trail/Mountains-to-Sea Trail from Red Fox Run to Possum Track Road.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7069652_medium_1586744821.jpg"
+    ],
+    "length": 3,
+    "elevation": [
+      105,
+      -120
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  },
+  {
+    "name": "Watershed Extension Loop",
+    "date": "1970-01-01 00:00:00",
+    "city": "Clayton",
+    "state": " North Carolina",
+    "originLat": 35.6941,
+    "originLng": -78.4902,
+    "rating": 3,
+    "rateCount": 1,
+    "comments": [
+      {
+        "comment": "A backcountry loop that wraps around the creek.",
+        "userName": "Anonymous",
+        "userID": null
+      }
+    ],
+    "photos": [
+      "https://cdn2.apstatic.com/photos/hike/7073510_medium_1601678657.jpg"
+    ],
+    "length": 2.4,
+    "elevation": [
+      202,
+      -178
+    ],
+    "currentCondition": null,
+    "isPolylinePath": 0
+  }
+]
