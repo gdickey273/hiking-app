@@ -7,6 +7,7 @@ import extAPI from "../../utils/extAPI";
 function CreateRouteInfo(props) {
   const { newTrailObj, setNewTrailObj } = props;
   const [fileSelected, setFileSelected] = useState(false);
+  const [uploadSuccessful, setUploadSuccessful] = useState(false);
 
   //On page load send request to backend for trail distance and update state to render on form
   useEffect(() => {
@@ -41,7 +42,8 @@ function CreateRouteInfo(props) {
 
     extAPI.uploadImage(fd)
       .then(res => {
-        setNewTrailObj({ ...newTrailObj, photos: res.data.imageURL })
+        setNewTrailObj({ ...newTrailObj, photos: res.data.imageURL });
+        setUploadSuccessful(true);
       })
       .catch(err => console.log(err));
   }
@@ -57,10 +59,10 @@ function CreateRouteInfo(props) {
     } else if (newTrailObj.trailType === "Out 'n Back") {
       destination = waypointArr.pop();
     } else destination = `${newTrailObj.destination?.lat}, ${newTrailObj.destination?.lng}`;
-    
+
     const acent = parseFloat(newTrailObj.ascent);
     const decent = parseFloat(newTrailObj.decent);
-    const elevation = decent > 0 ? [acent, decent*-1] : [acent, decent];
+    const elevation = decent > 0 ? [acent, decent * -1] : [acent, decent];
 
     const trailObj = {
       name: newTrailObj.trailName,
@@ -134,8 +136,12 @@ function CreateRouteInfo(props) {
               disabled={!fileSelected}
               onClick={uploadImage}>
               Upload Image
-                  </button>
+            </button>
           }
+          {uploadSuccessful && 
+          <p>Upload Successful! <i className="fas fa-check"></i></p>
+          }
+
           <button onClick={handleSubmit}>Submit Trail</button>
         </form>
       </div>

@@ -29,7 +29,7 @@ function Nav(props) {
       <div className="account">
         {props.user &&
           <ol>
-            <FavoritesModal renderTrailById={props.renderTrailById} user={props.user} />
+            <FavoritesModal renderTrailById={props.renderTrailById} user={props.user} favsUpdated={props.favsUpdated}/>
             <button onClick={props.logout}>Logout</button>
           </ol>
         }
