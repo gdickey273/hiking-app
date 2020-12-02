@@ -77,12 +77,14 @@ function CreateRouteMap(props) {
 
   //onPolylineClick, create new waypoint on polyline between adjacent markers
   function handlePolylineClick(a, b, c) {
-    const position = { lat: c.latLng.lat(), lng: c.latLng.lng() };
-    console.log("-----------------position------------------", position);
-    const newIndex = findNewMarkerIndex(position);
-    const arr = newTrailObj.waypoints;
-    arr.splice(newIndex, 0, position);
-    setNewTrailObj({ ...newTrailObj, waypoints: arr });
+    if (newTrailObj.waypoints.length < 5 || newTrailObj.isPolylinePath) {
+      const position = { lat: c.latLng.lat(), lng: c.latLng.lng() };
+      console.log("-----------------position------------------", position);
+      const newIndex = findNewMarkerIndex(position);
+      const arr = newTrailObj.waypoints;
+      arr.splice(newIndex, 0, position);
+      setNewTrailObj({ ...newTrailObj, waypoints: arr });
+    }
   }
 
   function getWaypointIconUrl(index) {
