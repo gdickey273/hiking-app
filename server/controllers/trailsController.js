@@ -75,7 +75,7 @@ module.exports = {
 	create: function (req, res) {
 		console.log('user id!', req.user._id);
 		db.Trail
-			.create(req.body)
+			.create({...req.body, user_id: req.user._id})
 			.then(dbTrail => {
 				console.log('dbTrail', dbTrail);
 				res.json(dbTrail);
