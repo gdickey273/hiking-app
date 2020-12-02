@@ -75,4 +75,4 @@ function writeJSONSeedFile() {
   fs.writeFile("seed.json", JSON.stringify(trailSeed), (err) => {if(err) throw err; console.log('file saved!')});
 }
 
-seedLocalDB();
+writeJSONSeedFile();
