@@ -20,7 +20,7 @@ function Streetview(props) {
   }, [id]);
 
   return url && (
-    <div>
+    <div className="streetview-map">
       <iframe
         title="streetview"
         width="100%"

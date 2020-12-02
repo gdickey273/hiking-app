@@ -8,17 +8,17 @@ function Nav(props) {
   let greeting;
 
   if (props.user === null) {
-    greeting = <p>Hello guest</p>
+    greeting = <p className="site-greeting">Hello, guest</p>
   } else if (props.user.firstName) {
     greeting = (
       <Fragment>
-        Welcome back, <strong>{props.user.firstName}</strong>
+        <p className="site-greeting"> Welcome back, <strong>{props.user.firstName}</strong></p>
       </Fragment>
     )
   } else if (props.user.username) {
     greeting = (
       <Fragment>
-        Welcome back, <strong>{props.user.username} </strong>
+        <p className="site-greeting">Welcome back, <strong>{props.user.username} </strong></p>
       </Fragment>
     )
   }

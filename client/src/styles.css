@@ -16,8 +16,8 @@
   display: -ms-grid;
   display: grid;
       grid-template-areas: "h" "m" "f";
-  -ms-grid-rows: 60vh 80vh 80vh;
-      grid-template-rows: 60vh 80vh 80vh;
+  -ms-grid-rows: 600px 700px 700px;
+      grid-template-rows: 600px 700px 700px;
   min-width: 400px;
 }
 
@@ -42,7 +42,7 @@ header {
 
 header .nav {
   width: 100%;
-  height: 125px;
+  height: 150px;
   display: block;
   float: left;
   background-color: var(--main-bg-color);
@@ -213,13 +213,17 @@ html {
 }
 
 .modalInner {
-  z-index: 3;
+  z-index: 99;
   display: block;
   position: fixed;
-  width: 60%;
-  margin: auto;
-  top: 40vh;
-  left: 20vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 200px;
+  margin-left: 360px;
+  margin-right: 360px;
+  margin-bottom: 150px;
   background-color: white;
   border-radius: 20px;
   -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -248,14 +252,25 @@ html {
   margin: auto;
 }
 
-.modalInner form .account-input-button {
-  float: right;
-  font-size: 1em;
-  margin: 1em;
-  padding: .75em;
-  background-color: black;
+.LoginModal button {
+  position: absolute;
+  right: 100px;
+  top: 30px;
+}
+
+.RegisterModal button {
+  position: absolute;
+  right: 5px;
+  top: 30px;
+}
+
+.account-input-button {
+  display: block;
+  font-family: "Share Tech";
+  font-size: 1.3em;
+  background-color: transparent;
   color: white;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .map-bottom {
@@ -333,8 +348,9 @@ html {
 .map-container {
   display: block;
   position: absolute;
-  bottom: 0;
-  z-index: 1;
+  width: 100vw;
+  height: 200px;
+  z-index: 2;
 }
 
 .trail-maker-waypoints {
@@ -348,8 +364,8 @@ html {
   display: block;
   position: relative;
   margin: 1em;
-  background-color: white;
   height: 95%;
+  z-index: 99;
 }
 
 .module-select .module-toggle {
@@ -470,6 +486,16 @@ html {
           box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
 }
 
+.list-results-container::-webkit-scrollbar {
+  outline: 1px solid white;
+  border-radius: 20px;
+}
+
+.list-results-container::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 20px;
+}
+
 .list-results-container .list-results-group {
   margin: 0 10px;
 }
@@ -487,16 +513,236 @@ html {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 20px;
+  -webkit-filter: brightness(60%);
+          filter: brightness(60%);
 }
 
 .trail-selected-container {
-  background-color: white;
-  width: 400px;
-  height: 500px;
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 250px;
+  height: 100%;
   overflow: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  z-index: 3;
+  padding: 1em;
 }
 
 .trail-selected-container img {
+  width: 100%;
+}
+
+.trail-selected-container iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.trail-selected-container .card-img-top {
+  margin: auto;
+}
+
+.trail-selected-container .trail-name {
+  margin-bottom: 5px;
+  font-size: 2em;
+}
+
+.trail-selected-container .card-text {
   width: 90%;
+  margin-top: 7px;
+}
+
+.trail-selected-container li {
+  list-style-type: none;
+  margin-bottom: 7px;
+}
+
+.comments-container {
+  display: block;
+  position: absolute;
+  top: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: darkgrey;
+}
+
+.comments-container .comments-user-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
+  margin: auto;
+}
+
+.comments-container .comments-user-container .comments-user-input {
+  display: block;
+  float: right;
+  width: 90%;
+  height: 200px;
+  margin: 1em;
+  resize: none;
+  border-radius: 20px;
+  font-size: 14px;
+  padding: 10px;
+}
+
+.comments-container .comments-user-container .fa-user {
+  display: block;
+  width: 70px;
+  font-size: 40px;
+  padding: 1em;
+  margin-right: .5em;
+  color: white;
+  margin-left: 1em;
+}
+
+.trail-selected-map iframe {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 2;
+}
+
+.comments-all {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.comments-all .user-comments-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
+  margin: auto;
+}
+
+.comments-all .user-comments-container .fa-user {
+  display: block;
+  width: 70px;
+  font-size: 40px;
+  padding: 1em;
+  margin-right: .5em;
+  margin-left: 1em;
+  color: white;
+}
+
+.comments-all .user-comments-container .user-comment {
+  width: 90%;
+  font-size: 16px;
+  margin: .5em 1em;
+  color: white;
+}
+
+.site-greeting {
+  font-family: "Ramabhadra";
+  color: white;
+  text-align: right;
+  padding-bottom: 1em;
+}
+
+.default-map iframe {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  height: 700px;
+}
+
+.footer-placeholder {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+}
+
+.streetview-map iframe {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel {
+  height: 100%;
+}
+
+.carousel .carousel-cell {
+  height: 100%;
+}
+
+.flickity-button {
+  position: absolute;
+  left: 10px;
+}
+
+button.previous {
+  top: 150px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+button.next {
+  top: 410px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.forecastcard-container {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: black;
+}
+
+.loggedout-trailviewmap iframe {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 700px;
+}
+
+.photo-container-details {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 30px;
+  z-index: 2;
+  font-family: "Ramabhadra";
+}
+
+.photo-container-details p {
+  display: block;
+  width: inherit;
+  text-align: left;
+  margin-left: 10px;
+  font-size: 15px;
+  padding: 2px 0;
+  color: white;
+}
+
+strong {
+  font-weight: 400;
+}
+
+button {
+  outline: none;
 }
 /*# sourceMappingURL=styles.css.map */

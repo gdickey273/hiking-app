@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Conditions.module.css'
-import '../WeatherConditions/owfont-regular.min.css'
+// import '../WeatherConditions/owfont-regular.min.css'
 let moment = require('moment');
 
 const conditions = (props) => {
