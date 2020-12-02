@@ -32,6 +32,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // will call the deserializeUser
 
+// Add routes, both API and view
+app.use(routes);
+
 // If its production environment!
 if (process.env.NODE_ENV === 'production') {
 	const path = require('path');
@@ -41,9 +44,6 @@ if (process.env.NODE_ENV === 'production') {
 		res.sendFile(path.join(__dirname, '../client/build/'));
 	});
 }
-
-// Add routes, both API and view
-app.use(routes);
 
 // Error handler
 app.use(function (err, req, res, next) {
