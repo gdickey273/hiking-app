@@ -3,9 +3,8 @@ if (process.env.NODE_ENV !== 'production') {
 	console.log('loading dev environments');
 	require('dotenv').config();
 }
-const path = require("path");
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
-
+// const path = require("path");
+// require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const express = require('express');
 const morgan = require('morgan');
@@ -32,9 +31,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // will call the deserializeUser
 
-// Add routes, both API and view
-app.use(routes);
-
 // If its production environment!
 if (process.env.NODE_ENV === 'production') {
 	const path = require('path');
@@ -44,6 +40,9 @@ if (process.env.NODE_ENV === 'production') {
 		res.sendFile(path.join(__dirname, '../client/build/'));
 	});
 }
+
+// Add routes, both API and view
+app.use(routes);
 
 // Error handler
 app.use(function (err, req, res, next) {

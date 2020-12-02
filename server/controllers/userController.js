@@ -11,6 +11,7 @@ module.exports = {
 		}
 	},
 	register: (req, res) => {
+		console.log('register');
 		const { firstName, lastName, username, password } = req.body;
 		// ADD VALIDATION
 		db.User.findOne({ username }, (err, userMatch) => {
