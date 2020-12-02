@@ -43,9 +43,7 @@ function CreateRouteMap(props) {
     //returns true if point is between start and end points
     function isBetween(start, end, point) {
       const PRECISION = precision;
-      // console.log("end.lat", end.lat, "point.lng", point.lng, "start.lat", start.lat);
       const result = Math.abs((end.lat - start.lat) * (point.lng - start.lng) - (end.lng - start.lng) * (point.lat - start.lat)) < PRECISION;
-      // console.log("result: ", result);
       return result;
     }
 
