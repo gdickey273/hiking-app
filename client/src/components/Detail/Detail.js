@@ -51,7 +51,7 @@ function Detail(props) {
   function handleInputChange(event) {
     const { name, value } = event.target;
 
-    if (value === "rating") {
+    if (value === "rating" || value === "") {
       return false;
     }
 
