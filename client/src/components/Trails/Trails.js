@@ -55,38 +55,61 @@ function Trails(props) {
       }
     }
 
-    if (name === "rating" || name === "length") {
-      setFormObject({
-        ...formObject,
-        [name]: value
-      })
+    // if (name === "rating" || name === "length") {
+    //   setFormObject({
+    //     ...formObject,
+    //     [name]: value
+    //   })
+    // }
+
+    if (name === "rating") {
+      const filteredTrails = trailsToFilter.filter(trail => { return trail.rating > value });
+      setTrails(filteredTrails)
+      if (value === "rating") {
+        loadTrails();
+        setSearchStarted(false);
+      } else {
+        setSearchStarted(true);
+      }
+    } 
+    
+    if (name === "length") {
+      const filteredTrails = trailsToFilter.filter(trail => { return trail.length < value });
+      setTrails(filteredTrails)
+      if (value === "length") {
+        loadTrails();
+        setSearchStarted(false);
+      } else {
+        setSearchStarted(true);
+      }
     }
+
   };
 
-  function handleFormSubmit(event) {
-    event.preventDefault();
+  // function handleFormSubmit(event) {
+  //   event.preventDefault();
 
-    if (formObject === {}) {
-      loadTrails();
-    }
+  //   if (formObject === {}) {
+  //     loadTrails();
+  //   }
 
-    let trailsToFilter = trails;
-    if (formObject.rating && formObject.length) {
-      const ratedTrails = trailsToFilter.filter(trail => { return trail.rating > formObject.rating });
-      const filteredTrails = ratedTrails.filter(trail => { return trail.length < formObject.length });
-      setTrails(filteredTrails)
-      setSearchStarted(true);
-    } else if (formObject.rating) {
-      const filteredTrails = trailsToFilter.filter(trail => { return trail.rating > formObject.rating });
-      setTrails(filteredTrails)
-      setSearchStarted(true);
-    } else if (formObject.length) {
-      const filteredTrails = trailsToFilter.filter(trail => { return trail.length < formObject.length });
-      setTrails(filteredTrails)
-      setSearchStarted(true);
-    }
-    formEl.current.reset();
-  };
+  //   let trailsToFilter = trails;
+  //   if (formObject.rating && formObject.length) {
+  //     const ratedTrails = trailsToFilter.filter(trail => { return trail.rating > formObject.rating });
+  //     const filteredTrails = ratedTrails.filter(trail => { return trail.length < formObject.length });
+  //     setTrails(filteredTrails)
+  //     setSearchStarted(true);
+  //   } else if (formObject.rating) {
+  //     const filteredTrails = trailsToFilter.filter(trail => { return trail.rating > formObject.rating });
+  //     setTrails(filteredTrails)
+  //     setSearchStarted(true);
+  //   } else if (formObject.length) {
+  //     const filteredTrails = trailsToFilter.filter(trail => { return trail.length < formObject.length });
+  //     setTrails(filteredTrails)
+  //     setSearchStarted(true);
+  //   }
+  //   formEl.current.reset();
+  // };
 
   return (
     <Container fluid>
@@ -125,9 +148,9 @@ function Trails(props) {
                 <option value="10"> 10</option>
                 <option value="15"> 15</option>
               </Select>
-              <FormBtn onClick={handleFormSubmit}>
+              {/* <FormBtn onClick={handleFormSubmit}>
                 Search
-              </FormBtn>
+              </FormBtn> */}
             </form>
           </Card>
         </Col>
@@ -143,7 +166,7 @@ function Trails(props) {
                             {trail.name}/{trail.city}/{trail.length}mi./{trail.rating}stars
                         </strong> */}
                         {/* <img className="photo-containers" src={trail.photos} alt={trail.name} /> */}
-                        {(trail.photos && trail.photos.length) ? 
+                        {(trail.photos && trail.photos.length) ?
                           (<img className="photo-containers" src={trail.photos} alt={trail.name}></img>)
                           :
                           (<img className="photo-containers" src={StockPhoto} alt="stock trail"></img>)
