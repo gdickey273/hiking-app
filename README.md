@@ -1,10 +1,22 @@
-# Hiking App
+# TRAILSHARE
 [![Build Status](https://travis-ci.com/gdickey273/hiking-app)](https://travis-ci.com/gdickey273/hiking-app)  ![Badge](https://img.shields.io/badge/license-MIT-green)
 
 ## Let's start your next adventure
-Search for trails, create your on routes, review and comment on other trails. Find nearby camping sites and fire-friendly meals while you're at it! 
+A social forward format to find and create new hiking destinations in your area. 
 
-  Technologies used
+ ### Demo
+
+  Deployed Application: [https://project-3-hiking-app.herokuapp.com/](https://project-3-hiking-app.herokuapp.com/)
+
+## Table of Contents
+
+* [Technologies](#technologies)
+* [Features](#features)
+* [Contributors](#contributors)
+* [License](#license)
+
+## Technologies
+
   * React JS
   * Trail Run Project Data API, Google Maps API, OpenWeather API
   * Amazon S3 Cloud Storage
@@ -14,16 +26,14 @@ Search for trails, create your on routes, review and comment on other trails. Fi
   * Passport User Authentication
   * MongoDB with Mongoose Schema
 
- ### Demo
+## Features
 
-Deployed Application: [https://project-3-hiking-app.herokuapp.com/](https://project-3-hiking-app.herokuapp.com/)
-
-## Table of Contents
-
-* [Contributors](#contributors)
-* [Usage](#usage)
-* [License](#license)
-* [Contributing](#contributing)
+  * Search for trails by name, city, rating and/or length. 
+  * View a trails details, photos, comments, map, streetview and forecasted weather for the area.
+  * When logged in as a user, save your favorite trails to revisit later. 
+  * When logged in as a user, add your own comments, rating, photos and verifications to existing trails. 
+  * Create your own trail by mapping coordinates and polylines. 
+  * Include your own photos and details in your newly created trail. 
 
 ## Contributors
 
@@ -35,11 +45,6 @@ Deployed Application: [https://project-3-hiking-app.herokuapp.com/](https://proj
   
   <a href="https://github.com/dsargen25"><img src="https://avatars1.githubusercontent.com/u/49527942?s=460&v=4" width="5%" style="border-radius:50%"> @dsargen25</a>
 
-## Usage
-
 
 ## License
 This project is [MIT](https://choosealicense.com/licenses/mit/) licensed.
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.  Please make sure to update tests as appropriate.
