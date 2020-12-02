@@ -2,6 +2,7 @@ import React from "react";
 import './Info.css';
 import TrailsWeather from '../TrailsWeather';
 import Streetview from '../Streetview';
+import Forecast from '../ForecastCard'; 
 
 function Info(props){
   return (
@@ -14,6 +15,8 @@ function Info(props){
        <div className="module-toggle-containers toggle-bottom"><i className="fas fa-comments"></i></div>
      </div>
     {props.trailId?.length > 0 && <Streetview trailId={props.trailId}/>}
+    {props.trailId?.length > 0 && <Forecast trailId={props.trailId}/>}
+    
    </div>
   )
 };

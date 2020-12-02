@@ -21,12 +21,9 @@ const Forecast = () => {
        
         
      
-     fetch(`https://community-open-weather-map.p.rapidapi.com/forecast?units=${unit}&lat=${latitude}&lon=${longitude}`, {
+        fetch(`api.openweathermap.org/data/2.5/forecast?units=${unit}&lat=${latitude}&lon=${longitude}&appid={8337c9967573e14ada129e51effa9dea}`, {
             "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-                "x-rapidapi-key": process.env.REACT_APP_API_KEY
-            }
+            
         })
         .then(response => response.json())
         .then(data => {            
@@ -99,4 +96,4 @@ const Forecast = () => {
    )
 }
 
-export default Forecast;
+export default blank;
