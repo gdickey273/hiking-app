@@ -156,13 +156,41 @@ function Detail(props) {
 
   const MapLoader = withScriptjs(UserTrailsMap);
   return trail && (
+    <div>
+
+<div className="trail-selected-map">
+            {!trail.isPolylinePath && trail.destination &&
+        // loads routed map for user created routes
+        <MapLoader
+          googleMapURL={url}
+          loadingElement={<div style={{ height: `100%` }} />}
+          originLat={trail.originLat}
+          originLng={trail.originLng}
+          destination={trail.destination}
+          waypoints={trail.waypoints}
+        />
+      }
+      {!trail.isPolylinePath && !trail.destination &&
+        // loads google map using origin for API trails which do not contain a destination/waypoints
+        <APITrailsMap
+          name={trail.name}
+          originLat={trail.originLat}
+          originLng={trail.originLng}
+          zoom="16"
+        />
+      }
+
+      {trail.isPolylinePath && (
+        <UserPolylineMap trail={trail} />
+      )}
+    </div>
+
     <div className="trail-selected-container">
       <Container fluid>
         <Row>
           <Col size="md-12">
-            <Card
-              name={trail.name}
-            >
+            <Card>
+            <h2 className="trail-name">{trail.name}</h2>
               {props.loggedIn &&
                 <button style={{ float: 'right' }} onClick={() => addFavorite()}><i className="fas fa-star"></i></button>
               }
@@ -200,7 +228,7 @@ function Detail(props) {
                 <p className="card-text">Verified by {trail.userVerified} users <button name="userVerified" onClick={handleVerify}><i className="fas fa-check"></i></button></p>}
               {!props.loggedIn &&
                 <p className="card-text">Verified by {trail.userVerified} users <i className="fas fa-check"></i></p>}
-              <p className="card-text">Rating: {trail.rating}</p>
+              <p className="card-text"><strong>Rating: </strong>{trail.rating}</p>
               {props.loggedIn && <form ref={formEl}>
                 <Select name="rating" onChange={handleInputChange}>
                   <option value="rating">Rate this Trail</option>
@@ -212,12 +240,12 @@ function Detail(props) {
                 </Select>
               </form>}
 
-              <p className="card-text">Length: {trail.length} miles</p>
-              <p className="card-text">Elevation: +{trail.elevation}</p>
-              <p className="card-text">Estimated duration: {trail.duration}</p>
-              <p className="card-text">Trail Type: {trail.trailType}</p>
-              <p className="card-text">Terrain: {trail.terrain}</p>
-              <p className="card-text">User Comments: {trail.comments && trail.comments.map((comment, i) => (
+              <p className="card-text"><strong>Length: </strong>{trail.length} miles</p>
+              <p className="card-text"><strong>Elevation: </strong>+{trail.elevation}</p>
+              <p className="card-text"><strong>Estimated duration: </strong>{trail.duration}</p>
+              <p className="card-text"><strong>Trail Type: </strong>{trail.trailType}</p>
+              <p className="card-text"><strong>Terrain: </strong>{trail.terrain}</p>
+              <p className="card-text"><strong>User Comments: </strong>{trail.comments && trail.comments.map((comment, i) => (
                 <ListItem key={i}>{comment.comment} - {comment.userName}</ListItem>
               ))}</p>
               {props.loggedIn && <form ref={formEl}>
@@ -233,38 +261,14 @@ function Detail(props) {
                 </FormBtn>
               </form>}
 
-              <p className="card-text">Current Conditions (as of {formatDate}): {trail.currentCondition}</p>
-              <p className="card-text">Traffic Levels: {trail.trafficLevels}</p>
-              <p className="card-text">Available Water Sources: {trail.waterSources}</p>
+              <p className="card-text"><strong>Current Conditions (as of {formatDate}): {trail.currentCondition}</strong></p>
+              <p className="card-text"><strong>Traffic Levels: </strong>{trail.trafficLevels}</p>
+              <p className="card-text"><strong>Available Water Sources: </strong>{trail.waterSources}</p>
             </Card>
           </Col>
         </Row>
       </Container>
-
-      {!trail.isPolylinePath && trail.destination &&
-        // loads routed map for user created routes
-        <MapLoader
-          googleMapURL={url}
-          loadingElement={<div style={{ height: `100%` }} />}
-          originLat={trail.originLat}
-          originLng={trail.originLng}
-          destination={trail.destination}
-          waypoints={trail.waypoints}
-        />
-      }
-      {!trail.isPolylinePath && !trail.destination &&
-        // loads google map using origin for API trails which do not contain a destination/waypoints
-        <APITrailsMap
-          name={trail.name}
-          originLat={trail.originLat}
-          originLng={trail.originLng}
-          zoom="16"
-        />
-      }
-
-      {trail.isPolylinePath && (
-        <UserPolylineMap trail={trail} APIKey={APIKey}/>
-      )}
+      </div>
     </div>
   );
 }

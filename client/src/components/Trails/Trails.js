@@ -162,15 +162,19 @@ function Trails(props) {
                   {trails.map(trail => (
                     <ListItem key={trail._id}>
                       <button style={{ backgroundColor: "transparent", border: "none" }} onClick={() => props.renderTrailById(trail._id)}>
-                        {/* <strong>
-                            {trail.name}/{trail.city}/{trail.length}mi./{trail.rating}stars
-                        </strong> */}
-                        {/* <img className="photo-containers" src={trail.photos} alt={trail.name} /> */}
                         {(trail.photos && trail.photos.length) ?
-                          (<img className="photo-containers" src={trail.photos[0]} alt={trail.name}></img>)
+                          (<img className="photo-containers" src={trail.photos[0]} alt={trail.name} />)
                           :
-                          (<img className="photo-containers" src={StockPhoto} alt="stock trail"></img>)
+                          (<img className="photo-containers" src={StockPhoto} alt="stock trail" />)
                         }
+
+                      <div className="photo-container-details">
+                        <p><strong>{trail.name}</strong></p>
+                        <p><strong>{trail.city}</strong></p>
+                        <p><strong>{trail.length} mi.</strong></p>
+                        <p><strong>{trail.rating} stars </strong></p>
+                      </div>
+
                       </button>
                     </ListItem>
                   ))}

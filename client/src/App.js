@@ -72,7 +72,6 @@ function App() {
         favsUpdated={favsUpdated}
         />
         <Banner renderTrailById={renderTrailById} />
-        {/* <Info /> */}
       </header>
       <Main trailId={trailId} loggedIn={loggedIn} setTrailId={setTrailId} setFavsUpdated={setFavsUpdated}/>
       <Footer trailId={trailId} loggedIn={loggedIn}/>

@@ -9,22 +9,6 @@ function LoginModal({ login }) {
     setModalState(!modalState)
   }
 
-  // if (props.user === null) {
-  // 	greeting = "Login"
-  // } else if (props.user.firstName) {
-  // 	greeting = (
-  // 		<Fragment>
-  // 			Welcome back, {props.user.firstName}
-  // 		</Fragment>
-  // 	)
-  // } else if (props.user.username) {
-  // 	greeting = (
-  // 		<Fragment>
-  // 			Welcome back, {props.user.username}
-  // 		</Fragment>
-  // 	)
-  // }
-
   const [userObject, setUserObject] = useState({
     username: '',
     password: ''
