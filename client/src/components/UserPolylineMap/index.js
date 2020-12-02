@@ -43,7 +43,7 @@ function UserPolylineMap(props) {
 
   return (
     <>
-    {trailObj.origin &&
+      {trailObj.origin &&
         <Map
           google={props.google}
           style={{ width: "75vw", height: "75vw" }}
@@ -75,11 +75,12 @@ function UserPolylineMap(props) {
 
 
         </Map>
-    }
+      }
     </>
   )
 }
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyB-wvyWjrqtg7umKsrvrJU19WrcSanUV7c"
-})(UserPolylineMap)
+export default GoogleApiWrapper(
+  (props) => ({
+    apiKey: props.APIKey
+  }))(UserPolylineMap)
