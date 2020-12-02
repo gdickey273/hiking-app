@@ -2,10 +2,11 @@
   "name": "reactreadinglist-auth-client",
   "version": "1.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
+  
   "dependencies": {
     "axios": "^0.19.2",
     "google-maps-react": "^2.0.6",
+    "haversine": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropzone": "^11.2.4",
