@@ -1,11 +1,10 @@
 import React from 'react';
 import classes from './Conditions.module.css'
+import '../WeatherConditions/owfont-regular.min.css'
 let moment = require('moment');
 
 const conditions = (props) => {
     console.log(props)
-        
-    // const imgURL = `owf owf-${props.weather[0].id} owf-5x`
     
     return (
         <div className={classes.Wrapper}>
@@ -22,7 +21,7 @@ const conditions = (props) => {
                         <p>{Math.round(((obj.main.feels_like)))} °F</p>
                             <div className="card-body">
                                 <p className="card-text">{obj.weather[0].description}</p>
-                                <p className="imgURL">{obj.weather[0].id}</p>
+                                <p className={`owf owf-${obj.weather[0].id} owf-5x`}>{obj.weather[0].id}</p>
                             </div>
                     </div>
                 </div>
