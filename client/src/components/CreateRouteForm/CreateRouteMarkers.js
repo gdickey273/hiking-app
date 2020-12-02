@@ -140,7 +140,7 @@ function CreateRouteMarkers(props) {
       )
         :
         (
-          <CreateRouteMap className="map-container" formStage={formStage} centerCoords={centerCoords} newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} currentMarker={currentMarker} setCurrentMarker={setCurrentMarker} />
+          <CreateRouteMap className="map-container" APIKey={APIKey} formStage={formStage} centerCoords={centerCoords} newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} currentMarker={currentMarker} setCurrentMarker={setCurrentMarker} />
         )}
 
 
