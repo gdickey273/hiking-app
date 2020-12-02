@@ -20,6 +20,7 @@ function Detail(props) {
   const [url, setUrl] = useState({})
   const [formObject, setFormObject] = useState({});
   const [fileSelected, setFileSelected] = useState(false);
+  const [uploadSuccessful, setUploadSuccessful] = useState(false);
   const formEl = useRef(null);
 
   // When this component mounts, grab the trail with the _id of props.match.params.id
@@ -117,8 +118,7 @@ function Detail(props) {
       .catch(err => console.log(err));
   }
 
-  function addFavorite(event) {
-    event.preventDefault();
+  function addFavorite() {
     console.log(user, id);
     API.addFavorite(user._id, id)
       .then(response =>
@@ -135,6 +135,7 @@ function Detail(props) {
       .then(res => {
         let photos = trail.photos;
         photos.push(res.data.imageURL);
+        setUploadSuccessful(true);
 
         API.updateTrail(id, { ...trail, photos: photos })
           .then(res => {
@@ -185,6 +186,9 @@ function Detail(props) {
                       onClick={uploadImage}>
                       Upload Image
                   </button>
+                  }
+                  {uploadSuccessful &&
+                    <p>Upload Successful! <i className="fas fa-check"></i></p>
                   }
                 </form>
               }
