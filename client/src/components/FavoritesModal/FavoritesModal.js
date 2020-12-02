@@ -3,7 +3,7 @@ import './FavoritesModal.css';
 import API from "../../utils/API";
 
 function FavoritesModal(props) {
-  const [favs, setFavs] = useState([])
+  const [favs, setFavs] = useState(null)
 
   const user = props.user;
 
@@ -20,7 +20,7 @@ function FavoritesModal(props) {
         setFavs(res.data.favorites)
         })
       .catch(err => console.log(err));
-  }, []);
+  }, [props.favsUpdated]);
 
   // Deletes a trails from the database with a given id, then reloads trails from the db
   // function deleteTrail(id) {
@@ -35,7 +35,7 @@ function FavoritesModal(props) {
         <div className="modalInner">
           <button style={{float: "right"}} onClick={() => toggleLoginState()}>x</button>
           <h2>Your Trails</h2>
-          {favs?.length ? (
+          {favs ? (
                 <div>
                   {favs.map(fav => (
                     <div key={fav._id}>

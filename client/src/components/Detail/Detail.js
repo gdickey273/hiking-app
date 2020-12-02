@@ -119,7 +119,7 @@ function Detail(props) {
   }
 
   function addFavorite() {
-    console.log(user, id);
+    props.setFavsUpdated(true);
     API.addFavorite(user._id, id)
       .then(response =>
         console.log(response.data))
@@ -151,7 +151,6 @@ function Detail(props) {
   const date = new Date(trail.date);
   const formatDate = `${date.getMonth() + 1}/${date.getDate() + 1}/${date.getFullYear()}`;
 
-  console.log(trail);
   const MapLoader = withScriptjs(UserTrailsMap);
   return trail && (
     <div className="trail-selected-container">
