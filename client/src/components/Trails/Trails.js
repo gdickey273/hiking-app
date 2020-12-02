@@ -167,7 +167,7 @@ function Trails(props) {
                         </strong> */}
                         {/* <img className="photo-containers" src={trail.photos} alt={trail.name} /> */}
                         {(trail.photos && trail.photos.length) ?
-                          (<img className="photo-containers" src={trail.photos} alt={trail.name}></img>)
+                          (<img className="photo-containers" src={trail.photos[0]} alt={trail.name}></img>)
                           :
                           (<img className="photo-containers" src={StockPhoto} alt="stock trail"></img>)
                         }
