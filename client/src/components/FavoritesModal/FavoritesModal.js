@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './FavoritesModal.css';
 import API from "../../utils/API";
+import DeleteBtn from "../DeleteBtn";
 
 function FavoritesModal(props) {
   const [favs, setFavs] = useState(null)
@@ -17,17 +18,17 @@ function FavoritesModal(props) {
     API.getFavorites(user._id)
       .then(res =>
         {
-        setFavs(res.data.favorites)
+        setFavs(res.data.favorites);
         })
       .catch(err => console.log(err));
   }, [props.favsUpdated]);
 
   // Deletes a trails from the database with a given id, then reloads trails from the db
-  // function deleteTrail(id) {
-  //   API.deleteTrail(id)
-  //     .then(res => loadTrails())
-  //     .catch(err => console.log(err));
-  // }
+  function deleteTrail(id) {
+    API.deleteTrail(id)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+  }
 
   return (
     <div className="FavoritesModal">
@@ -44,7 +45,7 @@ function FavoritesModal(props) {
                           {fav.name} - {fav.city}
                         </strong>
                       </a>
-                      {/* <DeleteBtn onClick={() => deleteTrail(trail._id)} /> */}
+                      {fav.user_id === user._id && <DeleteBtn text="Delete" onClick={() => deleteTrail(fav._id)} />}
                     </div>
                   ))}
                 </div>
