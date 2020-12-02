@@ -18,6 +18,7 @@ function Detail(props) {
   const [trail, setTrail] = useState({})
   const [user, setUser] = useState({})
   const [url, setUrl] = useState({})
+  const [APIKey, setAPIKey] = useState("");
   const [formObject, setFormObject] = useState({});
   const [fileSelected, setFileSelected] = useState(false);
   const [uploadSuccessful, setUploadSuccessful] = useState(false);
@@ -36,8 +37,10 @@ function Detail(props) {
       .catch(err => console.log(err));
 
     extAPI.getGoogleKey()
-      .then(res =>
-        setUrl(`https://maps.googleapis.com/maps/api/js?key=${res.data}`))
+      .then(res => {
+        setUrl(`https://maps.googleapis.com/maps/api/js?key=${res.data}`);
+        setAPIKey(res.data);
+      })
       .catch(err => console.log(err));
 
     AUTH.getUser()
@@ -260,7 +263,7 @@ function Detail(props) {
       }
 
       {trail.isPolylinePath && (
-        <UserPolylineMap trail={trail} />
+        <UserPolylineMap trail={trail} APIKey={APIKey}/>
       )}
     </div>
   );
