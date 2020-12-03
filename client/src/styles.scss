@@ -18,7 +18,7 @@
   "h"
   "m"
   "f";
-  grid-template-rows: 60vh 80vh 80vh;
+  grid-template-rows: 600px 700px 700px;
   min-width: 400px;
 }
 
@@ -39,7 +39,7 @@ header{
 
   & .nav{
     width: 100%;
-    height: 125px;
+    height: 150px;
     display: block;
     float: left;
     background-color: var(--main-bg-color);
@@ -205,13 +205,14 @@ html { overflow-y: scroll; }
 
 
 .modalInner{
-  z-index: 3;
+  z-index: 999;
   display: block;
   position: fixed;
-  width: 60%;
-  margin: auto;
-  top: 40vh;
-  left: 20vw;
+  top: 200px;
+  left: 30vw;
+  right: 30vw;
+  bottom: 0;
+  height: 300px;
   background-color: white;
   border-radius: 20px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -233,17 +234,61 @@ html { overflow-y: scroll; }
       width: 80%;
       margin: auto;
     }
-    & .account-input-button{
-      float: right;
-      font-size: 1em;
-      margin: 1em;
-      padding: .75em;
-      background-color: black;
-      color: white;
-      border-radius: 20px;
-
-    }
   }
+}
+
+.LoginModal{
+
+  & button{
+    position: absolute;
+    right: 100px;
+    top: 30px;
+  }
+
+}
+
+.RegisterModal{
+
+  & button{
+    position: absolute;
+    right: 5px;
+    top: 30px;
+  }
+
+}
+
+.logout-button{
+  position: absolute;
+  right: 100px;
+  top: 30px;
+  display: block;
+  font-family: "Share Tech";
+  font-size: 1.3em;
+  background-color: transparent;
+  color: white;
+  border-radius: 10px;
+}
+
+.mytrails-button{
+    position: absolute;
+    right: 5px;
+    top: 30px;
+    width: 90px;
+    display: block;
+    font-family: "Share Tech";
+    font-size: 1.3em;
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+  }
+
+.account-input-button{
+  display: block;
+  font-family: "Share Tech";
+  font-size: 1.3em;
+  background-color: transparent;
+  color: white;
+  border-radius: 10px;
 }
 
 .map-bottom{
@@ -318,8 +363,9 @@ html { overflow-y: scroll; }
 .map-container{
   display: block;
   position: absolute;
-  bottom: 0;
-  z-index: 1;
+  width: 100vw;
+  height: 200px;
+  z-index: 2;
 }
 
 .trail-maker-waypoints{
@@ -333,8 +379,8 @@ html { overflow-y: scroll; }
   display: block;
   position: relative;
   margin: 1em;
-  background-color: white;
   height: 95%;
+  z-index: 99;
 
   & .module-toggle{
     display: block;
@@ -450,6 +496,13 @@ html { overflow-y: scroll; }
   box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
 
   &::-webkit-scrollbar{
+    outline: 1px solid white;
+    border-radius: 20px;
+  }
+
+  &::-webkit-scrollbar-thumb{
+    background: white;
+    border-radius: 20px;
   }
 
   & .list-results-group{
@@ -468,15 +521,233 @@ html { overflow-y: scroll; }
   height: 130px;
   object-fit: cover;
   border-radius: 20px;
+  filter: brightness(60%);
 }
 
 .trail-selected-container{
-  background-color: white;
-  width: 400px;
-  height: 500px;
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 250px;
+  height: 100%;
   overflow: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  z-index: 3;
+  padding: 1em;
 
   & img{
-    width: 90%;
+    width: 100%;
   }
+
+  & iframe{
+    width: 100%;
+    height: 100%;
+  }
+
+  & .card-img-top{
+    margin: auto;
+  }
+
+  & .trail-name{
+    margin-bottom: 5px;
+    font-size: 2em;
+  }
+
+  & .card-text{
+    width: 90%;
+    margin-top: 7px;
+  }
+
+  & li{
+    list-style-type: none;
+    margin-bottom: 7px;
+  }
+
+}
+
+.comments-container{
+  display: block;
+  position: absolute;
+  top: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  overflow-x: hidden;
+  background-color: darkgrey;
+
+  & .comments-user-container{
+    display: flex;
+    width: 70%;
+    margin: auto;
+
+    & .comments-user-input{
+    display: block;
+    float: right;
+    width: 90%;
+    height: 200px;
+    margin: 1em;
+    resize: none;
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 10px;
+    }
+
+    .fa-user{
+      display: block;
+      width: 70px;
+      font-size: 40px;
+      padding: 1em;
+      margin-right: .5em;
+      color: white;
+      margin-left: 1em;
+    }
+
+  }
+}
+
+.trail-selected-map iframe{
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 2;
+}
+
+.comments-all{
+  display: flex;
+  flex-direction: column;
+
+  & .user-comments-container{
+    display: flex;
+    width: 70%;
+    margin: auto;
+    
+  
+    & .fa-user{
+      display: block;
+      width: 70px;
+      font-size: 40px;
+      padding: 1em;
+      margin-right: .5em;
+      margin-left: 1em;
+      color: white;
+    }
+  
+    & .user-comment{
+      width: 90%;
+      font-size: 16px;
+      margin: .5em 1em;
+      color: white;
+    }
+  }
+
+}
+
+.site-greeting{
+  font-family: "Ramabhadra";
+  color: white;
+  text-align: right;
+  padding-bottom: 1em;
+}
+
+.default-map iframe{
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100vw;
+  height: 700px;
+}
+
+.footer-placeholder{
+  background-color: black;
+  height: 100%;
+  width: 100%;
+}
+
+.streetview-map iframe{
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel{
+  height: 100%;
+  & .carousel-cell{
+    height: 100%;
+  }
+}
+
+.flickity-button{
+  position: absolute;
+  left: 10px;
+}
+
+button.previous{
+  top: 150px;
+  transform: rotate(90deg);
+}
+
+button.next{
+  top: 410px;
+  transform: rotate(90deg);
+}
+
+.forecastcard-container{
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: black;
+}
+
+.loggedout-trailviewmap iframe{
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 700px;
+}
+
+.photo-container-details{
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 30px;
+  z-index: 2;
+  font-family: "Ramabhadra";
+
+  & p{
+    display: block;
+    width: inherit;
+    text-align: left;
+    margin-left: 10px;
+    font-size: 15px;
+    padding: 2px 0;
+    color: white;
+  }
+}
+
+strong{
+  font-weight: 400;
+}
+
+button{
+  outline: none;
+}
+
+.login-input-button{
+  background-color: black;
+}
+
+.register-input-button{
+  background-color: black;
 }

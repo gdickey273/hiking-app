@@ -68,7 +68,8 @@ const trailSchema = new Schema({
 	},
 	elevation: {
 		type: Array,
-		required: true
+		required: false,
+		default: []
 	},
 	duration: {
 		type: Number,
@@ -104,6 +105,10 @@ const trailSchema = new Schema({
 		type: Number,
 		required: true,
 		default: 0
+	},
+	user_id: {
+		type: String,
+		required: false
 	}
 });
 

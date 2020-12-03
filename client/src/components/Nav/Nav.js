@@ -8,17 +8,17 @@ function Nav(props) {
   let greeting;
 
   if (props.user === null) {
-    greeting = <p>Hello guest</p>
+    greeting = <p className="site-greeting">Hello, guest</p>
   } else if (props.user.firstName) {
     greeting = (
       <Fragment>
-        Welcome back, <strong>{props.user.firstName}</strong>
+        <p className="site-greeting"> Welcome back, <strong>{props.user.firstName}</strong></p>
       </Fragment>
     )
   } else if (props.user.username) {
     greeting = (
       <Fragment>
-        Welcome back, <strong>{props.user.username} </strong>
+        <p className="site-greeting">Welcome back, <strong>{props.user.username} </strong></p>
       </Fragment>
     )
   }
@@ -29,8 +29,8 @@ function Nav(props) {
       <div className="account">
         {props.user &&
           <ol>
-            <FavoritesModal renderTrailById={props.renderTrailById} user={props.user} />
-            <button onClick={props.logout}>Logout</button>
+            <FavoritesModal renderTrailById={props.renderTrailById} user={props.user} favsUpdated={props.favsUpdated}/>
+            <button className="logout-button" onClick={props.logout}>Logout</button>
           </ol>
         }
         {!props.user &&

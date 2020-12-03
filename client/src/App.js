@@ -12,6 +12,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
   const [trailId, setTrailId] = useState(null);
+  const [favsUpdated, setFavsUpdated] = useState(false);
 
   useEffect(() => {
     AUTH.getUser().then(response => {
@@ -68,11 +69,11 @@ function App() {
         logout={logout}
         loggedIn={loggedIn}
         user={user}
+        favsUpdated={favsUpdated}
         />
         <Banner renderTrailById={renderTrailById} />
-        {/* <Info /> */}
       </header>
-      <Main trailId={trailId} loggedIn={loggedIn} setTrailId={setTrailId}/>
+      <Main trailId={trailId} loggedIn={loggedIn} setTrailId={setTrailId} setFavsUpdated={setFavsUpdated}/>
       <Footer trailId={trailId} loggedIn={loggedIn}/>
     </div>
   );

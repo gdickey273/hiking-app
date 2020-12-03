@@ -3,9 +3,8 @@ if (process.env.NODE_ENV !== 'production') {
 	console.log('loading dev environments');
 	require('dotenv').config();
 }
-const path = require("path");
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
-
+// const path = require("path");
+// require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const express = require('express');
 const morgan = require('morgan');

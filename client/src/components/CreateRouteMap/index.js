@@ -1,7 +1,6 @@
 import React from "react";
 import { Map, Marker, Polyline, GoogleApiWrapper } from "google-maps-react";
 
-
 function CreateRouteMap(props) {
   const { currentMarker, setCurrentMarker, newTrailObj, setNewTrailObj, centerCoords } = props;
   const waypointNameString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
@@ -10,15 +9,15 @@ function CreateRouteMap(props) {
     if (currentMarker) {
       switch (currentMarker) {
         case "Origin":
-          setNewTrailObj({ ...newTrailObj, origin: {lat: event.latLng.lat(), lng: event.latLng.lng() }});
+          setNewTrailObj({ ...newTrailObj, origin: { lat: event.latLng.lat(), lng: event.latLng.lng() } });
           setCurrentMarker("");
           break;
         case "Destination":
-          setNewTrailObj({ ...newTrailObj, destination: {lat: event.latLng.lat(), lng: event.latLng.lng() }});
+          setNewTrailObj({ ...newTrailObj, destination: { lat: event.latLng.lat(), lng: event.latLng.lng() } });
           setCurrentMarker("");
           break;
         default:
-          setNewTrailObj({ ...newTrailObj, waypoints: [...newTrailObj.waypoints, {lat: event.latLng.lat(), lng: event.latLng.lng() }] });
+          setNewTrailObj({ ...newTrailObj, waypoints: [...newTrailObj.waypoints, { lat: event.latLng.lat(), lng: event.latLng.lng() }] });
       }
     }
   }
@@ -27,12 +26,12 @@ function CreateRouteMap(props) {
 
     if (marker.title === "Origin" || marker.title === "Destination") {
       let key = marker.title.toLowerCase();
-      setNewTrailObj({ ...newTrailObj, [key]: {lat: y.latLng.lat(), lng: y.latLng.lng()}});
+      setNewTrailObj({ ...newTrailObj, [key]: { lat: y.latLng.lat(), lng: y.latLng.lng() } });
     } else {
       //if dragged marker is a waypoint update that waypoint's coordinates in the newTrailObj.waypoint array
       const i = parseInt(marker.title.split(".")[0]);
       const arr = newTrailObj.waypoints;
-      arr.splice(i, 1, {lat: y.latLng.lat(), lng: y.latLng.lng()});
+      arr.splice(i, 1, { lat: y.latLng.lat(), lng: y.latLng.lng() });
 
       setNewTrailObj({ ...newTrailObj, waypoints: arr });
     }
@@ -44,9 +43,7 @@ function CreateRouteMap(props) {
     //returns true if point is between start and end points
     function isBetween(start, end, point) {
       const PRECISION = precision;
-      // console.log("end.lat", end.lat, "point.lng", point.lng, "start.lat", start.lat);
       const result = Math.abs((end.lat - start.lat) * (point.lng - start.lng) - (end.lng - start.lng) * (point.lat - start.lat)) < PRECISION;
-      // console.log("result: ", result);
       return result;
     }
 
@@ -55,35 +52,37 @@ function CreateRouteMap(props) {
     if (isBetween(origin, waypoints[0], newMarker)) {
       return 0;
     }
-   
-    for (let i = 0; i < waypoints.length -1; i++) {
-      if(isBetween(waypoints[i], waypoints[i+1], newMarker)) {
-        return i+1;
+
+    for (let i = 0; i < waypoints.length - 1; i++) {
+      if (isBetween(waypoints[i], waypoints[i + 1], newMarker)) {
+        return i + 1;
       }
     }
 
-    if(trailType === "A to B") {
-      if (isBetween(waypoints[waypoints.length-1], destination, newMarker)) {
+    if (trailType === "A to B") {
+      if (isBetween(waypoints[waypoints.length - 1], destination, newMarker)) {
         return waypoints.length;
       }
     } else {
-      if (isBetween(waypoints[waypoints.length-1], origin, newMarker)) {
+      if (isBetween(waypoints[waypoints.length - 1], origin, newMarker)) {
         return waypoints.length
       }
     }
-    
+
     //If index isn't yet found, try again with less precision
-    return findNewMarkerIndex(newMarker, precision*10);
+    return findNewMarkerIndex(newMarker, precision * 10);
   }
-  
+
   //onPolylineClick, create new waypoint on polyline between adjacent markers
   function handlePolylineClick(a, b, c) {
-    const position = {lat: c.latLng.lat(), lng: c.latLng.lng()};
-    console.log("-----------------position------------------", position);
-    const newIndex = findNewMarkerIndex(position);
-    const arr = newTrailObj.waypoints;
-    arr.splice(newIndex, 0, position);
-    setNewTrailObj({ ...newTrailObj, waypoints: arr});
+    if (newTrailObj.waypoints.length < 5 || newTrailObj.isPolylinePath) {
+      const position = { lat: c.latLng.lat(), lng: c.latLng.lng() };
+      console.log("-----------------position------------------", position);
+      const newIndex = findNewMarkerIndex(position);
+      const arr = newTrailObj.waypoints;
+      arr.splice(newIndex, 0, position);
+      setNewTrailObj({ ...newTrailObj, waypoints: arr });
+    }
   }
 
   function getWaypointIconUrl(index) {
@@ -97,10 +96,10 @@ function CreateRouteMap(props) {
     } else if (index < 25) {
       iconNumber = index - 15;
     }
-    
+
     if (iconNumber) {
       return `http://maps.google.com/mapfiles/kml/pal5/icon${iconNumber}.png`
-    } 
+    }
 
     if (index < 34) {
       iconNumber = index - 17;
@@ -108,33 +107,34 @@ function CreateRouteMap(props) {
     }
   }
   const polyCoords = [];
- 
-  if (newTrailObj.trailType === "A to B"){
-    if (newTrailObj.origin && newTrailObj.waypoints.length > 0 && newTrailObj.destination){
+
+  if (newTrailObj.trailType === "A to B") {
+    if (newTrailObj.origin && newTrailObj.waypoints.length > 0 && newTrailObj.destination) {
       polyCoords.push(newTrailObj.origin);
       polyCoords.push.apply(polyCoords, [...newTrailObj.waypoints]);
       polyCoords.push(newTrailObj.destination);
     }
-    } else if (newTrailObj.origin && newTrailObj.waypoints.length > 0) {
-      polyCoords.push(newTrailObj.origin);
-      polyCoords.push.apply(polyCoords, [...newTrailObj.waypoints]);
+  } else if (newTrailObj.origin && newTrailObj.waypoints.length > 0) {
+    polyCoords.push(newTrailObj.origin);
+    polyCoords.push.apply(polyCoords, [...newTrailObj.waypoints]);
   }
   if (polyCoords.length > 0) {
-     if (newTrailObj.trailType === "Loop") {
+    if (newTrailObj.trailType === "Loop") {
       polyCoords.push(newTrailObj.origin);
     }
   }
- 
+
   return (
+
     <Map
       google={props.google}
       zoom={13}
-      style={{ width: "100vw", height: "100vh", marginLeft:"-100vw" }}
+      style={{ width: "100vw", height: "100vh", marginLeft: "-100vw" }}
       streetViewControl={false}
       fullscreenControl={false}
       onClick={handleMapClick}
       initialCenter={centerCoords}
-      mapType= "hybrid"
+      mapType="hybrid"
     >
       {newTrailObj.origin &&
         <Marker
@@ -151,7 +151,7 @@ function CreateRouteMap(props) {
           position={wp}
           draggable={true}
           onDragend={handleMarkerDrag}
-          title={i + ". Waypoint-"+waypointNameString[i]}
+          title={i + ". Waypoint-" + waypointNameString[i]}
           key={i}
           icon={getWaypointIconUrl(i)}
 
@@ -180,6 +180,7 @@ function CreateRouteMap(props) {
   );
 }
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyB-wvyWjrqtg7umKsrvrJU19WrcSanUV7c"
-})(CreateRouteMap)
+export default GoogleApiWrapper(
+  (props) => ({
+    apiKey: props.APIKey
+  }))(CreateRouteMap)
