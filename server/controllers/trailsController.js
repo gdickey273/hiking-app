@@ -108,12 +108,8 @@ module.exports = {
 			.catch(err => res.status(422).json(err));
 	},
 	remove: function (req, res) {
-		db.User.findOneAndUpdate({ _id: req.user._id }, { $pull: { trails: new ObjectId(req.params.id) } }, { new: true })
-			.then(() => {
-				db.Trail
-					.findOneAndDelete({ _id: req.params.id })
-					.then(dbTrail => res.json(dbTrail))
-					.catch(err => res.status(422).json(err));
-			});
+		db.User.findOneAndUpdate({ _id: req.user._id }, { $pull: { favorites: new ObjectId(req.params.id) } }, { new: true })
+			.then(dbUser => res.json(dbUser))
+			.catch(err => res.status(422).json(err));
 	}
 };

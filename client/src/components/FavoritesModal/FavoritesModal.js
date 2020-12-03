@@ -47,7 +47,7 @@ function FavoritesModal(props) {
                           {fav.name} - {fav.city}
                         </strong>
                       </a>
-                      {fav.user_id === user._id && <DeleteBtn text="Delete" onClick={() => deleteTrail(fav._id)} />}
+                      <DeleteBtn text="Delete" onClick={() => deleteTrail(fav._id)} />
                     </div>
                   ))}
                 </div>
