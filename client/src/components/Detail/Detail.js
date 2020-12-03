@@ -11,7 +11,6 @@ import { withScriptjs } from "react-google-maps";
 import extAPI from "../../utils/extAPI";
 import { Select, Input } from "../Form";
 import StockPhoto from "./stock-trail.jpg";
-import DropZone from "../DropZone";
 
 function Detail(props) {
   const [trail, setTrail] = useState({})
@@ -187,7 +186,7 @@ function Detail(props) {
                   }
                 </form>
               }
-              {/* <DropZone uploadImage={uploadImage} /> */}
+
               <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6>
               {props.loggedIn &&
                 <p className="card-text">Verified by {trail.userVerified} users <button name="userVerified" onClick={handleVerify}><i className="fas fa-check"></i></button></p>}
