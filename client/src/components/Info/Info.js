@@ -1,20 +1,9 @@
 import React from "react";
-import './Info.css';
 import Streetview from '../Streetview';
 import Comments from '../Comments';
 import Forecast from '../ForecastCard';
 
 function Info(props) {
-
-  // var flkty = new Flickity('.carousel');
-  // var buttonGroup = document.querySelector('.button-group');
-  // buttonGroup.addEventListener( 'click', function( event ) {
-  //   if ( !matchesSelector( event.target, '.button' ) ) {
-  //     return;
-  //   }
-  //   var selector = event.target.getAttribute('data-selector');
-  //   flkty.selectCell( selector );
-  // });
 
   return (
     <div className="module-select">

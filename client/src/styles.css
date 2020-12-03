@@ -98,7 +98,7 @@ header .social i {
 
 header .banner {
   z-index: 2;
-  margin-top: 5em;
+  margin-top: 50px;
   margin-left: 20px;
 }
 
@@ -213,12 +213,12 @@ html {
 }
 
 .modalInner {
-  z-index: 999;
+  z-index: 9999;
   display: block;
   position: fixed;
   top: 200px;
-  left: 30vw;
-  right: 30vw;
+  left: 35vw;
+  right: 35vw;
   bottom: 0;
   height: 300px;
   background-color: white;
@@ -231,6 +231,7 @@ html {
   display: block;
   width: 90%;
   margin: auto;
+  margin-top: 5px;
   padding: 1em;
 }
 
@@ -249,16 +250,28 @@ html {
   margin: auto;
 }
 
-.LoginModal button {
+.LoginModal .account-input-button {
   position: absolute;
   right: 100px;
   top: 30px;
 }
 
-.RegisterModal button {
+.LoginModal .modalInner form {
+  margin-top: 40px;
+}
+
+.LoginModal .modalInner form label {
+  margin-top: 20px;
+}
+
+.RegisterModal .account-input-button {
   position: absolute;
   right: 5px;
   top: 30px;
+}
+
+.RegisterModal .modalInner form label {
+  margin-top: 5px;
 }
 
 .logout-button {
@@ -293,14 +306,6 @@ html {
   background-color: transparent;
   color: white;
   border-radius: 10px;
-}
-
-.map-bottom {
-  bottom: 0;
-  width: 100%;
-  background: black;
-  background: -webkit-gradient(linear, left bottom, left top, from(black), to(rgba(255, 255, 255, 0)));
-  background: linear-gradient(0deg, black 0%, rgba(255, 255, 255, 0) 100%);
 }
 
 .gmnoprint, .gm-style-cc {
@@ -365,14 +370,6 @@ html {
       grid-template-columns: 1fr 1fr;
   -ms-grid-rows: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-}
-
-.map-container {
-  display: block;
-  position: absolute;
-  width: 100vw;
-  height: 200px;
-  z-index: 2;
 }
 
 .trail-maker-waypoints {
@@ -441,7 +438,7 @@ html {
   color: #444;
   line-height: 1.3;
   padding: .3em;
-  width: 200px;
+  width: 210px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin: .5em 0;
@@ -508,6 +505,23 @@ html {
           box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
 }
 
+.list-results-container p {
+  display: block;
+  text-align: left;
+  margin-left: 10px;
+  font-size: 14px;
+  color: white;
+}
+
+.list-results-container .photo-container-details-title {
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 1.2em;
+  margin-top: 10px;
+  text-overflow: ellipsis;
+}
+
 .list-results-container::-webkit-scrollbar {
   outline: 1px solid white;
   border-radius: 20px;
@@ -539,6 +553,15 @@ html {
           filter: brightness(60%);
 }
 
+.photo-container-details {
+  display: block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  z-index: 2;
+  font-family: "Ramabhadra";
+}
+
 .trail-selected-container {
   display: block;
   position: absolute;
@@ -565,6 +588,7 @@ html {
 
 .trail-selected-container .card-img-top {
   margin: auto;
+  margin-top: 1em;
 }
 
 .trail-selected-container .trail-name {
@@ -575,6 +599,10 @@ html {
 .trail-selected-container .card-text {
   width: 90%;
   margin-top: 7px;
+}
+
+.trail-selected-container .card-subtitle {
+  margin-top: 1em;
 }
 
 .trail-selected-container li {
@@ -591,7 +619,7 @@ html {
   height: 100%;
   overflow: scroll;
   overflow-x: hidden;
-  background-color: darkgrey;
+  background-color: var(--main-bg-color);
 }
 
 .comments-container .comments-user-container {
@@ -602,16 +630,35 @@ html {
   margin: auto;
 }
 
+.comments-container .comments-user-container form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 .comments-container .comments-user-container .comments-user-input {
   display: block;
   float: right;
-  width: 90%;
-  height: 200px;
+  width: 500px;
+  height: 150px;
   margin: 1em;
   resize: none;
-  border-radius: 20px;
+  border-radius: 10px;
   font-size: 14px;
   padding: 10px;
+}
+
+.comments-container .comments-user-container .comments-user-input-submit {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  background: white;
+  border: none;
+  width: 100px;
+  height: 20px;
 }
 
 .comments-container .comments-user-container .fa-user {
@@ -694,6 +741,7 @@ html {
   display: block;
   position: absolute;
   top: 0;
+  right: 0;
   width: 100%;
   height: 100%;
 }
@@ -708,6 +756,7 @@ html {
 
 .flickity-button {
   position: absolute;
+  z-index: 9999;
   left: 10px;
 }
 
@@ -739,27 +788,6 @@ button.next {
   height: 700px;
 }
 
-.photo-container-details {
-  display: block;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  margin-top: 30px;
-  z-index: 2;
-  font-family: "Ramabhadra";
-}
-
-.photo-container-details p {
-  display: block;
-  width: inherit;
-  text-align: left;
-  margin-left: 10px;
-  font-size: 15px;
-  padding: 2px 0;
-  color: white;
-}
-
 strong {
   font-weight: 400;
 }
@@ -768,11 +796,228 @@ button {
   outline: none;
 }
 
-.login-input-button {
-  background-color: black;
+.login-input-button, .register-input-button {
+  height: 30px;
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }
 
-.register-input-button {
-  background-color: black;
+.forecast-container {
+  display: block;
+  position: absolute;
+  top: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.forecast-container h2 {
+  text-align: center;
+  margin: 1em;
+  font-size: 2em;
+}
+
+.forecast-container p {
+  text-align: center;
+  margin: 10px;
+}
+
+.forecast-container form {
+  margin: 1em;
+  text-align: center;
+}
+
+.weather-conditions {
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 80%;
+  top: 0;
+  right: 0;
+  background-color: lightgrey;
+}
+
+.weather-conditions p {
+  margin-left: 1em;
+}
+
+.forecast-button {
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  background-color: white;
+}
+
+.forecast-button button {
+  display: block;
+  position: absolute;
+  margin-left: 10px;
+}
+
+.weather-conditions-days {
+  margin: 1em;
+  text-align: right;
+}
+
+.polyline-map-function-a {
+  display: block;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.polyline-map-function-a h5, .polyline-map-function-a label {
+  font-family: "Ramabhadra";
+  color: black;
+  width: 80%;
+  margin-left: 1em;
+}
+
+.polyline-map-function-a button {
+  margin-left: 1em;
+}
+
+.test, .directions-map-functions {
+  display: block;
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  background-color: white;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.test h5, .directions-map-functions h5 {
+  margin: 1em;
+}
+
+.test-group {
+  margin: 1em;
+}
+
+.test-group label {
+  font-size: 13px;
+}
+
+.polyline-map-function-b {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.directions-map {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+}
+
+.trailsubmission-form {
+  background-color: white;
+  width: 80%;
+  min-width: 500px;
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  margin-top: 30px;
+  border-radius: 20px;
+}
+
+.trailsubmission-form form label {
+  margin-top: 20px;
+}
+
+.trailsubmission-form-item {
+  display: -ms-grid;
+  display: grid;
+  position: relative;
+      grid-template-areas: "l i";
+  grid-template: 1fr 1fr;
+  margin: 7px 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.trailsubmission-form-item label {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: l;
+  margin-right: 10px;
+}
+
+.trailsubmission-form-item input, .trailsubmission-form-item textarea {
+  display: block;
+  position: absolute;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: i;
+  width: 300px;
+  right: 0;
+}
+
+.favorites-button {
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 50px;
+  background: none;
+  border: none;
+}
+
+.fa-star {
+  color: gold;
+  font-size: 2em;
+}
+
+.favorites-container {
+  -ms-grid-rows: 1fr;
+      grid-template-rows: 1fr;
+  text-align: left;
+  padding: 1em;
+}
+
+.favorites-container a strong p {
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 20px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.favorites-item {
+  display: block;
+  position: relative;
+}
+
+.favorites-item .delete-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.favorites-title {
+  font-size: 2em;
+  margin-top: 1em;
 }
 /*# sourceMappingURL=styles.css.map */

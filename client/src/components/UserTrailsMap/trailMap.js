@@ -84,7 +84,7 @@ function UserTrailsMap(props) {
   ));
   return directions && (
     <TrailMapComponent
-      containerElement={<div style={{ height: `500px`, width: "500px" }} />}
+      containerElement={<div style={{ height: `100%`, width: "100%", display: "block", position: "absolute", top: "0" }} />}
       mapElement={<div style={{ height: `100%` }} />}
     />
   );

@@ -75,11 +75,12 @@ function Comments(props) {
             className="comments-user-input"
             >
           </textarea>
-          <FormBtn
+          <button
+            className="comments-user-input-submit"
             onClick={handleFormSubmit}
           >
           Submit
-        </FormBtn>
+        </button>
         </form>
         </div>
       }

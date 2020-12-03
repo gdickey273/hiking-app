@@ -31,7 +31,7 @@ function LoginModal({ login }) {
     <div className="LoginModal">
       <div className={`modalBackground modalShowing-${modalState}`}>
         <div className="modalInner">
-        <button style={{float: "right"}} onClick={() => toggleLoginState()}>x</button>
+        <button style={{position: "absolute", top: "0", right: "0", width: "30px", padding: "5px", border:"none", backgroundColor: "transparent", fontSize: "1em", marginRight: "5px"}} onClick={() => toggleLoginState()}>✖</button>
           <form>
             <label htmlFor="username">Username: </label>
             <input
