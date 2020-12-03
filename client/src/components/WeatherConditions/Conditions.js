@@ -18,7 +18,7 @@ const conditions = (props) => {
                     <div className="card">
                         <p className="card-title">{moment((obj.dt * 1000)).format('dddd')}</p>
                         <p className="text-muted">{moment(obj.dt * 1000).format('MMMM Do, h:mm a')}</p>                        
-                        <p>{Math.round(((obj.main.feels_like)))} °F</p>
+                        <p>Feels like: {Math.round(((obj.main.temp)))} °F</p>
                             <div className="card-body">
                                 <p className="card-text">{obj.weather[0].description}</p>
                                 <p className={`owf owf-${obj.weather[0].id} owf-5x`}>{obj.weather[0].id}</p>

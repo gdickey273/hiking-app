@@ -4,7 +4,7 @@ import TrailsWeather from '../TrailsWeather';
 import Streetview from '../Streetview';
 import Comments from '../Comments';
 import Forecast from '../ForecastCard';
-import Slider from './Slider';
+
 
 
 function Info(props){
@@ -32,6 +32,9 @@ function Info(props){
        <div className="module-toggle-containers toggle-mid-top button" data-selector=".cell2"><i className="fas fa-cloud-sun-rain"></i></div>
        <div className="module-toggle-containers toggle-bottom button" data-selector=".cell1"><i className="fas fa-street-view"></i></div>
      </div>
+
+    {props.trailId?.length > 0 && <Streetview trailId={props.trailId}/>}
+    {props.trailId?.length > 0 && <Forecast trailId={props.trailId}/>}
    </div>
   )
 };
