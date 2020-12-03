@@ -15,7 +15,9 @@
 .app {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "h" "m" "f";
+      grid-template-areas: "h"
+ "m"
+ "f";
   -ms-grid-rows: 600px 700px 700px;
       grid-template-rows: 600px 700px 700px;
   min-width: 400px;
@@ -899,6 +901,10 @@ button {
   background-color: white;
   -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
           box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.test { 
+  overflow: scroll;
 }
 
 .test h5, .directions-map-functions h5 {
