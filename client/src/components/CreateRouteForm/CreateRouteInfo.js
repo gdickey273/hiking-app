@@ -8,6 +8,7 @@ function CreateRouteInfo(props) {
   const { newTrailObj, setNewTrailObj } = props;
   const [fileSelected, setFileSelected] = useState(false);
   const [uploadSuccessful, setUploadSuccessful] = useState(false);
+  const [uploadInitiated, setUploadInitiated] = useState(false);
   const [durationAlert, setDurationAlert] = useState(false);
   const [commentAlert, setCommentAlert] = useState(false);
 
@@ -42,6 +43,7 @@ function CreateRouteInfo(props) {
     event.preventDefault();
     const fd = new FormData();
     fd.append('image', newTrailObj.photos);
+    setUploadInitiated(true);
 
     extAPI.uploadImage(fd)
       .then(res => {
@@ -178,6 +180,8 @@ function CreateRouteInfo(props) {
               Upload Image
             </button>
           }
+          {uploadInitiated && !uploadSuccessful&& 
+          <p>Uploadin Image Please Wait . . . </p>}
           {uploadSuccessful && 
           <p>Upload Successful! <i className="fas fa-check"></i></p>
           }
