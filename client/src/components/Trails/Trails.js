@@ -3,14 +3,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import { Card } from "../Card";
-import { Input, Select, FormBtn } from "../Form";
+import { Input, Select } from "../Form";
 import API from "../../utils/API";
 import StockPhoto from "./stock-trail.jpg";
 
 function Trails(props) {
 
   const [trails, setTrails] = useState([]);
-  const [formObject, setFormObject] = useState({});
   const [searchStarted, setSearchStarted] = useState(false);
   const formEl = useRef(null);
 
@@ -55,13 +54,6 @@ function Trails(props) {
       }
     }
 
-    // if (name === "rating" || name === "length") {
-    //   setFormObject({
-    //     ...formObject,
-    //     [name]: value
-    //   })
-    // }
-
     if (name === "rating") {
       const filteredTrails = trailsToFilter.filter(trail => { return trail.rating > value });
       setTrails(filteredTrails)
@@ -85,31 +77,6 @@ function Trails(props) {
     }
 
   };
-
-  // function handleFormSubmit(event) {
-  //   event.preventDefault();
-
-  //   if (formObject === {}) {
-  //     loadTrails();
-  //   }
-
-  //   let trailsToFilter = trails;
-  //   if (formObject.rating && formObject.length) {
-  //     const ratedTrails = trailsToFilter.filter(trail => { return trail.rating > formObject.rating });
-  //     const filteredTrails = ratedTrails.filter(trail => { return trail.length < formObject.length });
-  //     setTrails(filteredTrails)
-  //     setSearchStarted(true);
-  //   } else if (formObject.rating) {
-  //     const filteredTrails = trailsToFilter.filter(trail => { return trail.rating > formObject.rating });
-  //     setTrails(filteredTrails)
-  //     setSearchStarted(true);
-  //   } else if (formObject.length) {
-  //     const filteredTrails = trailsToFilter.filter(trail => { return trail.length < formObject.length });
-  //     setTrails(filteredTrails)
-  //     setSearchStarted(true);
-  //   }
-  //   formEl.current.reset();
-  // };
 
   return (
     <Container fluid>
@@ -148,9 +115,6 @@ function Trails(props) {
                 <option value="10"> 10</option>
                 <option value="15"> 15</option>
               </Select>
-              {/* <FormBtn onClick={handleFormSubmit}>
-                Search
-              </FormBtn> */}
             </form>
           </Card>
         </Col>

@@ -1,10 +1,6 @@
 import axios from "axios";
 
 export default {
-  // Gets weather data with passed coordinates
-  getWeather: function (lat, lon) {
-    return axios.get(`/api/weather/${lat},${lon}`);
-  },
   getTrailMap: function (origin) {
     return axios.get(`/api/mapSearch/${origin}`);
   },
