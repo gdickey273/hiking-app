@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Share+Tech');
+@import url('https://fonts.googleapis.com/css?family=Ramabhadra');
+
 .TextInput {
     font-size: large;
     border: 1px solid #EEEEEE;
@@ -21,7 +24,8 @@
     display: block;
     margin: 10px auto;
     padding: .5rem;
-    font-size: 1em;
+    font-size: 2em;
+    font-family: "Share Tech";
     background: darkcyan;
     border-radius: 5px;
     color: white;
