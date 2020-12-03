@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Conditions from '../WeatherConditions/Conditions';
 import classes from './Forecast.module.css';
+import API from "../../utils/API";
 
-const Forecast = () => {
+const Forecast = (props) => {
 
     let [longitude, setLongitude] = useState('');
     let [latitude, setLatitude] = useState('');
@@ -10,6 +11,18 @@ const Forecast = () => {
     let [responseObj, setResponseObj] = useState([])
     let [error, setError] = useState(false);
     let [loading, setLoading] = useState(false);
+
+    const id = props.trailId;
+
+    useEffect(() => {
+        API.getTrail(id)
+        .then(res =>
+            { // console.log(res.data)
+                setLongitude(res.data.originLng)
+                setLatitude(res.data.originLat)
+            })
+        .catch(err => console.log(err));
+    }, [id]);
 
     function getForecast(e) {
         e.preventDefault();
@@ -25,12 +38,12 @@ const Forecast = () => {
             "method": "GET",
             "headers": {
                 "x-rapidapi-host": "community-open-weather-map.p.rapidapi.com",
-                "x-rapidapi-key": process.env.REACT_APP_API_KEY
+                "x-rapidapi-key": "896f638738msh22dc63917c22c23p19d7ffjsn560d550ebd3c"
             }
         })
         .then(response => response.json())
         .then(data => {            
-            const dailyData = data.list.filter(reading => reading.dt_txt.includes("12:00:00"))            
+            const dailyData = data.list.filter(reading => reading.dt_txt.includes("15:00:00"))            
             setResponseObj(dailyData);
             setLoading(false);
           })
@@ -44,20 +57,9 @@ const Forecast = () => {
     
 
    return (
-    <div>
-        <h2>Find Current Weather Conditions</h2>
-        <p>Raleigh Lat: 35.787743 Long: -78.644257</p>
-            
+    <div>            
         <form onSubmit={getForecast}>
-                <input
-                    type="text"
-                    placeholder="Enter Longitude"
-                    maxLength="50"
-                    value={longitude}
-                    onChange={(e) => setLongitude(e.target.value)}
-                    className={classes.textInput}
-                    />
-                <input
+                {/* <input
                     type="text"
                     placeholder="Enter Latitude"
                     maxLength="50"
@@ -65,7 +67,15 @@ const Forecast = () => {
                     onChange={(e) => setLatitude(e.target.value)}
                     className={classes.textInput}
                     />
-                <label>
+                <input
+                    type="text"
+                    placeholder="Enter Longitude"
+                    maxLength="50"
+                    value={longitude}
+                    onChange={(e) => setLongitude(e.target.value)}
+                    className={classes.textInput}
+                    />                 */}
+                {/* <label>
                     <input
                         type="radio"
                         name="units"
@@ -75,8 +85,8 @@ const Forecast = () => {
                         className={classes.Radio}
                         />
                     Fahrenheit
-                </label>
-                <label>
+                </label> */}
+                {/* <label>
                     <input
                         type="radio"
                         name="units"
@@ -86,7 +96,7 @@ const Forecast = () => {
                         className={classes.Radio}
                         />
                     Celcius
-                </label>
+                </label> */}
                 <button type="submit" className={classes.Button} >Get Forecast</button>
             </form>
 
