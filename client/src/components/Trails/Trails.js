@@ -150,7 +150,7 @@ function Trails(props) {
           </Col>
         )
           :
-          (<h3 className="no-results">No Results to Display</h3>)
+          (<h3 className="no-results"></h3>)
         }
       </Row>
     </Container>
