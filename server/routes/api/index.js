@@ -4,7 +4,7 @@ const weatherRoutes = require("./weatherAPI");
 const mapSearchRoutes = require("./mapSearchAPI");
 const streetviewRoutes = require("./streetviewAPI");
 const geocodeRoutes = require("./geocodeAPI");
-const googleKeyRoutes = require("./googleMapKey");
+const keyRoutes = require("./APIKeys");
 const distanceRoutes = require("./distance")
 
 // Trail routes
@@ -13,7 +13,7 @@ router.use("/weather", weatherRoutes);
 router.use("/mapSearch", mapSearchRoutes);
 router.use("/streetview", streetviewRoutes);
 router.use("/geocode", geocodeRoutes);
-router.use("/key", googleKeyRoutes);
+router.use("/key", keyRoutes);
 router.use("/distance", distanceRoutes);
 
 module.exports = router;
