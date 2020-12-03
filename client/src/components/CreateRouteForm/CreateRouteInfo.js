@@ -181,7 +181,7 @@ function CreateRouteInfo(props) {
             </button>
           }
           {uploadInitiated && !uploadSuccessful&& 
-          <p>Uploadin Image Please Wait . . . </p>}
+          <p>Uploading Image Please Wait . . . </p>}
           {uploadSuccessful && 
           <p>Upload Successful! <i className="fas fa-check"></i></p>
           }

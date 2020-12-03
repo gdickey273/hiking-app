@@ -18,6 +18,7 @@ function Detail(props) {
   const [url, setUrl] = useState({})
   const [formObject, setFormObject] = useState({});
   const [fileSelected, setFileSelected] = useState(false);
+  const [uploadInitiated, setUploadInitiated] = useState(false);
   const [uploadSuccessful, setUploadSuccessful] = useState(false);
   const formEl = useRef(null);
 
@@ -65,7 +66,7 @@ function Detail(props) {
           setTrail(res.data);
         })
         .catch(err => console.log(err));
-      }
+    }
 
     if (name === 'photos') {
       setFileSelected(true)
@@ -97,6 +98,7 @@ function Detail(props) {
     event.preventDefault();
     const fd = new FormData();
     fd.append('image', formObject.photos);
+    setUploadInitiated(true);
 
     extAPI.uploadImage(fd)
       .then(res => {
@@ -122,101 +124,103 @@ function Detail(props) {
   return trail && (
     <div>
 
-<div className="trail-selected-map">
-            {!trail.isPolylinePath && trail.destination &&
-        // loads routed map for user created routes
-        <MapLoader
-          googleMapURL={url}
-          loadingElement={<div style={{ height: `100%` }} />}
-          originLat={trail.originLat}
-          originLng={trail.originLng}
-          destination={trail.destination}
-          waypoints={trail.waypoints}
-        />
-      }
-      {!trail.isPolylinePath && !trail.destination &&
-        // loads google map using origin for API trails which do not contain a destination/waypoints
-        <APITrailsMap
-          name={trail.name}
-          originLat={trail.originLat}
-          originLng={trail.originLng}
-          zoom="16"
-        />
-      }
+      <div className="trail-selected-map">
+        {!trail.isPolylinePath && trail.destination &&
+          // loads routed map for user created routes
+          <MapLoader
+            googleMapURL={url}
+            loadingElement={<div style={{ height: `100%` }} />}
+            originLat={trail.originLat}
+            originLng={trail.originLng}
+            destination={trail.destination}
+            waypoints={trail.waypoints}
+          />
+        }
+        {!trail.isPolylinePath && !trail.destination &&
+          // loads google map using origin for API trails which do not contain a destination/waypoints
+          <APITrailsMap
+            name={trail.name}
+            originLat={trail.originLat}
+            originLng={trail.originLng}
+            zoom="16"
+          />
+        }
 
-      {trail.isPolylinePath && (
-        <UserPolylineMap trail={trail} />
-      )}
-    </div>
+        {trail.isPolylinePath && (
+          <UserPolylineMap trail={trail} />
+        )}
+      </div>
 
-    <div className="trail-selected-container">
-      <Container fluid>
-        <Row>
-          <Col size="md-12">
-            <Card>
-            <h2 className="trail-name">{trail.name}</h2>
-              {props.loggedIn &&
-                <button className="favorites-button" style={{ float: 'right' }} onClick={() => addFavorite()}><i className="fas fa-star"></i></button>
-              }
-              {(trail.photos && trail.photos.length) ? (trail.photos.map((photo, i) => (
-                <img key={i} className="card-img-top" src={photo} alt={trail.name}></img>
-              )))
-                :
-                (<img className="card-img-top" src={StockPhoto} alt="stock trail"></img>)
-              }
+      <div className="trail-selected-container">
+        <Container fluid>
+          <Row>
+            <Col size="md-12">
+              <Card>
+                <h2 className="trail-name">{trail.name}</h2>
+                {props.loggedIn &&
+                  <button className="favorites-button" style={{ float: 'right' }} onClick={() => addFavorite()}><i className="fas fa-star"></i></button>
+                }
+                {(trail.photos && trail.photos.length) ? (trail.photos.map((photo, i) => (
+                  <img key={i} className="card-img-top" src={photo} alt={trail.name}></img>
+                )))
+                  :
+                  (<img className="card-img-top" src={StockPhoto} alt="stock trail"></img>)
+                }
 
-              {!props.loggedIn && <h4>Log in to make updates to this trail!</h4>}
-              {props.loggedIn &&
-                <form ref={formEl}>
-                  <label>Add Photos</label>
-                  <Input
-                    name='photos'
-                    type='file'
-                    accept='.jpg, .png, .jpeg'
-                    onChange={handleInputChange} />
-                  {fileSelected &&
-                    <button
-                      type='button'
-                      disabled={!fileSelected}
-                      onClick={uploadImage}>
-                      Upload Image
+                {!props.loggedIn && <h4>Log in to make updates to this trail!</h4>}
+                {props.loggedIn &&
+                  <form ref={formEl}>
+                    <label>Add Photos</label>
+                    <Input
+                      name='photos'
+                      type='file'
+                      accept='.jpg, .png, .jpeg'
+                      onChange={handleInputChange} />
+                    {fileSelected &&
+                      <button
+                        type='button'
+                        disabled={!fileSelected}
+                        onClick={uploadImage}>
+                        Upload Image
                   </button>
-                  }
-                  {uploadSuccessful &&
-                    <p>Upload Successful! <i className="fas fa-check"></i></p>
-                  }
-                </form>
-              }
+                    }
+                    {uploadInitiated && !uploadSuccessful &&
+                      <p>Uploading Image Please Wait . . . </p>}
+                    {uploadSuccessful &&
+                      <p>Upload Successful! <i className="fas fa-check"></i></p>
+                    }
+                  </form>
+                }
 
-              <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6>
-              {props.loggedIn &&
-                <p className="card-text">Verified by {trail.userVerified} users <button name="userVerified" onClick={handleVerify}><i className="fas fa-check"></i></button></p>}
-              {!props.loggedIn &&
-                <p className="card-text">Verified by {trail.userVerified} users <i className="fas fa-check"></i></p>}
-              <p className="card-text"><strong>Rating: </strong>{trail.rating}</p>
-              {props.loggedIn && <form ref={formEl}>
-                <Select name="rating" onChange={handleInputChange}>
-                  <option value="rating">Rate this Trail</option>
-                  <option value="1">(insert star icon) 1</option>
-                  <option value="2">(insert star icon) 2</option>
-                  <option value="3"> 3</option>
-                  <option value="4"> 4</option>
-                  <option value="5"> 5</option>
-                </Select>
-              </form>}
+                <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6>
+                {props.loggedIn &&
+                  <p className="card-text">Verified by {trail.userVerified} users <button name="userVerified" onClick={handleVerify}><i className="fas fa-check"></i></button></p>}
+                {!props.loggedIn &&
+                  <p className="card-text">Verified by {trail.userVerified} users <i className="fas fa-check"></i></p>}
+                <p className="card-text"><strong>Rating: </strong>{trail.rating}</p>
+                {props.loggedIn && <form ref={formEl}>
+                  <Select name="rating" onChange={handleInputChange}>
+                    <option value="rating">Rate this Trail</option>
+                    <option value="1">(insert star icon) 1</option>
+                    <option value="2">(insert star icon) 2</option>
+                    <option value="3"> 3</option>
+                    <option value="4"> 4</option>
+                    <option value="5"> 5</option>
+                  </Select>
+                </form>}
 
-              <p className="card-text"><strong>Length: </strong>{trail.length} miles</p>
-              <p className="card-text"><strong>Elevation: </strong>+{trail.elevation}</p>
-              <p className="card-text"><strong>Estimated duration: </strong>{trail.duration}</p>
-              <p className="card-text"><strong>Trail Type: </strong>{trail.trailType}</p>
-              <p className="card-text"><strong>Terrain: </strong>{trail.terrain}</p>
-              <p className="card-text"><strong>Current Conditions (as of {formatDate}): {trail.currentCondition}</strong></p>
-              <p className="card-text"><strong>Traffic Levels: </strong>{trail.trafficLevels}</p>
-              <p className="card-text"><strong>Available Water Sources: </strong>{trail.waterSources}</p>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+                <p className="card-text"><strong>Length: </strong>{trail.length} miles</p>
+                <p className="card-text"><strong>Elevation: </strong>+{trail.elevation}</p>
+                <p className="card-text"><strong>Estimated duration: </strong>{trail.duration}</p>
+                <p className="card-text"><strong>Trail Type: </strong>{trail.trailType}</p>
+                <p className="card-text"><strong>Terrain: </strong>{trail.terrain}</p>
+                <p className="card-text"><strong>Current Conditions (as of {formatDate}): {trail.currentCondition}</strong></p>
+                <p className="card-text"><strong>Traffic Levels: </strong>{trail.trafficLevels}</p>
+                <p className="card-text"><strong>Available Water Sources: </strong>{trail.waterSources}</p>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       </div>
     </div>
   );
