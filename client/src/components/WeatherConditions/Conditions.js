@@ -4,7 +4,6 @@ import classes from './Conditions.module.css'
 let moment = require('moment');
 
 const conditions = (props) => {
-    console.log(props)
     
     return (
         <div className={classes.Wrapper}>
@@ -13,8 +12,8 @@ const conditions = (props) => {
 
             {props.loading && <div className={classes.Loader} />}
 
-            {props.responseObj.map(obj => (
-                <div className="col-sm-2">
+            {props.responseObj.map((obj, i) => (
+                <div key={i} className="col-sm-2">
                     <div className="card">
                         <p className="card-title">{moment((obj.dt * 1000)).format('dddd')}</p>
                         <p className="text-muted">{moment(obj.dt * 1000).format('MMMM Do, h:mm a')}</p>                        

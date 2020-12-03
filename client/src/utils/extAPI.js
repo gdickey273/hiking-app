@@ -14,7 +14,7 @@ export default {
   getCoordinates: function (city, state) {
     return axios.get(`/api/geocode/${city}/${state}`);
   },
-  getGoogleKey: function () {
+  getAPIKeys: function () {
     return axios.get(`/api/key/`);
   },
   getTrailDistance: function (origin, waypoints, trailType, destination) {

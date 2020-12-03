@@ -12,9 +12,9 @@ const CreateRouteForm = (props) => {
   const [API, setAPI] = useState({ const: 1 });
 
   useEffect(() => {
-    extAPI.getGoogleKey()
+    extAPI.getAPIKeys()
       .then(res =>
-        setAPI({ ...API, key: res.data }))
+        setAPI({ ...API, key: res.data.google }))
       .catch(err => console.log(err))
   }, [API.const])
 

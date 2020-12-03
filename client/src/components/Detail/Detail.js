@@ -17,7 +17,6 @@ function Detail(props) {
   const [trail, setTrail] = useState({})
   const [user, setUser] = useState({})
   const [url, setUrl] = useState({})
-  const [APIKey, setAPIKey] = useState("");
   const [formObject, setFormObject] = useState({});
   const [fileSelected, setFileSelected] = useState(false);
   const [uploadSuccessful, setUploadSuccessful] = useState(false);
@@ -35,10 +34,9 @@ function Detail(props) {
       )
       .catch(err => console.log(err));
 
-    extAPI.getGoogleKey()
+    extAPI.getAPIKeys()
       .then(res => {
-        setUrl(`https://maps.googleapis.com/maps/api/js?key=${res.data}`);
-        setAPIKey(res.data);
+        setUrl(`https://maps.googleapis.com/maps/api/js?key=${res.data.google}`);
       })
       .catch(err => console.log(err));
 
