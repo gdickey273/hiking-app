@@ -30,7 +30,7 @@ function Nav(props) {
         {props.user &&
           <ol>
             <FavoritesModal renderTrailById={props.renderTrailById} user={props.user} favsUpdated={props.favsUpdated}/>
-            <button onClick={props.logout}>Logout</button>
+            <button className="logout-button" onClick={props.logout}>Logout</button>
           </ol>
         }
         {!props.user &&

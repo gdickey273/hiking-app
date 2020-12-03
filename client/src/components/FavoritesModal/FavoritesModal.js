@@ -58,7 +58,7 @@ function FavoritesModal(props) {
       </div>
       <button
         onClick={() => toggleLoginState()}
-        className="account-input-button"
+        className="mytrails-button"
       >My Trails</button>
     </div>
   );

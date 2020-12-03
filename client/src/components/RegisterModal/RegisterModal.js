@@ -91,7 +91,7 @@ function RegisterModal() {
             />
             <button
               onClick={handleSubmit}
-              className="account-input-button"
+              className="register-input-button"
             >Register</button>
           </form>
         </div>

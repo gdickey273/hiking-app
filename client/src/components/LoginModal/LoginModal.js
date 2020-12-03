@@ -51,7 +51,7 @@ function LoginModal({ login }) {
             />
             <button
               onClick={handleSubmit}
-              className="account-input-button"
+              className="login-input-button"
             >Submit</button>
           </form>
         </div>
