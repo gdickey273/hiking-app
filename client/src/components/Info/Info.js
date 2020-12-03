@@ -4,7 +4,7 @@ import TrailsWeather from '../TrailsWeather';
 import Streetview from '../Streetview';
 import Comments from '../Comments';
 import Forecast from '../ForecastCard';
-import Slider from './Slider';
+
 
 
 function Info(props){
