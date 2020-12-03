@@ -168,6 +168,7 @@ function Detail(props) {
               {!props.loggedIn && <h4>Log in to make updates to this trail!</h4>}
               {props.loggedIn &&
                 <form ref={formEl}>
+                  <label>Add Photos</label>
                   <Input
                     name='photos'
                     type='file'
