@@ -102,12 +102,12 @@ function CreateRouteMarkers(props) {
             :
             <></>
           }
-
+            <div className="test-group">
             <button onClick={handleWaypointToggleClick} >{currentMarker === "waypoint" ? "Stop Setting Waypoints" : "Set Waypoints"}</button><br />
             {newTrailObj.waypoints.map((wp, i) => (
               <div key={i}>
                 <label key={"label-" + i}>Waypoint (Marker {waypointNameString[i]}): {`Lat: ${wp.lat}, Lng: ${wp.lng}`}</label>
-                <button data-index={i} onClick={handleRemoveWaypoint} key={"remove-" + i}>x</button><br />
+                <button data-index={i} onClick={handleRemoveWaypoint} key={"remove-" + i}>✖</button><br />
               </div>
             ))}
             {isPreviewReady && !newTrailObj.isPolylinePath &&
@@ -116,6 +116,7 @@ function CreateRouteMarkers(props) {
             {newTrailObj.isPolylinePath &&
               <button onClick={event => { event.preventDefault(); setFormStage("info"); }}>Confirm Polyline Path</button>
             }
+          </div>
           </div>
         </>
       )}

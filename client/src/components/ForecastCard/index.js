@@ -64,44 +64,6 @@ const Forecast = (props) => {
     return (
         <div className="forecast-button">
             <form onSubmit={getForecast}>
-                {/* <input
-                    type="text"
-                    placeholder="Enter Latitude"
-                    maxLength="50"
-                    value={latitude}
-                    onChange={(e) => setLatitude(e.target.value)}
-                    className={classes.textInput}
-                    />
-                <input
-                    type="text"
-                    placeholder="Enter Longitude"
-                    maxLength="50"
-                    value={longitude}
-                    onChange={(e) => setLongitude(e.target.value)}
-                    className={classes.textInput}
-                    />                 */}
-                {/* <label>
-                    <input
-                        type="radio"
-                        name="units"
-                        checked={unit === "imperial"}
-                        value="imperial"
-                        onChange={(e) => setUnit(e.target.value)}
-                        className={classes.Radio}
-                        />
-                    Fahrenheit
-                </label> */}
-                {/* <label>
-                    <input
-                        type="radio"
-                        name="units"
-                        checked={unit === "metric"}
-                        value="metric"
-                        onChange={(e) => setUnit(e.target.value)}
-                        className={classes.Radio}
-                        />
-                    Celcius
-                </label> */}
                 <button type="submit" className={classes.Button} >Get Forecast</button>
             </form>
 
