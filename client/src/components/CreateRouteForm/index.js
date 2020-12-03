@@ -8,7 +8,7 @@ const CreateRouteForm = (props) => {
 
   const [newTrailObj, setNewTrailObj] = useState({ waypoints: [] });
   const [centerCoords, setCenterCoords] = useState({});
-  const [formStage, setFormStage] = useState("init");
+  const [formStage, setFormStage] = useState(props.trailId ? "before" : "init");
   const [API, setAPI] = useState({ const: 1 });
 
   useEffect(() => {
@@ -26,7 +26,10 @@ const CreateRouteForm = (props) => {
   const handleButtonClick = (event) => {
     event.preventDefault();
     const { name } = event.target;
-
+    if (name === "begin") {
+      setFormStage("init");
+      props.setTrailId(null);
+    }
     if (name === "submit") {
       let formComplete = true;
       if (!newTrailObj.state) {
@@ -46,6 +49,7 @@ const CreateRouteForm = (props) => {
         extAPI.getCoordinates(newTrailObj.city, newTrailObj.state)
           .then(res => {
             setCenterCoords(res.data)
+            props.setTrailId(null)
           });
         setFormStage("route");
       }
@@ -81,6 +85,8 @@ const CreateRouteForm = (props) => {
       } */}
 
       {props.loggedIn &&
+      <>
+        {formStage !== "info" && formStage !== "done" && 
         <div>
           <div className="trail-maker">
             <form className="map-form" onSubmit={handleFormSubmit}>
@@ -88,7 +94,9 @@ const CreateRouteForm = (props) => {
                 <h2>Trail Maker</h2>
                 <p>Create a new route to add to your collection</p>
               </div>
-
+              {formStage === "before" &&
+              <button name="begin" onClick={handleButtonClick}>Begin</button>
+              }
               {formStage === "init" &&
                 <>
                   <div>
@@ -132,11 +140,15 @@ const CreateRouteForm = (props) => {
 
           {/* <h5>{JSON.stringify(newTrailObj)}</h5>
           <h5>{JSON.stringify(centerCoords)}</h5> */}
-        </div >}
+        </div >
+          }
+        </>
+        }
     </div>
 
     <div className="loggedout-trailviewmap">
-          {formStage === "init" &&
+
+          {formStage === "init" && !props.trailId &&
             <APITrailsMap
               name="map of the Triangle"
               originLat="35.878547"
@@ -155,10 +167,12 @@ const CreateRouteForm = (props) => {
 
           {formStage === "info" &&
             <CreateRouteInfo
-              newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} setTrailId={props.setTrailId}/>
+              newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} setTrailId={props.setTrailId} setFormStage={setFormStage}/>
           }
+
       </div>
     </div>
+    
   )
 }
 
