@@ -197,7 +197,6 @@ html { overflow-y: scroll; }
 .carousel-cell:before {
   display: block;
   text-align: center;
-  content: counter(gallery-cell);
   line-height: 200px;
   font-size: 80px;
   color: white;
@@ -555,6 +554,7 @@ html { overflow-y: scroll; }
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   z-index: 3;
   padding: 1em;
+  font-family: "Ramabhadra";
 
   & img{
     width: 100%;
@@ -813,9 +813,9 @@ button{
   position: absolute;
   overflow: scroll;
   height:100%;
-  width: 90%;
+  width: 70%;
   top: 0;
-  right: 70px;
+  right: 150px;
   overflow-x: hidden;
   overflow-y: hidden;
 
@@ -991,4 +991,31 @@ button{
 .favorites-title{
   font-size: 2em;
   margin-top: 1em;
+}
+
+.carousel-image{
+  z-index: 99;
+  height: 200px;
+  width: 200px;
+}
+
+.cell1{
+  background-image: url('./assets/img/comments.jpeg');
+  background-position: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+}
+
+.cell2{
+  background-image: url('./assets/img/weather.jpeg');
+  background-position: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+}
+
+.cell3{
+  background-image: url('./assets/img/street-view.jpeg');
+  background-position: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
 }
