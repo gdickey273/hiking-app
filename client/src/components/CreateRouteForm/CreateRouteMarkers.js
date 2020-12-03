@@ -87,7 +87,7 @@ function CreateRouteMarkers(props) {
 
           <div className="test-group">
             <label>Origin (marker A):</label><br />
-            <label>{newTrailObj.origin && `Lat: ${newTrailObj.origin.lat}, Lng: ${newTrailObj.origin.lng}`}</label>
+            <label>{newTrailObj.origin && `Lat: ${newTrailObj.origin.lat.toFixed(3)}, Lng: ${newTrailObj.origin.lng.toFixed(3)}`}</label>
             <button name="setOrigin" onClick={event => { event.preventDefault(); setCurrentMarker("Origin") }}>Set Origin</button>
           </div>
 
@@ -95,7 +95,7 @@ function CreateRouteMarkers(props) {
             ?
             <>
             <div className="test-group">
-              <label>Destination: {newTrailObj.destination && `Lat: ${newTrailObj.destination.lat}, Lng: ${newTrailObj.destination.lng}`}</label>
+              <label>Destination: {newTrailObj.destination && `Lat: ${newTrailObj.destination.lat.toFixed(3)}, Lng: ${newTrailObj.destination.lng.toFixed(3)}`}</label>
               <button name="setDestination" onClick={event => { event.preventDefault(); setCurrentMarker("Destination") }}>Set Destination</button>
             </div>
             </>
@@ -106,7 +106,7 @@ function CreateRouteMarkers(props) {
             <button onClick={handleWaypointToggleClick} >{currentMarker === "waypoint" ? "Stop Setting Waypoints" : "Set Waypoints"}</button><br />
             {newTrailObj.waypoints.map((wp, i) => (
               <div key={i}>
-                <label key={"label-" + i}>Waypoint (Marker {waypointNameString[i]}): {`Lat: ${wp.lat}, Lng: ${wp.lng}`}</label>
+                <label key={"label-" + i}>Waypoint (Marker {waypointNameString[i]}): {`Lat: ${wp.lat.toFixed(3)}, Lng: ${wp.lng.toFixed(3)}`}</label>
                 <button data-index={i} onClick={handleRemoveWaypoint} key={"remove-" + i}>✖</button><br />
               </div>
             ))}

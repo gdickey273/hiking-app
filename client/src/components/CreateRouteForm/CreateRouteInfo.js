@@ -102,6 +102,7 @@ function CreateRouteInfo(props) {
       API.saveTrail(trailObj)
         .then(res => {
           props.setTrailId(res.data._id);
+          setNewTrailObj({ waypoints: [] });
         })
         .catch(err => console.log(err));
     }
