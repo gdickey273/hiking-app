@@ -9,8 +9,7 @@ import API from "../../utils/API";
 import AUTH from "../../utils/AUTH";
 import { withScriptjs } from "react-google-maps";
 import extAPI from "../../utils/extAPI";
-import { TextArea, Select, FormBtn, Input } from "../Form";
-import { ListItem } from "../List";
+import { Select, Input } from "../Form";
 import StockPhoto from "./stock-trail.jpg";
 import DropZone from "../DropZone";
 
@@ -69,14 +68,7 @@ function Detail(props) {
           setTrail(res.data);
         })
         .catch(err => console.log(err));
-    }
-
-    if (name === "comments") {
-      setFormObject({
-        ...formObject,
-        [name]: value
-      })
-    }
+      }
 
     if (name === 'photos') {
       setFileSelected(true)
@@ -86,31 +78,6 @@ function Detail(props) {
       })
     }
   }
-
-  function handleFormSubmit(event) {
-    event.preventDefault();
-
-    if (formObject === {}) {
-      return false;
-    }
-
-    if (formObject.comments) {
-      let commentsArr = trail.comments;
-      commentsArr.push({
-        comment: formObject.comments,
-        userName: `${user.firstName} ${user.lastName}`,
-        userID: user._id
-      });
-
-      API.updateTrail(id, { ...trail, comments: commentsArr })
-        .then(res => {
-          // console.log(res.data)
-          formEl.current.reset();
-          setTrail(res.data);
-        })
-        .catch(err => console.log(err));
-    }
-  };
 
   function handleVerify() {
     API.updateTrail(id, { ...trail, userVerified: trail.userVerified + 1 })
@@ -245,22 +212,6 @@ function Detail(props) {
               <p className="card-text"><strong>Estimated duration: </strong>{trail.duration}</p>
               <p className="card-text"><strong>Trail Type: </strong>{trail.trailType}</p>
               <p className="card-text"><strong>Terrain: </strong>{trail.terrain}</p>
-              <p className="card-text"><strong>User Comments: </strong>{trail.comments && trail.comments.map((comment, i) => (
-                <ListItem key={i}>{comment.comment} - {comment.userName}</ListItem>
-              ))}</p>
-              {props.loggedIn && <form ref={formEl}>
-                <TextArea
-                  onChange={handleInputChange}
-                  name="comments"
-                  placeholder="Add Comments"
-                />
-                <FormBtn
-                  onClick={handleFormSubmit}
-                >
-                  Submit
-                </FormBtn>
-              </form>}
-
               <p className="card-text"><strong>Current Conditions (as of {formatDate}): {trail.currentCondition}</strong></p>
               <p className="card-text"><strong>Traffic Levels: </strong>{trail.trafficLevels}</p>
               <p className="card-text"><strong>Available Water Sources: </strong>{trail.waterSources}</p>

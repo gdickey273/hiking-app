@@ -5,7 +5,7 @@ import Info from "../Info";
 function Footer(props){
   return (
     <footer>
-      <Info trailId={props.trailId}/>
+      <Info loggedIn={props.loggedIn} trailId={props.trailId}/>
     </footer>
   )
 };

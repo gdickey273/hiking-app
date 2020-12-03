@@ -71,14 +71,14 @@ const CreateRouteForm = (props) => {
   return (
     <div>
       <div>
-      {!props.loggedIn &&
+      {/* {!props.loggedIn &&
         <div className="trail-maker">
           <div className="trail-maker-heading">
             <h2>Trail Maker</h2>
             <p>Log in to create a new route to add to your collection!</p>
           </div>
         </div>
-      }
+      } */}
 
       {props.loggedIn &&
         <div>
