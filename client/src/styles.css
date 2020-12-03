@@ -628,6 +628,7 @@ html {
   display: flex;
   width: 70%;
   margin: auto;
+  margin-left: 20vw;
 }
 
 .comments-container .comments-user-container form {
@@ -696,6 +697,8 @@ html {
   display: flex;
   width: 70%;
   margin: auto;
+  margin-left: 20vw;
+  margin-top: 30px;
 }
 
 .comments-all .user-comments-container .fa-user {
@@ -709,9 +712,9 @@ html {
 }
 
 .comments-all .user-comments-container .user-comment {
-  width: 90%;
-  font-size: 16px;
-  margin: .5em 1em;
+  width: 500px;
+  font-size: 20px;
+  margin: .75em 1em;
   color: white;
 }
 
@@ -813,7 +816,6 @@ button {
   margin: auto;
   width: 100%;
   height: 100%;
-  background-color: white;
 }
 
 .forecast-container h2 {
@@ -832,14 +834,24 @@ button {
   text-align: center;
 }
 
+.forecast-day {
+  margin-top: 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
 .weather-conditions {
   display: block;
   position: absolute;
+  overflow: scroll;
   height: 100%;
-  width: 80%;
+  width: 90%;
   top: 0;
-  right: 0;
-  background-color: lightgrey;
+  right: 70px;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .weather-conditions p {
@@ -853,7 +865,7 @@ button {
   width: 100%;
   top: 0;
   right: 0;
-  background-color: white;
+  background: var(--main-bg-color);
 }
 
 .forecast-button button {
