@@ -62,7 +62,7 @@ const Forecast = (props) => {
 
 
     return (
-        <div>
+        <div className="forecast-button">
             <form onSubmit={getForecast}>
                 {/* <input
                     type="text"

@@ -46,7 +46,7 @@ function UserPolylineMap(props) {
       {trailObj.origin &&
         <Map
           google={props.google}
-          style={{ width: "75vw", height: "75vw" }}
+          style={{ width: "100%", height: "100%" }}
           zoom={15}
           streetViewControl={false}
           fullscreenControl={false}
@@ -72,8 +72,6 @@ function UserPolylineMap(props) {
             strokeColor="#c94e02"
             strokeOpacity={1}
             strokeWeight={5} />
-
-
         </Map>
       }
     </>

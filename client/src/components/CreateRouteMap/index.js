@@ -125,11 +125,13 @@ function CreateRouteMap(props) {
   }
 
   return (
-
     <Map
       google={props.google}
       zoom={13}
-      style={{ width: "100vw", height: "100vh", marginLeft: "-100vw" }}
+      style={{ 
+        width: "100%", 
+        height: "100%"
+      }}
       streetViewControl={false}
       fullscreenControl={false}
       onClick={handleMapClick}

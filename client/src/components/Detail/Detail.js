@@ -156,7 +156,7 @@ function Detail(props) {
             <Card>
             <h2 className="trail-name">{trail.name}</h2>
               {props.loggedIn &&
-                <button style={{ float: 'right' }} onClick={() => addFavorite()}><i className="fas fa-star"></i></button>
+                <button className="favorites-button" style={{ float: 'right' }} onClick={() => addFavorite()}><i className="fas fa-star"></i></button>
               }
               {(trail.photos && trail.photos.length) ? (trail.photos.map((photo, i) => (
                 <img key={i} className="card-img-top" src={photo} alt={trail.name}></img>

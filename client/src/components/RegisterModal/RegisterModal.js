@@ -47,7 +47,7 @@ function RegisterModal() {
     <div className="RegisterModal">
       <div className={`modalBackground modalShowing-${modalState}`}>
         <div className="modalInner">
-          <button style={{ float: "right" }} onClick={() => toggleModalState()}>x</button>
+          <button style={{position: "absolute", top: "0", right: "0", width: "30px", padding: "5px", border:"none", backgroundColor: "transparent", fontSize: "1em", marginRight: "5px"}} onClick={() => toggleModalState()}>✖</button>
           <form>
             <label htmlFor="username">First name: </label>
             <input

@@ -36,18 +36,20 @@ function FavoritesModal(props) {
     <div className="FavoritesModal">
       <div className={`modalBackground modalShowing-${modalState}`}>
         <div className="modalInner">
-          <button style={{float: "right"}} onClick={() => toggleLoginState()}>x</button>
-          <h2>Your Trails</h2>
+          <button style={{position: "absolute", top: "0", right: "0", width: "30px", padding: "5px", border:"none", backgroundColor: "transparent", fontSize: "1em", marginRight: "5px"}} onClick={() => toggleLoginState()}>✖</button>
+          <h2 className="favorites-title">Your Trails</h2>
           {favs ? (
-                <div>
+                <div className="favorites-container">
                   {favs.map(fav => (
                     <div key={fav._id}>
                       <a onClick={() => props.renderTrailById(fav._id)}>
                         <strong>
-                          {fav.name} - {fav.city}
+                          <div className="favorites-item">
+                          <p>{fav.name} - {fav.city}</p>
+                          <DeleteBtn onClick={() => deleteTrail(fav._id)} />
+                          </div>
                         </strong>
                       </a>
-                      <DeleteBtn text="Delete" onClick={() => deleteTrail(fav._id)} />
                     </div>
                   ))}
                 </div>

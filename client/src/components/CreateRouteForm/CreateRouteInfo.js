@@ -108,37 +108,67 @@ function CreateRouteInfo(props) {
   }
   return (
     <>
-      <div>
+      <div className="trailsubmission-form">
         <form>
-          <label>*Trail Name</label><br />
-          <input name="trailName" onChange={handleInputChange} value={newTrailObj.trailName} /><br />
-          <label>*City</label><br />
-          <input name="city" onChange={handleInputChange} value={newTrailObj.city} /><br />
-          <label>*State</label><br />
-          <input name="state" onChange={handleInputChange} value={newTrailObj.state} /><br />
-          <label>*Your Rating 1-5</label><br />
-          <input type="number" min="1" max="5" name="rating" onChange={handleInputChange} value={newTrailObj.rating} /><br />
-          <label>*Length (in miles)</label><br />
-          <input name="length" onChange={handleInputChange} value={newTrailObj.length} /><br />
-          <label>*Comments</label><br />
+
+          <div className="trailsubmission-form-item">
+            <label>*Trail Name</label>
+            <input name="trailName" onChange={handleInputChange} value={newTrailObj.trailName} />
+          </div>
+
+          <div className="trailsubmission-form-item">
+          <label>*City</label>
+          <input name="city" onChange={handleInputChange} value={newTrailObj.city} />
+          </div>
+          <div className="trailsubmission-form-item">
+          <label>*State</label>
+          <input name="state" onChange={handleInputChange} value={newTrailObj.state} />
+          </div>
+          <div className="trailsubmission-form-item">
+          <label>*Your Rating 1-5</label>
+          <input type="number" min="1" max="5" name="rating" onChange={handleInputChange} value={newTrailObj.rating} />
+          </div>
+          <div className="trailsubmission-form-item">
+          <label>*Length (in miles)</label>
+          <input name="length" onChange={handleInputChange} value={newTrailObj.length} />
+          </div>
+          <div className="trailsubmission-form-item">
+          <label>*Comments</label>
           <textarea maxLength="500" onChange={handleInputChange} name="comments" value={newTrailObj.comments}></textarea>
-          <label>Elevation Ascent (in feet)</label><br />
+          </div>
+          <div className="trailsubmission-form-item">
+          <label>Elevation Ascent (in feet)</label>
           <input name="ascent" onChange={handleInputChange} value={newTrailObj.ascent}></input>
-          <label>Elevation Descent (in feet)</label><br />
+          </div>
+          <div className="trailsubmission-form-item">
+          <label>Elevation Descent (in feet)</label>
           <input name="decent" onChange={handleInputChange} value={newTrailObj.decent}></input>
-          <label>Terrain</label><br />
+          </div>
+          <div className="trailsubmission-form-item">
+          <label>Terrain</label>
           <input name="terrain" onChange={handleInputChange} value={newTrailObj.terrain}></input>
-          <label>Current Condition</label><br />
-          <input name="condition" onChange={handleInputChange} placeholder="Well maintained, fallen trees, etc." value={newTrailObj.condition} /><br />
-          <label>Duration (in minutes)</label><br />
+          </div>
+          <div className="trailsubmission-form-item">
+          <label>Current Condition</label>
+          <input name="condition" onChange={handleInputChange} placeholder="Well maintained, fallen trees, etc." value={newTrailObj.condition} />
+          </div>
+          <div className="trailsubmission-form-item">
+          <label>Duration (in minutes)</label>
           <input name="duration" onChange={handleInputChange} value={newTrailObj.duration}></input>
-          <label>Traffic Levels</label><br />
+          </div>
+          <div className="trailsubmission-form-item">
+          <label>Traffic Levels</label>
           <input name="traffic" onChange={handleInputChange} value={newTrailObj.traffic}></input>
-          <label>Water Sources</label><br />
+          </div>
+          <div className="trailsubmission-form-item">
+          <label>Water Sources</label>
           <input name="waterSources" onChange={handleInputChange} value={newTrailObj.waterSources}></input>
-          <label>Add Photos</label><br />
-          <input name="photos" onChange={handleFileSelected} type='file'
-            accept='.jpg, .png, .jpeg' /><br />
+          </div>
+          <div className="trailsubmission-form-item">
+          <label>Add Photos</label>
+          <input name="photos" onChange={handleFileSelected} type='file' accept='.jpg, .png, .jpeg' />
+          </div>
+
           {fileSelected &&
             <button
               type='button'

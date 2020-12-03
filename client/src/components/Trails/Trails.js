@@ -133,7 +133,7 @@ function Trails(props) {
                         }
 
                       <div className="photo-container-details">
-                        <p><strong>{trail.name}</strong></p>
+                        <p className="photo-container-details-title"><strong>{trail.name}</strong></p>
                         <p><strong>{trail.city}</strong></p>
                         <p><strong>{trail.length} mi.</strong></p>
                         <p><strong>{trail.rating} stars </strong></p>

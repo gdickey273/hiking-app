@@ -6,7 +6,7 @@ let moment = require('moment');
 const conditions = (props) => {
     
     return (
-        <div className={classes.Wrapper}>
+        <div className={classes.Wrapper} className="weather-conditions">
 
             {props.error && <small className={classes.Small}>Please enter valid coordinates.</small>}
 
