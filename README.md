@@ -1,8 +1,10 @@
 # TRAILSHARE
-[![Build Status](https://travis-ci.com/gdickey273/hiking-app)](https://travis-ci.com/gdickey273/hiking-app)  ![Badge](https://img.shields.io/badge/license-MIT-green)
+![Badge](https://img.shields.io/badge/license-MIT-green)
 
 ## Let's start your next adventure
-A social forward format to find and create new hiking destinations in your area. 
+A social forward format to find and create new hiking destinations in your area.
+
+![Screen Shot](screen-shot.png)
 
  ### Demo
 
