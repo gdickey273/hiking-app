@@ -167,7 +167,7 @@ const CreateRouteForm = (props) => {
 
           {formStage === "info" &&
             <CreateRouteInfo
-              newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} setTrailId={props.setTrailId} setFormStage={setFormStage}/>
+              newTrailObj={newTrailObj} setNewTrailObj={setNewTrailObj} setTrailId={props.setTrailId} setFormStage={setFormStage} user={props.user}/>
           }
 
       </div>

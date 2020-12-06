@@ -84,7 +84,11 @@ function CreateRouteInfo(props) {
         waypoints: waypointArr,
         trailType: newTrailObj.trailType,
         rating: newTrailObj.rating,
-        comments: newTrailObj.comments,
+        comments: [{
+          comment: newTrailObj.comments,
+          userName: `${props.user.firstName} ${props.user.lastName[0]}`,
+          userID: props.user._id
+        }],
         length: newTrailObj.length,
         terrain: newTrailObj.terrain,
         currentCondition: newTrailObj.condition,
@@ -92,7 +96,7 @@ function CreateRouteInfo(props) {
         trafficLevels: newTrailObj.traffic,
         waterSources: newTrailObj.waterSources,
         elevation,
-        userVerified: 1,
+        userVerified: 0,
         isPolylinePath: newTrailObj.isPolylinePath ? 1 : 0,
         photos: newTrailObj.photos
       }

@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import API from "../../utils/API";
 import AUTH from "../../utils/AUTH";
-import { FormBtn } from "../Form";
 import './Comments.css';
 
 function Comments(props) {
@@ -50,7 +49,7 @@ function Comments(props) {
       let commentsArr = trail.comments;
       commentsArr.push({
         comment: formObject.comments,
-        userName: `${user.firstName} ${user.lastName}`,
+        userName: `${user.firstName} ${user.lastName[0]}`,
         userID: user._id
       });
 
