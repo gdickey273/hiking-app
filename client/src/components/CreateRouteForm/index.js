@@ -133,7 +133,7 @@ const CreateRouteForm = (props) => {
                       <label>A to B</label>
                     </div>
                   </div>
-                  <input type="submit" name="submit" onClick={handleButtonClick} />
+                  <input type="submit" name="submit" style={{ cursor: "pointer" }} onClick={handleButtonClick} />
                 </>}
             </form>
           </div>

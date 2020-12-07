@@ -23,6 +23,10 @@
   min-width: 400px;
 }
 
+button {
+  cursor: pointer;
+}
+
 header {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
@@ -560,6 +564,7 @@ html {
   height: 100%;
   z-index: 2;
   font-family: "Ramabhadra";
+  cursor: pointer;
 }
 
 .trail-selected-container {
