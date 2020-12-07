@@ -72,7 +72,7 @@ function App() {
         />
         <Banner renderTrailById={renderTrailById} />
       </header>
-      <Main trailId={trailId} loggedIn={loggedIn} setTrailId={setTrailId} setFavsUpdated={setFavsUpdated}/>
+      <Main trailId={trailId} loggedIn={loggedIn} setTrailId={setTrailId} setFavsUpdated={setFavsUpdated}  user={user}/>
       <Footer trailId={trailId} loggedIn={loggedIn}/>
     </div>
   );

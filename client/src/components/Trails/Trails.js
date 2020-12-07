@@ -101,19 +101,19 @@ function Trails(props) {
                 onChange={handleInputChange}
               >
                 <option value="rating">Rating</option>
-                <option value="2">(insert star icon) 2</option>
-                <option value="3"> 3</option>
-                <option value="4"> 4</option>
+                <option value="2">&gt; 2 stars</option>
+                <option value="3">&gt; 3 stars</option>
+                <option value="4">&gt; 3 stars</option>
               </Select>
               <Select
                 name="length"
                 onChange={handleInputChange}
               >
                 <option value="length">Length</option>
-                <option value="3">(insert less than icon) 3</option>
-                <option value="5"> 5</option>
-                <option value="10"> 10</option>
-                <option value="15"> 15</option>
+                <option value="3">&lt; 3 mi</option>
+                <option value="5">&lt; 5 mi</option>
+                <option value="10">&lt; 10 mi</option>
+                <option value="15">&lt; 15 mi</option>
               </Select>
             </form>
           </Card>
@@ -136,7 +136,7 @@ function Trails(props) {
                         <p className="photo-container-details-title"><strong>{trail.name}</strong></p>
                         <p><strong>{trail.city}</strong></p>
                         <p><strong>{trail.length} mi.</strong></p>
-                        <p><strong>{trail.rating} stars </strong></p>
+                        <p><strong>{trail.rating} <i className="fas fa-star"></i> </strong></p>
                       </div>
 
                       </button>

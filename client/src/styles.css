@@ -23,6 +23,10 @@
   min-width: 400px;
 }
 
+button {
+  cursor: pointer;
+}
+
 header {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
@@ -560,6 +564,7 @@ html {
   height: 100%;
   z-index: 2;
   font-family: "Ramabhadra";
+  cursor: pointer;
 }
 
 .trail-selected-container {
@@ -609,6 +614,14 @@ html {
 .trail-selected-container li {
   list-style-type: none;
   margin-bottom: 7px;
+}
+
+.trail-selected-button {
+  font-family: "Ramabhadra";
+  font-size: .8em;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
 }
 
 .comments-container {
@@ -1000,11 +1013,21 @@ button {
   top: 50px;
   background: none;
   border: none;
+  cursor: pointer;
+}
+
+.favorites-button:active {
+  color: #ebc478;
+  transform: translateY(2px);
 }
 
 .fa-star {
   color: gold;
   font-size: 2em;
+}
+
+.fa-star:hover {
+  color: #ebc478;
 }
 
 .favorites-container {

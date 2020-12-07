@@ -42,11 +42,11 @@ function FavoritesModal(props) {
                 <div className="favorites-container">
                   {favs.map(fav => (
                     <div key={fav._id}>
-                      <a onClick={() => props.renderTrailById(fav._id)}>
+                      <a style={{ cursor: "pointer" }} onClick={() => props.renderTrailById(fav._id)}>
                         <strong>
                           <div className="favorites-item">
                           <p>{fav.name} - {fav.city}</p>
-                          <DeleteBtn onClick={() => deleteTrail(fav._id)} />
+                          <DeleteBtn style={{ cursor: "pointer" }} onClick={() => deleteTrail(fav._id)} />
                           </div>
                         </strong>
                       </a>
