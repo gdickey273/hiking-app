@@ -616,6 +616,14 @@ html {
   margin-bottom: 7px;
 }
 
+.trail-selected-button {
+  font-family: "Ramabhadra";
+  font-size: .8em;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
 .comments-container {
   display: block;
   position: absolute;
