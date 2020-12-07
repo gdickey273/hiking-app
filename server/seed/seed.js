@@ -44,7 +44,7 @@ for(i = 0; i < userData.UserHikingData.length; i++) {
     rateCount: 1,
     comments: [{comment: userData.UserHikingData[i].comments, userName: "Anonymus", userID: null}],
     length: userData.UserHikingData[i].length,
-    elevation: [userData.UserHikingData[i].elevation],
+    elevation: userData.UserHikingData[i].elevation,
     duration: userData.UserHikingData[i].duration,
     trailType: userData.UserHikingData[i].trailType,
     terrain: userData.UserHikingData[i].terrain

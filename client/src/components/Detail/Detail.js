@@ -194,29 +194,29 @@ function Detail(props) {
 
                 <h6 className="card-subtitle mb-2 text-muted">{trail.city}, {trail.state}</h6>
                 {props.loggedIn &&
-                  <p className="card-text">Verified by {trail.userVerified} users <button name="userVerified" onClick={handleVerify}><i className="fas fa-check"></i></button></p>}
+                  <div className="card-text">Verified by {trail.userVerified} users <button name="userVerified" onClick={handleVerify}><i className="fas fa-check"></i></button></div>}
                 {!props.loggedIn &&
-                  <p className="card-text">Verified by {trail.userVerified} users <i className="fas fa-check"></i></p>}
-                <p className="card-text"><strong>Rating: </strong>{trail.rating}</p>
-                {props.loggedIn && <form ref={formEl}>
-                  <Select name="rating" onChange={handleInputChange}>
-                    <option value="rating">Rate this Trail</option>
-                    <option value="1">(insert star icon) 1</option>
-                    <option value="2">(insert star icon) 2</option>
-                    <option value="3"> 3</option>
-                    <option value="4"> 4</option>
-                    <option value="5"> 5</option>
-                  </Select>
-                </form>}
+                  <div className="card-text">Verified by {trail.userVerified} users <i className="fas fa-check"></i></div>}
+                <div className="card-text"><strong>Rating: </strong>{trail.rating} <i className="fas fa-star"></i>
+                  {props.loggedIn && <form ref={formEl}>
+                    <Select name="rating" onChange={handleInputChange}>
+                      <option value="rating">Rate this Trail</option>
+                      <option value="1">1 star</option>
+                      <option value="2">2 star</option>
+                      <option value="3">3 star</option>
+                      <option value="4">4 star</option>
+                      <option value="5">5 star</option>
+                    </Select>
+                  </form>}</div>
 
-                <p className="card-text"><strong>Length: </strong>{trail.length} miles</p>
-                <p className="card-text"><strong>Elevation: </strong>+{trail.elevation}</p>
-                <p className="card-text"><strong>Estimated duration: </strong>{trail.duration}</p>
-                <p className="card-text"><strong>Trail Type: </strong>{trail.trailType}</p>
-                <p className="card-text"><strong>Terrain: </strong>{trail.terrain}</p>
-                <p className="card-text"><strong>Current Conditions (as of {formatDate}): {trail.currentCondition}</strong></p>
-                <p className="card-text"><strong>Traffic Levels: </strong>{trail.trafficLevels}</p>
-                <p className="card-text"><strong>Available Water Sources: </strong>{trail.waterSources}</p>
+                <div className="card-text"><strong>Length: </strong>{trail.length} mi</div>
+                {trail.elevation && <div className="card-text"><strong>Elevation: </strong>+{trail.elevation[0]}ft (ascending) {trail.elevation[1]}ft (descending)</div>}
+                <div className="card-text"><strong>Estimated duration: </strong>{trail.duration}</div>
+                <div className="card-text"><strong>Trail Type: </strong> <br />{trail.trailType}</div>
+                <div className="card-text"><strong>Terrain: </strong> <br />{trail.terrain}</div>
+                <div className="card-text"><strong>Current Conditions </strong><br /><div style={{ fontSize: "14px", fontStyle: "italic" }}>as of {formatDate}:</div>{trail.currentCondition}</div>
+                <div className="card-text"><strong>Traffic Levels: </strong> <br />{trail.trafficLevels}</div>
+                <div className="card-text"><strong>Available Water Sources: </strong> <br />{trail.waterSources}</div>
               </Card>
             </Col>
           </Row>
