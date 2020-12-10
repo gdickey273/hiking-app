@@ -6,8 +6,6 @@ A social forward format to find and create new hiking destinations in your area.
 
 ![Screen Shot](screen-shot.png)
 
- ### Demo
-
   Deployed Application: [https://project-3-hiking-app.herokuapp.com/](https://project-3-hiking-app.herokuapp.com/)
 
 ## Table of Contents
