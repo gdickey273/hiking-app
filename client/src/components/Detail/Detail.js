@@ -6,7 +6,6 @@ import UserTrailsMap from "../UserTrailsMap";
 import APITrailsMap from "../APITrailsMap";
 import UserPolylineMap from "../UserPolylineMap";
 import API from "../../utils/API";
-import AUTH from "../../utils/AUTH";
 import { withScriptjs } from "react-google-maps";
 import extAPI from "../../utils/extAPI";
 import { Select, Input } from "../Form";
@@ -14,7 +13,6 @@ import StockPhoto from "./stock-trail.jpg";
 
 function Detail(props) {
   const [trail, setTrail] = useState({})
-  const [user, setUser] = useState({})
   const [url, setUrl] = useState({})
   const [formObject, setFormObject] = useState({});
   const [fileSelected, setFileSelected] = useState(false);
@@ -39,13 +37,6 @@ function Detail(props) {
       .then(res => {
         setUrl(`https://maps.googleapis.com/maps/api/js?key=${res.data.google}`);
       })
-      .catch(err => console.log(err));
-
-    AUTH.getUser()
-      .then(res =>
-        // console.log(res.data.user._id)
-        setUser(res.data.user)
-      )
       .catch(err => console.log(err));
   }, [id]);
 
@@ -95,7 +86,7 @@ function Detail(props) {
 
   function addFavorite() {
     props.setFavsUpdated(true);
-    API.addFavorite(user._id, id)
+    API.addFavorite(props.user._id, id)
       .then(response =>
         console.log(response.data))
       .catch(err => console.log(err));
