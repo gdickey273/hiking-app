@@ -55,7 +55,7 @@ function Trails(props) {
     }
 
     if (name === "rating") {
-      const filteredTrails = trailsToFilter.filter(trail => { return trail.rating > value });
+      const filteredTrails = trailsToFilter.filter(trail => { return trail.rating >= value });
       setTrails(filteredTrails)
       if (value === "rating") {
         loadTrails();
