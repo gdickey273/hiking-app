@@ -103,7 +103,7 @@ function Trails(props) {
                 <option value="rating">Rating</option>
                 <option value="2">&gt; 2 stars</option>
                 <option value="3">&gt; 3 stars</option>
-                <option value="4">&gt; 3 stars</option>
+                <option value="4">&gt; 4 stars</option>
               </Select>
               <Select
                 name="length"
