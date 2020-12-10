@@ -849,23 +849,47 @@ button {
 }
 
 .forecast-day {
-  margin-top: 20px;
+  margin-top: 200px;
+  /* margin-left: 10px; */
+  width: 90%;
+  height: 40%;
   font-size: 1.5em;
   font-weight: bold;
   color: white;
   text-align: center;
+  background-color: gray;
+  padding: 15px;
+  border-radius: 18px;
 }
 
 .weather-conditions {
-  display: block;
+  /* display: block;
   position: absolute;
-  overflow: scroll;
+   */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* flex-wrap: no-wrap; */
   height: 100%;
-  width: 70%;
-  top: 0;
-  right: 150px;
+  width: 85%;
+  margin-left: 150px;
+  overflow: scroll;
+  /* top: 150px; */
+  /* left: 50px !important; */
+  /* right: 150px; */
   overflow-x: hidden;
   overflow-y: hidden;
+}
+
+@media (max-width: 600px) {
+  .weather-conditions {
+    flex-direction: column;
+    margin-left: auto;
+  }
+  .forecast-day {
+    margin-top: 0;
+    height: 95%;
+  }
 }
 
 .weather-conditions p {
