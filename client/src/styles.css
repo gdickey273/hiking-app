@@ -1020,7 +1020,7 @@ button {
   margin-right: 10px;
 }
 
-.trailsubmission-form-item input, .trailsubmission-form-item textarea {
+.trailsubmission-form-item input, .trailsubmission-form-item textarea, .trailsubmission-form-item select {
   display: block;
   position: absolute;
   -ms-grid-row: 1;

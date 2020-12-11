@@ -122,17 +122,38 @@ function Detail(props) {
       return false;
     }
 
-    API.updateTrail(id, {
-      ...trail,
-      elevation: [formObject.ascent, formObject.descent],
-      currentCondition: formObject.condition,
-      date: new Date(),
-      duration: formObject.duration,
-      terrain: formObject.terrain,
-      trailType: formObject.type,
-      trafficLevels: formObject.traffic,
-      waterSources: formObject.waterSources
-    })
+    let newTrail = trail;
+
+    if (formObject.ascent && formObject.descent) {
+      newTrail.elevation = [formObject.ascent, formObject.descent];
+    }
+
+    if (formObject.condition) {
+      newTrail.currentCondition = formObject.currentCondition;
+      newTrail.date = new Date();
+    }
+
+    if (formObject.terrain) {
+      newTrail.terrain = formObject.terrain;
+    }
+
+    if (formObject.duration) {
+      newTrail.duration = formObject.duration;
+    }
+
+    if (formObject.type) {
+      newTrail.trailType = formObject.type;
+    }
+
+    if (formObject.traffic) {
+      newTrail.trafficLevels = formObject.traffic;
+    }
+
+    if (formObject.waterSources) {
+      newTrail.waterSources = formObject.waterSources;
+    }
+    console.log(newTrail)
+    API.updateTrail(id, newTrail)
       .then(res => {
         // console.log(res.data)
         setTrail(res.data);
@@ -250,51 +271,53 @@ function Detail(props) {
             </Col>
           </Row>
         </Container>
-        {updateForm &&
-          <div style={{ zIndex: "999" }} className="trailsubmission-form">
-            <form>
-              <div className="trailsubmission-form-item">
-                <label>Elevation Ascent (in feet)</label>
-                <input name="ascent" onChange={handleInputChange}></input>
-              </div>
-              <div className="trailsubmission-form-item">
-                <label>Elevation Descent (in feet)</label>
-                <input name="decent" onChange={handleInputChange}></input>
-              </div>
-              <div className="trailsubmission-form-item">
-                <label>Trail Type</label>
-                <Select name="type" onChange={handleInputChange}>
-                  <option value="A to B">A to B</option>
-                  <option value="Loop">Loop</option>
-                  <option value="Out 'n Back">Out 'n Back</option>
-                </Select>
-              </div>
-              <div className="trailsubmission-form-item">
-                <label>Terrain</label>
-                <input name="terrain" onChange={handleInputChange}></input>
-              </div>
-              <div className="trailsubmission-form-item">
-                <label>Current Condition</label>
-                <input name="condition" onChange={handleInputChange} placeholder="Well maintained, fallen trees, etc." />
-              </div>
-              <div className="trailsubmission-form-item">
-                <label>Duration (in minutes)</label>
-                <input name="duration" onChange={handleInputChange}></input>
-              </div>
-              <div className="trailsubmission-form-item">
-                <label>Traffic Levels</label>
-                <input name="traffic" onChange={handleInputChange}></input>
-              </div>
-              <div className="trailsubmission-form-item">
-                <label>Water Sources</label>
-                <input name="waterSources" onChange={handleInputChange}></input>
-              </div>
-
-              <button className="trail-selected-button" onClick={handleSubmit}>Submit Updates</button>
-            </form>
-          </div>
-        }
       </div>
+      {updateForm &&
+        <div style={{ zIndex: "999", position: "absolute", marginLeft: "300px" }} className="trailsubmission-form">
+          <button style={{position: "absolute", top: "0", right: "0", width: "30px", padding: "5px", border:"none", backgroundColor: "transparent", fontSize: "1em", marginRight: "5px"}} onClick={() => setUpdateForm(false)}>✖</button>
+          <form>
+            <div className="trailsubmission-form-item">
+              <label>Elevation Ascent (in feet)</label>
+              <input name="ascent" onChange={handleInputChange}></input>
+            </div>
+            <div className="trailsubmission-form-item">
+              <label>Elevation Descent (in feet)</label>
+              <input name="decent" onChange={handleInputChange}></input>
+            </div>
+            <div className="trailsubmission-form-item">
+              <label>Trail Type</label>
+              <select className="form-control trail-search-select" name="type" onChange={handleInputChange}>
+                <option value=""></option>
+                <option value="A to B">A to B</option>
+                <option value="Loop">Loop</option>
+                <option value="Out 'n Back">Out 'n Back</option>
+              </select>
+            </div>
+            <div className="trailsubmission-form-item">
+              <label>Terrain</label>
+              <input name="terrain" onChange={handleInputChange}></input>
+            </div>
+            <div className="trailsubmission-form-item">
+              <label>Current Condition</label>
+              <input name="condition" onChange={handleInputChange} placeholder="Well maintained, fallen trees, etc." />
+            </div>
+            <div className="trailsubmission-form-item">
+              <label>Duration (in minutes)</label>
+              <input name="duration" onChange={handleInputChange}></input>
+            </div>
+            <div className="trailsubmission-form-item">
+              <label>Traffic Levels</label>
+              <input name="traffic" onChange={handleInputChange}></input>
+            </div>
+            <div className="trailsubmission-form-item">
+              <label>Water Sources</label>
+              <input name="waterSources" onChange={handleInputChange}></input>
+            </div>
+
+            <button className="trail-selected-button" onClick={handleSubmit}>Submit Updates</button>
+          </form>
+        </div>
+      }
     </div>
   );
 }
